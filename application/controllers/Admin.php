@@ -8,10 +8,13 @@ class Admin extends CI_Controller
     {
         parent::__construct();
         $this->load->library('form_validation');
+        $this->load->model('M_model'); // Pastikan model dimuat di sini
     }
     public function dashboard()
     {
-        $this->load->view('admin/dashboard');
+        $data['user'] = $this->M_model->get_data('user')->num_rows();
+        $data['admin'] = $this->M_model->get_data('admin')->num_rows();
+        $this->load->view('admin/dashboard', $data);
     }
     public function profile()
     {

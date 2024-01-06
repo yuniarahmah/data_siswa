@@ -227,7 +227,7 @@
                     <ul class="flex flex-col py-4 space-y-1">
                         <li class="px-5 hidden md:block">
                             <div class="flex flex-row items-center h-8">
-                                <div class="text-sm font-light tracking-wide text-gray-400 uppercase">Main</div>
+                                <div class="text-sm font-light tracking-wide text-gray-400 uppercase">Siswa Baru</div>
                             </div>
                         </li>
                         <li>
@@ -244,21 +244,10 @@
                             <a href="#" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
                                 <span class="inline-flex justify-center items-center ml-4">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
-                                    </svg>
-                                </span>
-                                <span class="ml-2 text-sm tracking-wide truncate">Board</span>
-                                <span class="hidden md:block px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-blue-500 bg-indigo-50 rounded-full">New</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
-                                <span class="inline-flex justify-center items-center ml-4">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
                                     </svg>
                                 </span>
-                                <span class="ml-2 text-sm tracking-wide truncate">Messages</span>
+                                <span class="ml-2 text-sm tracking-wide truncate">Tabel siswa baru</span>
                             </a>
                         </li>
                         <li class="px-5 hidden md:block">
@@ -277,7 +266,7 @@
                             </a>
                         </li>
                     </ul>
-                    <p class="mb-14 px-5 py-3 hidden md:block text-center text-xs">Copyright @2021</p>
+                    <p class="mb-14 px-5 py-3 hidden md:block text-center text-xs">BOOTCAMP@2024</p>
                 </div>
             </div>
             <!-- ./Sidebar -->

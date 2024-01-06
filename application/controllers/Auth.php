@@ -54,17 +54,6 @@ class Auth extends CI_Controller
 
     public function register()
     {
-        // Pastikan untuk melakukan validasi input sesuai kebutuhan Anda
-        $data = array(
-            // 'username' => $this->input->post('username'),
-            'password' => $this->input->post('password'),
-            'nama_lengkap' => $this->input->post('nama_lengkap'),
-            'nama_panggilan' => $this->input->post('nama_panggilan'),
-            'role' => $this->input->post('admin'),
-            // ... tambahkan kolom lainnya sesuai kebutuhan
-        );
-
-        $this->M_model->register($data);
         $this->load->view('auth/register');
     }
 
@@ -76,6 +65,7 @@ class Auth extends CI_Controller
         $password = $this->input->post('password');
         $nama_lengkap = $this->input->post('nama_lengkap');
         $nama_panggilan = $this->input->post('nama_panggilan');
+        $sekolah = $this->input->post('sekolah');
         $role = $this->input->post('admin');
         // $result = $query->row_array();
         if (empty($result)) {
@@ -89,6 +79,7 @@ class Auth extends CI_Controller
                     'password' => md5($this->input->post('password')),
                     'nama_lengkap' => $this->input->post('nama_lengkap'),
                     'nama_panggilan' => $this->input->post('nama_panggilan'),
+                    'sekolah' => $this->input->post('sekolah'),
                     'role' => 'admin',
 
                 ];
@@ -105,16 +96,6 @@ class Auth extends CI_Controller
     // register user
     public function registeru()
     {
-        $data = array(
-            // 'username' => $this->input->post('username'),
-            'password' => $this->input->post('password'),
-            'nama_lengkap' => $this->input->post('nama_lengkap'),
-            'nama_panggilan' => $this->input->post('nama_panggilan'),
-            'role' => $this->input->post('user'),
-            // ... tambahkan kolom lainnya sesuai kebutuhan
-        );
-
-        $this->M_model->register($data);
         $this->load->view('auth/registeru');
     }
 
@@ -126,6 +107,7 @@ class Auth extends CI_Controller
         $password = $this->input->post('password');
         $nama_lengkap = $this->input->post('nama_lengkap');
         $nama_panggilan = $this->input->post('nama_panggilan');
+        $sekolah = $this->input->post('sekolah');
         $role = $this->input->post('user');
         // $result = $query->row_array();
         if (empty($result)) {
@@ -139,6 +121,7 @@ class Auth extends CI_Controller
                     'password' => md5($this->input->post('password')),
                     'nama_lengkap' => $this->input->post('nama_lengkap'),
                     'nama_panggilan' => $this->input->post('nama_panggilan'),
+                    'sekolah' => $this->input->post('sekolah'),
                     'role' => 'user',
                 ];
                 $this->M_model->register($data);

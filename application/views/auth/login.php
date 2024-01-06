@@ -274,6 +274,15 @@
                 <i class="password-toggle-login fa fa-eye-slash" onclick="togglePassword()"></i>
               </div>
             </div>
+            <div class="inputContainer">
+              <label class="label header-text" for="sekolah">
+                <img src="https://cdn-icons-png.flaticon.com/512/2189/2189181.png" class="labelIcon"><span>Sekolah</span>
+              </label>
+              <select name="sekolah" id="sekolah" class="input">
+                <option value="swasta">Swasta</option>
+                <option value="negeri">Negeri</option>
+              </select>
+            </div>
 
             <a href="forgot_password" class="forgetPass">Lupa password?</a>
             <a href="registeru" class="forgetPass">Belum punya akun?</a>
@@ -311,7 +320,7 @@
       timerProgressBar: true // Menampilkan progress bar
     }).then((result) => {
       if (result.dismiss === Swal.DismissReason.timer) {
-        window.location.href = 'http://localhost/exc_sewa_ruang/'; // Redirect atau lakukan tindakan lain jika diperlukan setelah SweetAlert hilang
+        window.location.href = 'http://localhost/data_siswa_baru/'; // Redirect atau lakukan tindakan lain jika diperlukan setelah SweetAlert hilang
       }
     });
   <?php endif; ?>
@@ -327,7 +336,7 @@
       timerProgressBar: true // Menampilkan progress bar
     }).then((result) => {
       if (result.dismiss === Swal.DismissReason.timer) {
-        window.location.href = 'http://localhost/exc_sewa_ruang/'; // Redirect atau lakukan tindakan lain jika diperlukan setelah SweetAlert hilang
+        window.location.href = 'http://localhost/data_siswa_baru/'; // Redirect atau lakukan tindakan lain jika diperlukan setelah SweetAlert hilang
       }
     });
   <?php endif; ?>
