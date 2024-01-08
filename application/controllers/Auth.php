@@ -17,27 +17,28 @@ class Auth extends CI_Controller
 
     public function fungsi_login()
     {
-
         $email = $this->input->post('email', true);
         $password = $this->input->post('password', true);
+        $sekolah = $this->input->post('sekolah', true);
         $data = ['email' => $email,];
         $query = $this->M_model->getwhere('admin', $data);
         $result = $query->row_array();
 
-        if (!empty($result) && md5($password) === $result['password']) { //jika password sudah menjadi md5 maka data akan dijalankan
+        if (!empty($result) && md5($password) === $result['password']) {
             $data = [
                 'loged_in' => TRUE,
                 'email'    => $result['email'],
                 'username' => $result['username'],
                 'role'     => $result['role'],
                 'id'       => $result['id'],
+                'last_activity' => time(), // Menambahkan waktu terakhir akses
             ];
             $this->session->set_userdata($data);
             if ($this->session->userdata('role') == 'admin') { // jika role admin maka yang akan ditampilkan setelah lohin adalah dashboard admin
                 redirect(base_url() . 'admin/dashboard');
             }
-            if ($this->session->userdata('role') == 'karyawan') { //jika rolenya adalah karyawan maka yang akan ditampilkan setelah login adalah history karyawan
-                redirect(base_url() . 'admin/dashboard');
+            if ($this->session->userdata('role') == 'user') { //jika rolenya adalah karyawan maka yang akan ditampilkan setelah login adalah history karyawan
+                redirect(base_url() . 'user/dashboard');
             } else {
                 redirect(base_url() . ' auth/login');
             }
@@ -66,7 +67,7 @@ class Auth extends CI_Controller
         $nama_lengkap = $this->input->post('nama_lengkap');
         $nama_panggilan = $this->input->post('nama_panggilan');
         $sekolah = $this->input->post('sekolah');
-        $role = $this->input->post('admin');
+        $role = $this->input->post('role');
         // $result = $query->row_array();
         if (empty($result)) {
             if (strlen($password) < 8) { //jika password kurang dari 8 angka maka tidak bisa menjalankan register
@@ -80,7 +81,7 @@ class Auth extends CI_Controller
                     'nama_lengkap' => $this->input->post('nama_lengkap'),
                     'nama_panggilan' => $this->input->post('nama_panggilan'),
                     'sekolah' => $this->input->post('sekolah'),
-                    'role' => 'admin',
+                    'role' => 'role',
 
                 ];
                 $this->M_model->register($data);

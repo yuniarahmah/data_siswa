@@ -12,7 +12,20 @@ class User extends CI_Controller
     }
     public function dashboard_u()
     {
-        $this->load->view('user/dashboard_u');
+        $data['user'] = $this->M_model->get_data('user')->num_rows();
+        $data['admin'] = $this->M_model->get_data('admin')->num_rows();
+        $data['guru'] = $this->M_model->get_data('guru')->num_rows();
+        $data['ekstra'] = $this->M_model->get_data('ekstra')->num_rows();
+        $this->load->view('user/dashboard_u', $data);
+    }
+
+    public function profile()
+    {
+        $this->load->view('user/profile');
+    }
+
+    public function tambah_siswa_baru()
+    {
+        $this->load->view('user/tambah_siswa_baru');
     }
 }
-?>

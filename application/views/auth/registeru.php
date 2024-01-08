@@ -266,7 +266,7 @@
                     <header class="subHeader">Selamat Datang di <b>Website Data Siswa Baru</b> Silahkan lengkapi data anda
                     </header>
 
-                    <form action="<?php echo base_url('auth/aksi_register') ?>" method="post">
+                    <form action="<?php echo base_url('auth/aksi_registeru') ?>" method="post">
                         <div class="inputContainer">
                             <label class="label header-text" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png" class="labelIcon"><span>Email
                                 </span></label>

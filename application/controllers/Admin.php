@@ -14,12 +14,15 @@ class Admin extends CI_Controller
     {
         $data['user'] = $this->M_model->get_data('user')->num_rows();
         $data['admin'] = $this->M_model->get_data('admin')->num_rows();
+        $data['guru'] = $this->M_model->get_data('guru')->num_rows();
+        $data['ekstra'] = $this->M_model->get_data('ekstra')->num_rows();
         $this->load->view('admin/dashboard', $data);
     }
     public function profile()
     {
-        $data['admin'] = $this->M_model->get_by_id('admin', 'id', $this->session->userdata('id'))->result();
-        $this->load->view('admin/profile', $data); // Mengirimkan variabel $data ke tampilan
+        // $data['admin'] = $this->M_model->get_by_id('admin', 'id', $this->session->userdata('id'))->result();
+        // $this->load->view('admin/profile', $data); // Mengirimkan variabel $data ke tampilan
+        $this->load->view('admin/profile');
     }
 
     public function upload_img($value)
@@ -123,5 +126,9 @@ class Admin extends CI_Controller
             $this->session->set_flashdata('error', 'gagal...');
             redirect(base_url('admin/profile'));
         }
+    }
+
+    public function tabel_siswa(){
+        $this->load->view('admin/tabel_siswa');
     }
 }

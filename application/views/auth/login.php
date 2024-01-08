@@ -279,13 +279,13 @@
                 <img src="https://cdn-icons-png.flaticon.com/512/2189/2189181.png" class="labelIcon"><span>Sekolah</span>
               </label>
               <select name="sekolah" id="sekolah" class="input">
+                <option value="pilih sekolah">pilih sekolah</option>
                 <option value="swasta">Swasta</option>
                 <option value="negeri">Negeri</option>
               </select>
             </div>
-
             <a href="forgot_password" class="forgetPass">Lupa password?</a>
-            <a href="registeru" class="forgetPass">Belum punya akun?</a>
+            <a href="<?php echo base_url('auth/registeru') ?>" class="forgetPass">Belum punya akun?</a>
 
             <button name="submit" type="submit" class="LoginButton">Login</button>
 
