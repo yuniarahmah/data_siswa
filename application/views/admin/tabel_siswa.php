@@ -5,136 +5,159 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Siswa Baru</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <style>
-    .babababa {
-        margin-left: 20%;
-        margin-top: 5%;
-    }
-
-    .bababa {
-        margin-top: 5%;
-    }
-    @media only screen and (max-width: 800px) {
-        .bababa {
-        margin-top: 30%;
-    }
+    body {
+        overflow-x: hidden;
     }
 </style>
 
 <body>
-    <div class="relative min-h-screen md:flex babababa" data-dev-hint="container" style="margin-left:20%;">
-        <main id="content" class="max-h-screen overflow-y-auto flex-1 p-6 lg:px-8 bababa">
-            <div class="container mx-auto">
-                <div class="flex justify-center mb-2 md:justify-start md:pl-6">
-                    <div class="shadow p-2 mb-3 bg-body-tertiary rounded">
-                        <h1 class="flex justify-center mb-2 md:justify-start md:pl-5">
-                            <i class="fa-solid fa-note-sticky"></i> Data Karyawan
-                        </h1>
-                    </div>
-                </div>
-                <div class="overflow-x-auto w-full px-4 bg-white rounded-b-lg shadow">
-                    <table class="my-4 w-full divide-y divide-gray-300 text-center">
-                        <thead class="bg-gray-50 text-center">
-                            <tr>
-                                <th style="text-align: center;" class="px-3 py-2 text-xs text-gray-500">NO</th>
-                                <th style="text-align: center;" class="px-3 py-2 text-xs text-gray-500">USERNAME</th>
-                                <th style="text-align: center;" class="px-3 py-2 text-xs text-gray-500">EMAIL</th>
-                                <th style="text-align: center;" class="px-3 py-2 text-xs text-gray-500">NAMA DEPAN</th>
-                                <th style="text-align: center;" class="px-3 py-2 text-xs text-gray-500">NAMA BELAKANG</th>
-                                <th style="text-align: center;" class="px-3 py-2 text-xs text-gray-500">IMAGE</th>
+    <?php $this->load->view('sidebar'); ?>
+    <div class="w-25 mt-20 mb-10 md:ml-64 pl-10 pt-10 pr-10">
+        <div class="w-full overflow-hidden rounded-lg shadow-xs">
+            <div class="w-full overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-blue-500">
+                            <th class="px-10 py-4">No</th>
+                            <th class="px-10 py-4">Nama Siswa</th>
+                            <th class="px-10 py-4">Nama Ibu</th>
+                            <th class="px-10 py-4">Nama Ayah</th>
+                            <th class="px-10 py-4">Alamat</th>
+                            <th class="px-10 py-4">aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                        <?php $no = 0;
+                        foreach ($orangtua as $row) : $no++ ?>
+                            <tr onclick="navigateToPage('<?php echo base_url('admin/data_lengkap') ?>')" class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
+                                <td class="px-10 py-3"><?php echo $no ?></td>
+                                <td class="px-10 py-3"><?php echo nama_full_siswa_id($row->id_nama_siswa) ?></td>
+                                <td class="px-10 py-3"><?php echo $row->nama_ibu ?></td>
+                                <td class="px-10 py-3"><?php echo $row->nama_ayah ?></td>
+                                <td class="px-10 py-3"><?php echo $row->alamat ?></td>
+                                <td class="px-6 py-3">
+                                    <a href="<?php echo base_url('operator/edit_tambahan/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
+                                        <span class="">
+                                            <i class="fas fa-edit"></i>
+                                        </span>
+                                    </a>
+                                    <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                        <span class="">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </span>
+                                    </button>
+                                    <!-- <a href="tambah_item_tambahan" class="btn-style ml-2 pl-1 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded py-2 px-3">
+                                        <span class="">
+                                            <i class="fas fa-plus"></i>
+                                        </span>
+                                        Tambah
+                                    </a> -->
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-300">
-                            <?php $no = 0;
-                            foreach ($user as $absen) : $no++ ?>
-                                <tr class="whitespace-nowrap">
-                                    <td class="px-3 py-4 text-sm text-gray-500"><?php echo $no ?></td>
-                                    <td class="px-3 py-4">
-                                        <div class="text-sm text-gray-900">
-                                            <?php echo $absen->username; ?>
-                                        </div>
-                                    </td>
-                                    <td class="px-3 py-4">
-                                        <div class="text-sm text-gray-900">
-                                            <?php echo $absen->email; ?>
-                                        </div>
-                                    </td>
-                                    <td class="px-3 py-4">
-                                        <div class="text-sm text-gray-900">
-                                            <?php echo $absen->nama_depan; ?>
-                                        </div>
-                                    </td>
-                                    <td class="px-3 py-4">
-                                        <div class="text-sm text-gray-900">
-                                            <?php echo $absen->nama_belakang; ?>
-                                        </div>
-                                    </td>
-                                    <td class="px-3 py-4">
-                                        <div class="text-sm text-gray-900">
-                                            <img src="<?php echo base_url('image/karyawan/' . $absen->image) ?>" width="50px" height="40px">
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php endforeach ?>
-                        </tbody>
-                    </table>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
+                <a href="tambah_item_tambahan" class="btn-style ml-auto pl-1 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded py-2 px-3">
+                    <span class="">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    Tambah
+                </a>
+                <div id="pagination-buttons" class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+
+                    <!-- <ul class="inline-flex items-center">
+              <li>
+                <button onclick="changePage('prev')" class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple" aria-label="Previous">
+                  Previous
+                </button>
+              </li>
+              <li>
+                <button onclick="changePage(1)" class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">1</button>
+              </li>
+              <li>
+                <button onclick="changePage(2)" class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">2</button>
+              </li>
+              <li>
+                <button onclick="changePage('next')" class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple" aria-label="Next">
+                  Next
+                </button>
+              </li>
+            </ul> -->
                 </div>
             </div>
-        </main>
+        </div>
     </div>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!--Datatables -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script>
-        function hapus(id) {
-            swal.fire({
-                title: 'Yakin untuk menghapus data ini?',
-                text: "Data ini akan terhapus permanen",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Ya Hapus'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil Dihapus',
-                        showConfirmButton: false,
-                        timer: 1500,
-
-                    }).then(function() {
-                        window.location.href = "<?php echo base_url('admin/hapus_admin/') ?>" + id;
-                    });
+        $(document).ready(function() {
+            var table = $('#example_data').DataTable({
+                responsive: false
+            }).columns.adjust().responsive.recalc();
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
+    <script>
+        const setup = () => {
+            const getTheme = () => {
+                if (window.localStorage.getItem('dark')) {
+                    return JSON.parse(window.localStorage.getItem('dark'))
                 }
-            });
+                return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+            }
+
+            const setTheme = (value) => {
+                window.localStorage.setItem('dark', value)
+            }
+
+            return {
+                loading: true,
+                isDark: getTheme(),
+                toggleTheme() {
+                    this.isDark = !this.isDark
+                    setTheme(this.isDark)
+                },
+            }
+        }
+
+        function updatePaginationInfo(start, end, total) {
+            document.getElementById('pagination-info').innerText = `Showing ${start}-${end} of ${total}`;
+        }
+
+        function changePage(page) {
+            const currentText = document.getElementById('pagination-info').innerText;
+            const ycurrentPage = parseInt(currentText.match(/\d+/)[0]);
+            const pageSize = 10;
+
+            if (page === 'prev' && currentPage > 1) {
+                currentPage--;
+            } else if (page === 'next') {
+                currentPage++;
+            } else {
+                currentPage = page;
+            }
+
+            const start = (currentPage - 1) * pageSize + 1;
+            const end = Math.min(currentPage * pageSize, 100);
+
+            updatePaginationInfo(start, end, 100);
+
+            console.log(`Changing to page ${currentPage}`);
+        }
+
+        updatePaginationInfo(1, 10, 100);
+
+        function navigateToPage(url) {
+            window.location.href = url;
         }
     </script>
-    <script>
-        function showLogoutConfirmation() {
-            swal({
-                title: "Logout",
-                text: "Are you sure you want to log out?",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            }).then((willLogout) => {
-                if (willLogout) {
-                    // Redirect to the logout URL after the user confirms
-                    window.location.href = "<?php echo base_url('auth/logout'); ?>";
-                }
-            });
-        }
-
-        // Attach the SweetAlert confirmation to the "Logout" button
-        document.getElementById('logout-button').addEventListener('click', function(e) {
-            e.preventDefault();
-            showLogoutConfirmation();
-        });
     </script>
 </body>
 

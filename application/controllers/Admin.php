@@ -9,6 +9,7 @@ class Admin extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('M_model'); // Pastikan model dimuat di sini
+        $this->load->helper('my_helper');
     }
     public function dashboard()
     {
@@ -16,6 +17,7 @@ class Admin extends CI_Controller
         $data['admin'] = $this->M_model->get_data('admin')->num_rows();
         $data['guru'] = $this->M_model->get_data('guru')->num_rows();
         $data['ekstra'] = $this->M_model->get_data('ekstra')->num_rows();
+        $data['orangtua'] = $this->M_model->get_data('orangtua')->result();
         $this->load->view('admin/dashboard', $data);
     }
     public function profile()
@@ -128,7 +130,14 @@ class Admin extends CI_Controller
         }
     }
 
-    public function tabel_siswa(){
-        $this->load->view('admin/tabel_siswa');
+    public function tabel_siswa()
+    {
+        $data['orangtua'] = $this->M_model->get_data('orangtua')->result();
+        $this->load->view('admin/tabel_siswa', $data);
+    }
+    public function data_lengkap()
+    {
+        $data['orangtua'] = $this->M_model->get_data('orangtua')->result();
+        $this->load->view('admin/data_lengkap', $data);
     }
 }

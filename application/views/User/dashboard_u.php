@@ -202,6 +202,76 @@
       <!-- ./Social Traffic -->
     </div>
 
+    <!-- tabel -->
+    <div class="mt-4 mx-4">
+      <div class="w-full overflow-hidden rounded-lg shadow-xs">
+        <div class="w-full overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                <th class="px-10 py-3">No</th>
+                <th class="px-10 py-3">Nama Siswa</th>
+                <th class="px-10 py-3">Nama Ibu</th>
+                <th class="px-10 py-3">Nama Ayah</th>
+                <th class="px-10 py-3">Alamat</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+              <?php $no = 0;
+              foreach ($orangtua as $row) : $no++ ?>
+                <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
+                  <td class="px-7 py-3"><?php echo $no ?></td>
+                  <td class="px-7 py-3"><?php echo nama_full_siswa_id($row->id_nama_siswa) ?></td>
+                  <td class="px-7 py-3"><?php echo $row->nama_ibu ?></td>
+                  <td class="px-7 py-3"><?php echo $row->nama_ayah ?></td>
+                  <td class="px-7 py-3"><?php echo $row->alamat ?></td>
+                </tr>
+              <?php endforeach ?>
+            </tbody>
+          </table>
+        </div>
+        <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
+          <div id="pagination-info" class="flex items-center col-span-3"> Showing 1-10 of 100 </div>
+          <div id="pagination-buttons" class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+            <ul class="inline-flex items-center">
+              <li>
+                <button onclick="changePage('prev')" class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple" aria-label="Previous">
+                  Previous
+                </button>
+              </li>
+              <li>
+                <button onclick="changePage(1)" class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">1</button>
+              </li>
+              <li>
+                <button onclick="changePage(2)" class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">2</button>
+              </li>
+              <li>
+                <button onclick="changePage(3)" class="px-3 py-1 text-white dark:text-gray-800 transition-colors duration-150 bg-blue-600 dark:bg-gray-100 border border-r-0 border-blue-600 dark:border-gray-100 rounded-md focus:outline-none focus:shadow-outline-purple">3</button>
+              </li>
+              <li>
+                <button onclick="changePage(4)" class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">4</button>
+              </li>
+              <li>
+                <span class="px-3 py-1">...</span>
+              </li>
+              <li>
+                <button onclick="changePage(8)" class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">8</button>
+              </li>
+              <li>
+                <button onclick="changePage(9)" class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">9</button>
+              </li>
+              <li>
+                <button onclick="changePage('next')" class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple" aria-label="Next">
+                  Next
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- tabel -->
+
     <!-- Task Summaries -->
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 p-4 gap-4 text-black dark:text-white">
       <div class="md:col-span-2 xl:col-span-3">
@@ -302,7 +372,7 @@
           </div>
           <div class="text-sm text-black dark:text-gray-50 mt-2">
             <div class="bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">
-             Pertemuan pertama
+              Pertemuan pertama
               <div class="text-gray-500 dark:text-gray-200 mt-2 ml-2 flex justify-between items-start">
                 <span class="text-xs flex items-center">
                   <svg class="h-4 fill-current mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
@@ -313,18 +383,18 @@
               </div>
             </div>
             <div class="bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">
-             Pertemuan kedua
+              Pertemuan kedua
               <div class="text-gray-500 dark:text-gray-200 mt-2 ml-2 flex justify-between items-start">
                 <span class="text-xs flex items-center">
                   <svg class="h-4 fill-current mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
                     <path d="M11 4c-3.855 0-7 3.145-7 7v28c0 3.855 3.145 7 7 7h28c3.855 0 7-3.145 7-7V11c0-3.855-3.145-7-7-7zm0 2h28c2.773 0 5 2.227 5 5v28c0 2.773-2.227 5-5 5H11c-2.773 0-5-2.227-5-5V11c0-2.773 2.227-5 5-5zm25.234 9.832l-13.32 15.723-8.133-7.586-1.363 1.465 9.664 9.015 14.684-17.324z" />
                   </svg>
-                 Melakukan room tour mengikuti pemandu yang telah di beri tugas
+                  Melakukan room tour mengikuti pemandu yang telah di beri tugas
                 </span>
               </div>
             </div>
             <div class="bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">
-             Pertemuan ketiga
+              Pertemuan ketiga
               <div class="text-gray-500 dark:text-gray-200 mt-2 ml-2 flex justify-between items-start">
                 <span class="text-xs flex items-center">
                   <svg class="h-4 fill-current mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
@@ -335,7 +405,7 @@
               </div>
             </div>
             <div class="bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">
-             Pertemuan ke empat
+              Pertemuan ke empat
               <div class="text-gray-500 dark:text-gray-200 mt-2 ml-2 flex justify-between items-start">
                 <span class="text-xs flex items-center">
                   <svg class="h-4 fill-current mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
@@ -346,7 +416,7 @@
               </div>
             </div>
             <div class="bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">
-             Pertemuan kelima 
+              Pertemuan kelima
               <div class="text-gray-500 dark:text-gray-200 mt-2 ml-2 flex justify-between items-start">
                 <span class="text-xs flex items-center">
                   <svg class="h-4 fill-current mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
@@ -357,7 +427,7 @@
               </div>
             </div>
             <div class="bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">
-             Pertemuan keenam 
+              Pertemuan keenam
               <div class="text-gray-500 dark:text-gray-200 mt-2 ml-2 flex justify-between items-start">
                 <span class="text-xs flex items-center">
                   <svg class="h-4 fill-current mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">

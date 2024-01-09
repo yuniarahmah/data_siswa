@@ -38,7 +38,7 @@ class Auth extends CI_Controller
                 redirect(base_url() . 'admin/dashboard');
             }
             if ($this->session->userdata('role') == 'user') { //jika rolenya adalah karyawan maka yang akan ditampilkan setelah login adalah history karyawan
-                redirect(base_url() . 'user/dashboard');
+                redirect(base_url() . 'user/dashboard_u');
             } else {
                 redirect(base_url() . ' auth/login');
             }

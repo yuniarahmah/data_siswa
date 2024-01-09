@@ -55,10 +55,10 @@ class M_model extends CI_Model
             return false;
         }
     }
-    public function getByUsername($username)
+    public function getByUsername($nama_siswa)
     {
-        $this->db->where('username', $username);
-        $query = $this->db->get('admin'); // Gantilah 'admin' sesuai dengan nama tabel yang digunakan
+        $this->db->where('nama_siswa', $nama_siswa);
+        $query = $this->db->get('user'); // Gantilah 'admin' sesuai dengan nama tabel yang digunakan
         return $query->row_array();
     }
     

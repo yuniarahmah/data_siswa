@@ -15,13 +15,23 @@ function tampil_full_kelas_byid($id)
 }
 
 
-function tampil_full_siswa_byid($id)
+function nama_full_siswa_id($id)
 {
     $ci = &get_instance();
     $ci->load->database();
-    $result = $ci->db->where('id_siswa', $id)->get('siswa');
+    $result = $ci->db->where('id', $id)->get('user');
     foreach ($result->result() as $c) {
         $stmt = $c->nama_siswa;
+        return $stmt;
+    }
+}
+function alamat_id($id)
+{
+    $ci = &get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id', $id)->get('user');
+    foreach ($result->result() as $c) {
+        $stmt = $c->alamat;
         return $stmt;
     }
 }
