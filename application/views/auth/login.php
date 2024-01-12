@@ -264,7 +264,7 @@
             <div class="inputContainer">
               <label class="label header-text" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png" class="labelIcon"><span>Email
                 </span></label>
-              <input required type="email" name="email" autocomplete="off" class="input" id="emailAddress" placeholder="Enter your Email Address">
+              <input required type="email" name="email" class="input" id="emailAddress" placeholder="Enter your Email Address">
             </div>
             <div class="inputContainer">
               <label class="label header-text" for="emailAddress">
@@ -273,16 +273,6 @@
                 <input required type="password" name="password" class="input" id="password" placeholder="Enter your Password">
                 <i class="password-toggle-login fa fa-eye-slash" onclick="togglePassword()"></i>
               </div>
-            </div>
-            <div class="inputContainer">
-              <label class="label header-text" for="sekolah">
-                <img src="https://cdn-icons-png.flaticon.com/512/2189/2189181.png" class="labelIcon"><span>Sekolah</span>
-              </label>
-              <select name="sekolah" id="sekolah" class="input">
-                <option value="pilih sekolah">pilih sekolah</option>
-                <option value="swasta">Swasta</option>
-                <option value="negeri">Negeri</option>
-              </select>
             </div>
             <a href="forgot_password" class="forgetPass">Lupa password?</a>
             <a href="<?php echo base_url('auth/registeru') ?>" class="forgetPass">Belum punya akun?</a>

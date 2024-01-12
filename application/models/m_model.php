@@ -55,13 +55,13 @@ class M_model extends CI_Model
             return false;
         }
     }
-    public function getByUsername($nama_siswa)
+    public function getBynama_siswa($nama_siswa)
     {
         $this->db->where('nama_siswa', $nama_siswa);
         $query = $this->db->get('user'); // Gantilah 'admin' sesuai dengan nama tabel yang digunakan
         return $query->row_array();
     }
-    
+
     public function checkEmailExists($email)
     {
         $this->db->where('email', $email);
@@ -70,88 +70,3 @@ class M_model extends CI_Model
         return $query->row_array();
     }
 }
-
-        // public function getDataKaryawan()
-        // {
-        //     $this->db->select('user.*, user.username');
-        //     $this->db->where('role', 'karyawan');
-        //     $this->db->join('user', 'user.id = absen.id_karyawan', 'left');
-        //     $query = $this->db->get('absen');
-        //     return $query->result();
-        // }
-        // function get_absensi()
-        // {
-        //     $this->db->select('absen.*, user.username');
-        //     $this->db->from('absen');
-        //     $this->db->join('user', 'absen.id_karyawan = user.id', 'left');
-        //     $query = $this->db->get();
-        //     return $query->result();
-        // }
-        // public function getAbsensiLast7Days()
-        // {
-        //     $this->load->database();
-        //     $end_date = date('Y-m-d');
-        //     $start_date = date('Y-m-d', strtotime('-7 days', strtotime($end_date)));
-        //     $query = $this->db->select('absen.*, user.nama_depan, user.nama_belakang, date, kegiatan, jam_masuk, jam_pulang, keterangan, status, COUNT(*) AS total_absences')
-        //         ->from('absen')
-        //         ->join('user', 'absen.id_karyawan = user.id', 'left')
-        //         ->where('date >=', $start_date)
-        //         ->where('date <=', $end_date)
-        //         ->group_by('date, kegiatan, jam_masuk, jam_pulang, keterangan, status')
-        //         ->get();
-        //     return $query->result();
-        // }
-        // public function getbulanan($bulan)
-        // {
-        //     $this->db->from('absen');
-        //     $this->db->where("DATE_FORMAT(absen.date, '%m') =", $bulan);
-        //     $db = $this->db->get();
-        //     $result = $db->result();
-        //     return $result;
-        // }
-        // //utnuk mengambil semua data
-        // public function get_harian()
-        // {
-        //     $this->db->select('absen.*, user.nama_depan, nama_belakang');
-        //     $this->db->from('absen');
-        //     $this->db->join('user', 'absen.id_karyawan = user.id', 'left');
-        //     $this->db->where('date', date('Y-m-d'));
-        //     $db = $this->db->get();
-        //     return $db->result();
-        // }
-        // public function get_by_karyawan($table, $field, $id)
-        // {
-        //     $this->db->select('*');
-        //     $this->db->from($table);
-        //     $this->db->where($field, $id);
-        //     $query = $this->db->get();
-        //     return $query;  // Pastikan hasil query dikembalikan sebagai objek
-        // }
-        // public function get_izin($table, $id)
-        // {
-        //     return $this->db->where('id', $id)
-        //         ->where('kegiatan', '-')
-        //         ->get($table);
-        // }
-        // public function absensi($data)
-        // {
-        //     $this->db->insert('absen', $data);
-        // }
-        // public function getlast($table, $where)
-        // {
-        //     $this->db->select('*');
-        //     $this->db->from($table);
-        //     $this->db->where($where);
-        //     $this->db->order_by('id', 'DESC');
-        //     $this->db->limit(1);
-        //     return $this->db->get()->row();
-        // }
-        // function get_karyawan()
-        // {
-        //     $this->db->select('absensi.*, user.nama_depan, user.nama_belakang');
-        //     $this->db->from('absensi');
-        //     $this->db->join('user', 'absensi.id_karyawan = user.id', 'left');
-        //     $query = $this->db->get();
-        //     return $query->result();
-        // }
-        ?>

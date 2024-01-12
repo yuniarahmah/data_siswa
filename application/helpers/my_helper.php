@@ -15,6 +15,16 @@ function tampil_full_kelas_byid($id)
 }
 
 
+function nama_siswa_id($id)
+{
+    $ci = &get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id', $id)->getSiswaById('user');
+    foreach ($result->result() as $c) {
+        $stmt = $c->nama_siswa;
+        return $stmt;
+    }
+}
 function nama_full_siswa_id($id)
 {
     $ci = &get_instance();

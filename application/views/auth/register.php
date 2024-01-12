@@ -268,35 +268,25 @@
 
                     <form action="<?php echo base_url('auth/aksi_register') ?>" method="post">
                         <div class="inputContainer">
-                            <label class="label header-text" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png" class="labelIcon"><span>Email
+                            <label class="label header-text" for="username"><img src="https://cdn2.iconfinder.com/data/icons/e-commerce-line-4-1/1024/user4-512.png" class="labelIcon"><span>Username
                                 </span></label>
-                            <input autocomplete="off" type="email" name="email" class="input" id="emailAddress" placeholder="Enter your Email Address">
+                            <input autocomplete="off" required type="text" name="username" class="input" id="username" placeholder="Enter your nama lengkap">
                         </div>
                         <div class="inputContainer">
-                            <label class="label header-text" for="emailAddress"><img src="https://cdn2.iconfinder.com/data/icons/e-commerce-line-4-1/1024/user4-512.png" class="labelIcon"><span>Nama Lengkap
+                            <label class="label header-text" for="nama_lengkap"><img src="https://cdn2.iconfinder.com/data/icons/e-commerce-line-4-1/1024/user4-512.png" class="labelIcon"><span>Nama Lengkap
                                 </span></label>
                             <input autocomplete="off" required type="text" name="nama_lengkap" class="input" id="nama_lengkap" placeholder="Enter your nama lengkap">
                         </div>
                         <div class="inputContainer">
-                            <label class="label header-text" for="emailAddress"><img src="https://cdn2.iconfinder.com/data/icons/e-commerce-line-4-1/1024/user4-512.png" class="labelIcon"><span>Nama Panggilan
+                            <label class="label header-text" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png" class="labelIcon"><span>Email
                                 </span></label>
-                            <input autocomplete="off" required type="text" name="nama_panggilan" class="input" id="nama_panggilan" placeholder="ketik nama panggilan">
+                            <input required type="email" name="email" class="input" id="emailAddress" placeholder="Enter your Email Address">
                         </div>
                         <div class="inputContainer">
-                            <label class="label header-text" for="sekolah">
-                                <img src="https://cdn-icons-png.flaticon.com/512/2189/2189181.png" class="labelIcon"><span>Sekolah</span>
-                            </label>
-                            <select name="sekolah" id="sekolah" class="input">
-                                <option value="pilih sekolah">pilih sekolah</option>
-                                <option value="swasta">Swasta</option>
-                                <option value="negeri">Negeri</option>
-                            </select>
-                        </div>
-                        <div class="inputContainer">
-                            <label class="label header-text" for="emailAddress">
+                            <label class="label header-text">
                                 <img src="https://i.imgur.com/g5SvdfG.png" class="labelIcon"><span>Password</span></label>
                             <div class="password-input-container">
-                                <input type="password" name="password" class="input" id="password" placeholder="Enter your Password">
+                                <input type="password" required name="password" class="input" id="password" placeholder="Enter your Password">
                                 <i class="password-toggle-login fa fa-eye-slash" onclick="togglePassword()"></i>
                             </div>
                         </div>

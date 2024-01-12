@@ -19,7 +19,7 @@ class Auth extends CI_Controller
     {
         $email = $this->input->post('email', true);
         $password = $this->input->post('password', true);
-        $sekolah = $this->input->post('sekolah', true);
+        // $sekolah = $this->input->post('sekolah', true);
         $data = ['email' => $email,];
         $query = $this->M_model->getwhere('admin', $data);
         $result = $query->row_array();
@@ -62,12 +62,10 @@ class Auth extends CI_Controller
     {
         $email = $this->input->post('email', true);
         $data = ['email' => $email];
-        // $username = $this->input->post('username');
+        $username = $this->input->post('username');
         $password = $this->input->post('password');
         $nama_lengkap = $this->input->post('nama_lengkap');
-        $nama_panggilan = $this->input->post('nama_panggilan');
-        $sekolah = $this->input->post('sekolah');
-        $role = $this->input->post('role');
+        $role = $this->input->post('admin');
         // $result = $query->row_array();
         if (empty($result)) {
             if (strlen($password) < 8) { //jika password kurang dari 8 angka maka tidak bisa menjalankan register
@@ -76,12 +74,10 @@ class Auth extends CI_Controller
             } else {
                 $data = [
                     'email' => $this->input->post('email'),
-                    // 'username' => $this->input->post('username'),
+                    'username' => $this->input->post('username'),
                     'password' => md5($this->input->post('password')),
                     'nama_lengkap' => $this->input->post('nama_lengkap'),
-                    'nama_panggilan' => $this->input->post('nama_panggilan'),
-                    'sekolah' => $this->input->post('sekolah'),
-                    'role' => 'role',
+                    'role' => 'admin',
 
                 ];
                 $this->M_model->register($data);
@@ -104,11 +100,9 @@ class Auth extends CI_Controller
     {
         $email = $this->input->post('email', true);
         $data = ['email' => $email];
-        // $username = $this->input->post('username');
+        $username = $this->input->post('username');
         $password = $this->input->post('password');
         $nama_lengkap = $this->input->post('nama_lengkap');
-        $nama_panggilan = $this->input->post('nama_panggilan');
-        $sekolah = $this->input->post('sekolah');
         $role = $this->input->post('user');
         // $result = $query->row_array();
         if (empty($result)) {
@@ -118,11 +112,9 @@ class Auth extends CI_Controller
             } else {
                 $data = [
                     'email' => $this->input->post('email'),
-                    // 'username' => $this->input->post('username'),
+                    'username' => $this->input->post('username'),
                     'password' => md5($this->input->post('password')),
                     'nama_lengkap' => $this->input->post('nama_lengkap'),
-                    'nama_panggilan' => $this->input->post('nama_panggilan'),
-                    'sekolah' => $this->input->post('sekolah'),
                     'role' => 'user',
                 ];
                 $this->M_model->register($data);
