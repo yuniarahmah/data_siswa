@@ -11,120 +11,105 @@
 <style>
     body {
         overflow-x: hidden;
-        /* Prevent horizontal scrolling */
+        /* Mencegah pengguliran horizontal */
     }
 </style>
 
 <body>
-    <?php $this->load->view('sidebar'); ?>
-    <div class="w-25 mt-20 mb-10 md:ml-64 pl-10 pt-10 pr-10">
+    <?php $this->load->view('sidebaru'); ?>
+    <div class="w-30 mt-20 mb-10 pl-10 pt-10 pr-10">
         <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="w-full overflow-x-auto">
                 <table class="w-full">
                     <thead>
                         <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800  bg-blue-500 bg-black">
-                            <th class="px-10 py-4">No</th>
-                            <th class="px-10 py-4">Nama Siswa</th>
-                            <th class="px-10 py-4">Nama Ibu</th>
-                            <th class="px-10 py-4">Nama Ayah</th>
-                            <th class="px-10 py-4">Alamat</th>
+                            <th class="px-5 py-4">No</th>
+                            <th class="px-5 py-4">Nama Siswa</th>
+                            <th class="px-5 py-4">Nisn</th>
+                            <th class="px-5 py-4">gender</th>
+                            <th class="px-5 py-4">Nilai Akhir</th>
+                            <th class="px-5 py-4">Tempat/Tanggal Lahir</th>
+                            <th class="px-5 py-4">Nama Ibu</th>
+                            <th class="px-5 py-4">Nama Ayah</th>
+                            <th class="px-5 py-4">Alamat</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                         <?php $no = 0;
-                        foreach ($orangtua as $row) : $no++ ?>
-                            <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
-                                <td class="px-10 py-3"><?php echo $no ?></td>
-                                <td class="px-10 py-3"><?php echo nama_full_siswa_id($row->id_nama_siswa) ?></td>
-                                <td class="px-10 py-3"><?php echo $row->nama_ibu ?></td>
-                                <td class="px-10 py-3"><?php echo $row->nama_ayah ?></td>
-                                <td class="px-10 py-3"><?php echo $row->alamat ?></td>
+                        foreach ($user as $users) : $no++ ?>
+                            <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
+                                <td class="px-5 py-3"><?php echo $no ?></td>
+                                <td class="px-5 py-3"><?php echo $users->nama_siswa ?></td>
+                                <td class="px-5 py-3"><?php echo $users->nisn ?></td>
+                                <td class="px-5 py-3"><?php echo $users->gender ?></td>
+                                <td class="px-5 py-3"><?php echo $users->nilai_a ?></td>
+                                <td class="px-5 py-3"><?php echo $users->ttl ?></td>
+                                <td class="px-5 py-3"><?php echo $users->nama_ibu ?></td>
+                                <td class="px-5 py-3"><?php echo $users->nama_ayah ?></td>
+                                <td class="px-5 py-3"><?php echo $users->alamat ?></td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>
                 </table>
             </div>
-            <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
-                <div id="pagination-buttons" class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-
-                    <div class="table-wrapper">
-                        <!-- <ul class="inline-flex items-center">
-              <li>
-                <button onclick="changePage('prev')" class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple" aria-label="Previous">
-                  Previous
-                </button>
-              </li>
-              <li>
-                <button onclick="changePage(1)" class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">1</button>
-              </li>
-              <li>
-                <button onclick="changePage(2)" class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">2</button>
-              </li>
-              <li>
-                <button onclick="changePage('next')" class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple" aria-label="Next">
-                  Next
-                </button>
-              </li>
-            </ul> -->
-                    </div>
-                </div>
-            </div>
         </div>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
-        <script>
-            const setup = () => {
-                const getTheme = () => {
-                    if (window.localStorage.getItem('dark')) {
-                        return JSON.parse(window.localStorage.getItem('dark'))
-                    }
-                    return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
+    <script>
+        const setup = () => {
+            const getTheme = () => {
+                if (window.localStorage.getItem('dark')) {
+                    return JSON.parse(window.localStorage.getItem('dark'));
                 }
+                return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            };
 
-                const setTheme = (value) => {
-                    window.localStorage.setItem('dark', value)
-                }
+            const setTheme = (value) => {
+                window.localStorage.setItem('dark', value);
+            };
 
-                return {
-                    loading: true,
-                    isDark: getTheme(),
-                    toggleTheme() {
-                        this.isDark = !this.isDark
-                        setTheme(this.isDark)
-                    },
-                }
+            return {
+                loading: true,
+                isDark: getTheme(),
+                toggleTheme() {
+                    this.isDark = !this.isDark;
+                    setTheme(this.isDark);
+                },
+            };
+        };
+
+        function updatePaginationInfo(start, end, total) {
+            document.getElementById('pagination-info').innerText = `Menampilkan ${start}-${end} dari ${total}`;
+        }
+
+        function changePage(page) {
+            const currentText = document.getElementById('pagination-info').innerText;
+            const currentPage = parseInt(currentText.match(/\d+/)[0]);
+            const pageSize = 10;
+
+            if (page === 'sebelumnya' && currentPage > 1) {
+                currentPage--;
+            } else if (page === 'berikutnya') {
+                currentPage++;
+            } else {
+                currentPage = page;
             }
 
-            function updatePaginationInfo(start, end, total) {
-                document.getElementById('pagination-info').innerText = `Showing ${start}-${end} of ${total}`;
-            }
+            const start = (currentPage - 1) * pageSize + 1;
+            const end = Math.min(currentPage * pageSize, 100);
 
-            function changePage(page) {
-                const currentText = document.getElementById('pagination-info').innerText;
-                const ycurrentPage = parseInt(currentText.match(/\d+/)[0]);
-                const pageSize = 10;
+            updatePaginationInfo(start, end, 100);
 
-                if (page === 'prev' && currentPage > 1) {
-                    currentPage--;
-                } else if (page === 'next') {
-                    currentPage++;
-                } else {
-                    currentPage = page;
-                }
+            console.log(`Mengubah ke halaman ${currentPage}`);
+        }
 
-                const start = (currentPage - 1) * pageSize + 1;
-                const end = Math.min(currentPage * pageSize, 100);
+        updatePaginationInfo(1, 10, 100);
 
-                updatePaginationInfo(start, end, 100);
-
-                console.log(`Changing to page ${currentPage}`);
-            }
-
-            updatePaginationInfo(1, 10, 100);
-
-            function navigateToPage(url) {
-                window.location.href = url;
-            }
-        </script>
+        function navigateToPage(url) {
+            window.location.href = url;
+        }
+    </script>
 </body>
+
 </html>

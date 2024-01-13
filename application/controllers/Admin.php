@@ -133,9 +133,9 @@ class Admin extends CI_Controller
         }
     }
 
-    public function tambah_siswa()
+    public function tambah_siswa($id)
     {
-        $data['user'] = $this->m_model->get_data('user')->result();
+        $data['user'] = $this->m_model->get_data('user', 'id', $id)->result();
         $this->load->view('admin/tambah_siswa', $data);
     }
     public function aksi_tambah_siswa()

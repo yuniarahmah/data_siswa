@@ -172,8 +172,8 @@
             <!-- Header -->
             <div href="profil.php" class="fixed w-full flex items-center justify-between h-14 text-white z-10">
                 <div class="flex items-center justify-start md:justify-center pl-3 w-20 md:w-64 h-14 bg-blue-800 dark:bg-gray-800 border-none">
-                    <img src="https://t3.ftcdn.net/jpg/04/27/57/28/360_F_427572855_RhQYKzH4mAzkzIYhnGngBA4h4x5kUwnm.jpg" class="w-15" style="width:15%;">
-                    <span class="hidden md:block">User</span>
+                    <img src="https://play-lh.googleusercontent.com/qceuXlUVDDLQO9YCW3ljvDttzyAEjOoWEhzLvwrhPwu0SyUn8Dj3FawzKoWHap-BaH0" class="w-15" style="width:15%;">
+                    <span class="hidden md:block font-bold"><i>Data Siswa baru</i></span>
                 </div>
 
                 <div class="flex justify-between items-center h-14 bg-blue-800 dark:bg-gray-800 header-right">
@@ -221,7 +221,7 @@
                     <ul class="flex flex-col py-4 space-y-1">
                         <li class="px-5 hidden md:block">
                             <div class="flex flex-row items-center h-8">
-                                <div class="text-sm font-light tracking-wide text-gray-400 uppercase">Siswa Baru</div>
+                                <div class="text-sm font-light tracking-wide text-gray-400 uppercase">User</div>
                             </div>
                         </li>
                         <li>
@@ -241,7 +241,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
                                     </svg>
                                 </span>
-                                <span class="ml-2 text-sm tracking-wide truncate">Tabel tambah siswa</span>
+                                <span class="ml-2 text-sm tracking-wide truncate">Tabel siswa</span>
                             </a>
                         </li>
                     </ul>
@@ -249,43 +249,43 @@
                 </div>
             </div>
             <div class="h-full ml-14 mt-14 mb-10 md:ml-64">
-            <!-- ./Sidebar -->
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-            <script>
-                function KeluarOPT(id) {
-                    const success_keluar = "<?php echo $this->session->flashdata('success_keluar'); ?>";
-                    Swal.fire({
-                        title: 'Yakin Ingin Keluar',
-                        text: "",
-                        icon: 'question',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        cancelButtonText: 'Batal',
-                        confirmButtonText: 'Keluar'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            // Redirect to logout controller/action
-                            window.location.href = 'http://localhost/data_siswa_baru/'; // Change this to your logout URL
-                        }
-                    });
-                }
+                <!-- ./Sidebar -->
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                <script>
+                    function KeluarOPT(id) {
+                        const success_keluar = "<?php echo $this->session->flashdata('success_keluar'); ?>";
+                        Swal.fire({
+                            title: 'Yakin Ingin Keluar',
+                            text: "",
+                            icon: 'question',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            cancelButtonText: 'Batal',
+                            confirmButtonText: 'Keluar'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                // Redirect to logout controller/action
+                                window.location.href = 'http://localhost/data_siswa_baru/'; // Change this to your logout URL
+                            }
+                        });
+                    }
 
-                // Function to handle search
-                function handleSearch() {
-                    const searchInput = document.getElementById('searchInput');
-                    const searchTerm = searchInput.value.toLowerCase(); // Convert to lowercase for case-insensitive search
+                    // Function to handle search
+                    function handleSearch() {
+                        const searchInput = document.getElementById('searchInput');
+                        const searchTerm = searchInput.value.toLowerCase(); // Convert to lowercase for case-insensitive search
 
-                    // Perform actions based on the search term (e.g., filter and display results)
-                    // You can customize this part based on your application's requirements
+                        // Perform actions based on the search term (e.g., filter and display results)
+                        // You can customize this part based on your application's requirements
 
-                    // Example: Log the search term to the console
-                    console.log('Search Term:', searchTerm);
-                }
+                        // Example: Log the search term to the console
+                        console.log('Search Term:', searchTerm);
+                    }
 
-                // Add event listener to the search input
-                document.getElementById('searchInput').addEventListener('input', handleSearch);
-            </script>
+                    // Add event listener to the search input
+                    document.getElementById('searchInput').addEventListener('input', handleSearch);
+                </script>
 </body>
 
 </html>

@@ -20,6 +20,7 @@
         </svg>
       </div>
       <div class="text-right">
+      <p class="text-2xl"><?php echo $admin; ?></p>
         <p>Siswa Baru</p>
       </div>
     </div>

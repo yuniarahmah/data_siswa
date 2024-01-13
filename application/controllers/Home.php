@@ -10,8 +10,8 @@ function __construct()
 
 	public function index()
 	{
-		$data['title'] = 'Home Page';
-		$this->load->view('home', $data);
+		// $data['title'] = 'Home Page';
+		$this->load->view('home');
 	}
 }
 

@@ -21,35 +21,42 @@ class User extends CI_Controller
         $this->load->view('user/dashboard_u', $data);
     }
 
-    
     public function tabel_siswa()
     {
         $data['user'] = $this->m_model->get_data('user')->result();
         $this->load->view('user/tabel_siswa', $data);
     }
+
     public function data_lengkap($id)
     {
-        $data['user'] = $this->m_model->get_by_id('user', 'id', $id)->row_array();
+        $data['user'] = $this->m_model->get_by_id('user', 'id', $id)->result();
         $this->load->view('user/data_lengkap', $data);
     }
 
-    public function aksi_data_lengkap()
+    public function aksi_data_lengkap($id)
     {
         $data = array(
             'nama_siswa' => $this->input->post('nama'),
             'nisn' => $this->input->post('nisn'),
             'gender' => $this->input->post('gender'),
             'ttl' => $this->input->post('ttl'),
-            'nilai_akhir' => $this->input->post('nilai'),
+            'nilai_a' => $this->input->post('nilai_a'),
         );
 
-        $eksekusi = $this->m_model->ubah_data('user', $data, array('id' => $this->input->post('id')));
+        $eksekusi = $this->m_model->ubah_data('user', $data, array('id' => $id));
+
         if ($eksekusi) {
-            $this->session->set_flashdata('sukses', 'berhasil');
-            redirect(base_url('user/data_lengkap'));
+            // Setelah berhasil mengubah data, ambil data yang baru dari database
+            $updated_data = $this->m_model->get_by_id('user', 'id', $id)->row();
+
+            // Kirim data yang baru ke view
+            $data['user'] = $updated_data;
+
+            $this->session->set_flashdata('sukses', 'Berhasil mengubah data');
+            $this->load->view('user/data_lengkap/', $data);
         } else {
-            $this->session->set_flashdata('error', 'gagal..');
-            redirect(base_url('user/data_lengkap/' . $this->input->post('id')));
+            $this->session->set_flashdata('error', 'Gagal mengubah data');
+            redirect(base_url('user/data_lengkap/' . $id));
         }
     }
 
@@ -57,5 +64,34 @@ class User extends CI_Controller
     {
         $data['user'] = $this->m_model->get_by_id('user', 'id', $id)->result();
         $this->load->view('user/edit_data', $data);
+    }
+
+    public function aksi_edit_data($id)
+    {
+        $data = array(
+            'nama_siswa' => $this->input->post('nama_siswa'),
+            'nisn' => $this->input->post('nisn'),
+            'gender' => $this->input->post('gender'),
+            'ttl' => $this->input->post('ttl'),
+            'nilai_a' => $this->input->post('nilai_a'),
+            'nama_ayah' => $this->input->post('nama_ayah'),
+            'nama_ibu' => $this->input->post('nama_ibu'),
+            'alamat' => $this->input->post('alamat'),
+        );
+
+        $eksekusi = $this->m_model->ubah_data('user', $data, array('id' => $id)); // Gunakan $id dari parameter
+        if ($eksekusi) {
+            $this->session->set_flashdata('sukses', 'Berhasil mengubah data');
+            redirect(base_url('user/tabel_siswa'));
+        } else {
+            $this->session->set_flashdata('error', 'Gagal mengubah data');
+            redirect(base_url('user/edit_data/' . $id)); // Gunakan $id dari parameter
+        }
+    }
+
+    public function hapus_data($id)
+    {
+        $this->m_model->delete('user', 'id', $id);
+        redirect(base_url('user/tabel_siswa'));
     }
 }

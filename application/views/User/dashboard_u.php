@@ -190,7 +190,6 @@
             <th class="px-10 py-4">Nama Ibu</th>
             <th class="px-10 py-4">Nama Ayah</th>
             <th class="px-10 py-4">Alamat</th>
-            <th class="px-10 py-4">aksi</th>
           </tr>
         </thead>
         <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
@@ -202,18 +201,6 @@
               <td class="px-10 py-3"><?php echo $row->nama_ibu ?></td>
               <td class="px-10 py-3"><?php echo $row->nama_ayah ?></td>
               <td class="px-10 py-3"><?php echo $row->alamat ?></td>
-              <td class="px-6 py-3">
-                <a href="<?php echo base_url('operator/edit_tambahan/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
-                  <span class="">
-                    <i class="fas fa-edit"></i>
-                  </span>
-                </a>
-                <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                  <span class="">
-                    <i class="fas fa-trash-alt"></i>
-                  </span>
-                </button>
-              </td>
             </tr>
           <?php endforeach ?>
         </tbody>

@@ -16,8 +16,16 @@
 </style>
 
 <body>
-    <?php $this->load->view('sidebar'); ?>
-    <div class="w-25 mt-20 pl-10 pr-10">
+    <?php $this->load->view('sidebaru'); ?>
+    <div class="bg-white rounded flex items-center ml-10 w-full max-w-xl mr-4 p-3 mt-10 shadow-sm border border-gray-200">
+        <button class="outline-none focus:outline-none">
+            <svg class="w-5 text-gray-600 h-5 cursor-pointer" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+        </button>
+        <input type="search" id="searchInput" name="" placeholder="Search" class="w-full pl-3 text-sm text-black outline-none focus:outline-none bg-transparent" />
+    </div>
+    <div class="w-25 mt-5 pl-10 pr-10">
         <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="w-full overflow-x-auto">
                 <table class="w-full">
@@ -34,7 +42,7 @@
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                         <?php $no = 0;
                         foreach ($user as $row) : $no++ ?>
-                            <tr onclick="navigateToPage('<?php echo base_url('user/data_lengkap') ?>')" class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
+                            <tr onclick="navigateToPage('<?php echo base_url('user/data_lengkap/' . $row->id) ?>')" class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
                                 <td class="px-10 py-3"><?php echo $no ?></td>
                                 <td class="px-10 py-3"><?php echo $row->nama_siswa ?></td>
                                 <td class="px-10 py-3"><?php echo $row->nama_ibu ?></td>
@@ -70,12 +78,6 @@
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
     <script>
-        $(document).ready(function() {
-            var table = $('#example_data').DataTable({
-                responsive: false
-            }).columns.adjust().responsive.recalc();
-        });
-
         const setup = () => {
             const getTheme = () => {
                 if (window.localStorage.getItem('dark')) {
@@ -130,30 +132,51 @@
         }
 
         function hapus(id) {
+            Swal.fire({
+                title: 'Apakah Mau Dihapus?',
+                text: "data ini tidak bisa dikembalikan lagi!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Hapus'
+            }).then((result) => {
+                if (result.isConfirmed) {
                     Swal.fire({
-                        title: 'Apakah Mau Dihapus?',
-                        text: "data ini tidak bisa dikembalikan lagi!",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        cancelButtonText: 'Batal',
-                        confirmButtonText: 'Hapus'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Berhasil Menghapus',
-                                showConfirmButton: false,
-                                timer: 1500,
-                            }).then(function() {
-                                window.location.href = "<?php echo base_url('user/hapus_siswa/') ?>" + id;
-                            });
-                        }
+                        icon: 'success',
+                        title: 'Berhasil Menghapus',
+                        showConfirmButton: false,
+                        timer: 1500,
+                    }).then(function() {
+                        window.location.href = "<?php echo base_url('user/hapus_data/') ?>" + id;
                     });
                 }
+            });
+        }
 
+        function filterTable() {
+            // Get input value and convert to lowercase for case-insensitive matching
+            var input = document.getElementById('searchInput').value.toLowerCase();
+
+            // Get all table rows
+            var rows = document.querySelectorAll('tbody tr');
+
+            // Loop through rows and hide/show based on the search input
+            rows.forEach(function(row) {
+                var rowData = row.textContent.toLowerCase();
+                if (rowData.includes(input)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        // Attach the filterTable function to the input's oninput event
+        document.getElementById('searchInput').addEventListener('input', filterTable);
     </script>
+
 </body>
 
 </html>
