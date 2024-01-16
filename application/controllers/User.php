@@ -17,6 +17,9 @@ class User extends CI_Controller
     public function dashboard_u()
     {
         $data['admin'] = $this->m_model->get_data('admin')->num_rows();
+        $data['akademik'] = $this->m_model->get_data('akademik')->result();
+        $data['guru'] = $this->m_model->get_data('guru')->result();
+        $data['ekstra'] = $this->m_model->get_data('ekstra')->result();
         $data['user'] = $this->m_model->get_data('user')->result();
         $this->load->view('user/dashboard_u', $data);
     }
@@ -25,6 +28,21 @@ class User extends CI_Controller
     {
         $data['user'] = $this->m_model->get_data('user')->result();
         $this->load->view('user/tabel_siswa', $data);
+    }
+    public function tabel_guru()
+    {
+        $data['guru'] = $this->m_model->get_data('guru')->result();
+        $this->load->view('user/tabel_guru', $data);
+    }
+    public function tabel_ekstra()
+    {
+        $data['ekstra'] = $this->m_model->get_data('ekstra')->result();
+        $this->load->view('user/tabel_ekstra', $data);
+    }
+    public function tabel_akademik()
+    {
+        $data['akademik'] = $this->m_model->get_data('akademik')->result();
+        $this->load->view('user/tabel_akademik', $data);
     }
 
     public function data_lengkap($id)
@@ -94,4 +112,31 @@ class User extends CI_Controller
         $this->m_model->delete('user', 'id', $id);
         redirect(base_url('user/tabel_siswa'));
     }
+
+    public function search()
+    {
+        $this->load->library('pagination');
+
+        $keyword = $this->input->post('keyword');
+
+        // Load the model to fetch search results
+        $data['user'] = $this->m_model->search($keyword);
+
+        // Pagination configuration
+        $config = array(
+            'base_url' => base_url('operator/search'), // Adjust the URL as needed
+            'total_rows' => count($data['user']), // Total number of items (adjust as needed)
+            'per_page' => 10, // Number of items to display per page
+            'uri_segment' => 3, // URI segment containing the page number
+        );
+
+        $this->pagination->initialize($config);
+
+        // Create pagination links
+        $data['pagination_links'] = $this->pagination->create_links();
+
+        // Load the view with the search results and pagination links
+        $this->load->view('user/tabel_siswa', $data);
+    }
+
 }

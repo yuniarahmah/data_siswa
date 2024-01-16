@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -177,17 +178,9 @@
                 </div>
 
                 <div class="flex justify-between items-center h-14 bg-blue-800 dark:bg-gray-800 header-right">
-                    <!-- <div class="bg-white rounded flex items-center w-full max-w-xl mr-4 p-2 shadow-sm border border-gray-200">
-                        <button class="outline-none focus:outline-none">
-                            <svg class="w-5 text-gray-600 h-5 cursor-pointer" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24">
-                                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                            </svg>
-                        </button>
-                        <input type="search" id="searchInput" name="" placeholder="Search" class="w-full pl-3 text-sm text-black outline-none focus:outline-none bg-transparent" />
-                    </div> -->
                     <ul class="flex items-center ml-auto">
                         <li>
-                            <button aria-hidden="true" @click="toggleTheme" class="group p-2 transition-colors duration-200 rounded-full shadow-md bg-blue-200 hover:bg-blue-200 dark:bg-gray-50 dark:hover:bg-gray-200 text-gray-900 focus:outline-none">
+                            <button aria-hidden="true" @click="toggleTheme" class="group p-2 transition-colors duration-200 rounded-full shadow-md bg-blue-200 hover:bg-blue-200 dark:bg-gray-50 dark:hover:bg-gray-200 text-gray-800 focus:outline-none">
                                 <svg x-show="isDark" width="24" height="24" class="fill-current text-gray-700 group-hover:text-gray-500 group-focus:text-gray-700 dark:text-gray-700 dark:group-hover:text-gray-500 dark:group-focus:text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                                 </svg>
@@ -225,7 +218,7 @@
                             </div>
                         </li>
                         <li>
-                            <a href="<?php echo base_url('user/dashboard_u') ?>" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+                            <a href="<?php echo base_url('user/dashboard_u') ?>" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6 rounded-lg ">
                                 <span class="inline-flex justify-center items-center ml-4">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
@@ -235,7 +228,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url('user/tabel_siswa') ?>" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+                            <a href="<?php echo base_url('user/tabel_siswa') ?>" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6 rounded-lg">
                                 <span class="inline-flex justify-center items-center ml-4">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
@@ -244,6 +237,50 @@
                                 <span class="ml-2 text-sm tracking-wide truncate">Tabel siswa</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="<?php echo base_url('user/tabel_ekstra') ?>" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6 rounded-lg">
+                                <span class="ml-4 text-sm tracking-wide truncate"><i class="fa-solid fa-dumbbell"></i> Tabel Ekstrakulikuler</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url('user/tabel_akademik') ?>" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6 rounded-lg">
+                                <span class="ml-4 text-sm tracking-wide truncate"><i class="fa-solid fa-book-open-reader"></i> Tabel Mata Pelajaran</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url('user/tabel_guru') ?>" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6 rounded-lg">
+                                <span class="ml-4 text-sm tracking-wide truncate"><i class="fa-solid fa-clipboard-user"></i> Tabel Guru</span>
+                            </a>
+                        </li>
+                        <!-- <li>
+                            <button type="button" class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-lg group dark:text-white hover:bg-blue-800 dark:hover:bg-gray-600" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example" onclick="toggleSubMenu(this)">
+                                Your SVG icon here
+                                <span class="flex-1 ms-3 mr-10 whitespace-nowrap"> <i class="fa-solid fa-user-tie"></i> </span>
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                                </svg>
+                            </button>
+                            <ul id="dropdown-example" class="hidden py-2 space-y-2 pl-11">
+                                <li>
+                                    <a href="#" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600"><i class="fa-solid fa-dumbbell"></i> Tabel Ekstrakulikuler</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600"> <i class="fa-solid fa-book-open-reader"></i> Tabel Mata Pelajaran</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600"><i class="fa-solid fa-clipboard-user"></i> Tabel Guru</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li> -->
+                            <!-- <a href="#" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600"><i class="fa-solid fa-dumbbell"></i> Tabel Ekstrakulikuler</a>
+                        </li> -->
+                        <!-- <li>
+                            <a href="#" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600"> <i class="fa-solid fa-book-open-reader"></i> Tabel Mata Pelajaran</a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600"><i class="fa-solid fa-clipboard-user"></i> Tabel Guru</a>
+                        </li> -->
                     </ul>
                     <p class="mb-14 px-5 py-3 hidden md:block text-center text-xs">BOOTCAMP@2024</p>
                 </div>
@@ -252,6 +289,21 @@
                 <!-- ./Sidebar -->
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
                 <script>
+                    function toggleSubMenu(element) {
+                        // Find the next sibling (ul) of the clicked icon
+                        var submenu = element.nextElementSibling;
+
+                        // Toggle the 'hidden' class on the submenu
+                        submenu.classList.toggle('hidden');
+                    }
+
+                    document.querySelectorAll('.submenu-toggle').forEach(function(toggle) {
+                        toggle.addEventListener('click', function() {
+                            var nestedSubMenu = toggle.parentElement.nextElementSibling;
+                            nestedSubMenu.classList.toggle('hidden');
+                        });
+                    });
+
                     function KeluarOPT(id) {
                         const success_keluar = "<?php echo $this->session->flashdata('success_keluar'); ?>";
                         Swal.fire({

@@ -34,7 +34,7 @@
 
         .heading,
         .survey-form {
-            background-color: #fff;
+            background-color: #f4f4f4;
             padding: 1.3em 3rem 1.8rem 3rem;
             border-radius: 1rem;
             margin-bottom: 2.5rem;
@@ -50,7 +50,7 @@
         }
 
         .green-bar {
-            background-color: #4F709C;
+            background-color: transparent;
             height: 1rem;
             width: 100%;
             position: absolute;
@@ -225,15 +225,15 @@
         <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
-                <h1 id="title" class="main-heading text-gray-800">Form Edit Data</h1>
+                <h1 id="title" class="main-heading text-gray-800">Edit Data</h1>
             </header>
 
             <?php foreach ($user as $row) : ?>
-                <form action="<?php echo base_url('user/aksi_edit_data/' . $row->id) ; ?>" method="post" id="survey-form" class="survey-form w-full">
+                <form action="<?php echo base_url('user/aksi_edit_data/' . $row->id); ?>" method="post" id="survey-form" class="survey-form w-full">
                     <div class="flex flex-wrap">
                         <div class="w-full px-1">
                             <label for="nama_siswa" class="block font-bold text-gray-800">Nama Siswa</label>
-                            <input autocomplete="off" value="<?= $row->nama_siswa ?>" type="text" name="nama_siswa" id="nama_siswa"  class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                            <input autocomplete="off" value="<?= $row->nama_siswa ?>" type="text" name="nama_siswa" id="nama_siswa" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                         </div>
                         <div class="w-full px-1">
                             <label for="nisn" class="block font-bold text-gray-800">NISN</label>
@@ -269,7 +269,7 @@
                         </div>
                     </div>
                     <div class="text-center mt-1">
-                        <input type="submit" id="submit" class="submit " value="Submit">
+                        <input type="submit" id="submit" class="submit" value="Submit">
                     </div>
                 </form>
             <?php endforeach ?>
@@ -279,7 +279,6 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
     <script>
-        
         const setup = () => {
             const getTheme = () => {
                 if (window.localStorage.getItem('dark')) {

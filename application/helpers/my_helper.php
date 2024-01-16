@@ -35,6 +35,16 @@ function nama_full_siswa_id($id)
         return $stmt;
     }
 }
+function namaguru_getbyid($id)
+{
+    $ci = &get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id', $id)->get('guru');
+    foreach ($result->result() as $c) {
+        $stmt = $c->nama_guru;
+        return $stmt;
+    }
+}
 function alamat_id($id)
 {
     $ci = &get_instance();

@@ -61,6 +61,12 @@ class M_model extends CI_Model
         $query = $this->db->get('user'); // Gantilah 'admin' sesuai dengan nama tabel yang digunakan
         return $query->row_array();
     }
+    public function getBynama_guru($nama_guru)
+    {
+        $this->db->where('nama_guru', $nama_guru);
+        $query = $this->db->get('guru'); // Gantilah 'admin' sesuai dengan nama tabel yang digunakan
+        return $query->row_array();
+    }
 
     public function checkEmailExists($email)
     {
@@ -68,5 +74,17 @@ class M_model extends CI_Model
         $query = $this->db->get('admin'); // Gantilah 'nama_tabel' dengan nama tabel yang sesuai
 
         return $query->row_array();
+    }
+
+    public function searchData($searchInput)
+    {
+        // Assuming you have a table named 'user'
+        $this->db->like('nama_siswa', $searchInput);
+        $this->db->or_like('nama_ibu', $searchInput);
+        $this->db->or_like('nama_ayah', $searchInput);
+        $this->db->or_like('alamat', $searchInput);
+        $query = $this->db->get('user');
+
+        return $query->result();
     }
 }

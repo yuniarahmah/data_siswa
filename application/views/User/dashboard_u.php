@@ -6,38 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Data Siswa Baru</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+<style>
+  body {
+    overflow-x: hidden;
+  }
+</style>
 
 <body>
   <?php $this->load->view('sidebaru'); ?>
   <div class="h-full mb-10">
-    <!-- ./Statistics Cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-4 gap-4">
-      <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
-        <div class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
-          <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-          </svg>
-        </div>
-        <div class="text-right">
-          <p class="text-2xl"><?php echo $admin; ?></p>
-          <p>Visitors</p>
-        </div>
-      </div>
-      <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
-        <div class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
-          <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-          </svg>
-        </div>
-        <div class="text-right">
-          <p class="text-2xl"><?php echo $admin; ?></p>
-          <p>Sales</p>
-        </div>
-      </div>
-    </div>
-
     <div class="grid grid-cols-1 lg:grid-cols-2 p-4 gap-4">
 
       <!-- Social Traffic -->
@@ -179,10 +158,95 @@
       </div>
       <!-- ./Social Traffic -->
     </div>
+    <!-- Task Summaries -->
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 p-4 gap-6 text-black dark:text-white">
+      <div class="md:col-span-2 xl:col-span-3">
+        <h3 class="text-lg font-semibold">Informasi Sekolah</h3>
+      </div>
+      <div class="md:col-span-2 xl:col-span-1">
+        <div class="rounded bg-gray-200 dark:bg-gray-800 p-6">
+          <div class="flex justify-center py-1 text-black dark:text-white mb-5">
+            <h3 class="text-sm font-semibold">Guru</h3>
+          </div>
+          <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+            <thead class="bg-gray-100 dark:bg-gray-700">
+              <tr>
+                <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                  Nama Guru Yang mengajar
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white dark:bg-gray-600 divide-y divide-gray-200 dark:divide-gray-700">
+              <?php $no = 0;
+              foreach ($guru as $row) : $no++ ?>
+                <tr>
+                  <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">
+                    <?php echo $row->nama_guru; ?>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="md:col-span-2 xl:col-span-1">
+        <div class="rounded bg-gray-200 dark:bg-gray-800 p-6">
+          <div class="flex justify-center py-1 text-black dark:text-white mb-5">
+            <h3 class="text-sm font-semibold">Mata Pelajaran</h3>
+          </div>
+          <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+            <thead class="bg-gray-100 dark:bg-gray-700">
+              <tr>
+                <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                  Nama Mata Pelajaran yang akan dipelajari
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white dark:bg-gray-600 divide-y divide-gray-200 dark:divide-gray-700">
+              <?php $no = 0;
+              foreach ($akademik as $row) : $no++ ?>
+                <tr>
+                  <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">
+                    <?php echo $row->nama_mapel; ?>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="md:col-span-2 xl:col-span-1">
+        <div class="rounded bg-gray-200 dark:bg-gray-800 p-6">
+          <div class="flex justify-center py-1 text-black dark:text-white mb-5">
+            <h3 class="text-sm font-semibold">Ekstrakurikuler</h3>
+          </div>
+          <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+            <thead class="bg-gray-100 dark:bg-gray-700">
+              <tr>
+                <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                  Nama Ekstrakurikuler
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white dark:bg-gray-600 divide-y divide-gray-200 dark:divide-gray-700">
+              <?php $no = 0;
+              foreach ($ekstra as $row) : $no++ ?>
+                <tr>
+                  <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">
+                    <?php echo $row->nama_ekstra; ?>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- ./Task Summaries -->
 
     <!-- Table -->
-    <div class="w-70 ml-2 overflow-x-auto">
-      <table class="w-70 ml-2">
+    <div class="w-90 ml-2 overflow-x-auto">
+      <table class="w-90 ml-2">
         <thead>
           <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-blue-500">
             <th class="px-10 py-4">No</th>
@@ -239,6 +303,7 @@
         </div>
       </div>
     </div>
+    <!-- ./Contact Form -->
   </div>
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
   <script>
