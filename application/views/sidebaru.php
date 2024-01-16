@@ -172,9 +172,8 @@
 
             <!-- Header -->
             <div href="profil.php" class="fixed w-full flex items-center justify-between h-14 text-white z-10">
-                <div class="flex items-center justify-start md:justify-center pl-3 w-20 md:w-64 h-14 bg-blue-800 dark:bg-gray-800 border-none">
-                    <img src="https://play-lh.googleusercontent.com/qceuXlUVDDLQO9YCW3ljvDttzyAEjOoWEhzLvwrhPwu0SyUn8Dj3FawzKoWHap-BaH0" class="w-15" style="width:15%;">
-                    <span class="hidden md:block font-bold"><i>Data Siswa baru</i></span>
+                <div class="flex items-center justify-start md:justify-center pl-3 w-full md:w-64 h-14 bg-blue-800 dark:bg-gray-800 border-none">
+                    <img src="https://play-lh.googleusercontent.com/qceuXlUVDDLQO9YCW3ljvDttzyAEjOoWEhzLvwrhPwu0SyUn8Dj3FawzKoWHap-BaH0" class="w-1/6 md:w-15" alt="Logo"><i class="font-bold">Data Siswa baru</i>
                 </div>
 
                 <div class="flex justify-between items-center h-14 bg-blue-800 dark:bg-gray-800 header-right">
@@ -239,17 +238,17 @@
                         </li>
                         <li>
                             <a href="<?php echo base_url('user/tabel_ekstra') ?>" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6 rounded-lg">
-                                <span class="ml-4 text-sm tracking-wide truncate"><i class="fa-solid fa-dumbbell"></i> Tabel Ekstrakulikuler</span>
+                                <span class="ml-4 text-sm tracking-wide truncate"><i class="fa-solid fa-dumbbell mr-1"></i> Tabel Ekstrakulikuler</span>
                             </a>
                         </li>
                         <li>
                             <a href="<?php echo base_url('user/tabel_akademik') ?>" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6 rounded-lg">
-                                <span class="ml-4 text-sm tracking-wide truncate"><i class="fa-solid fa-book-open-reader"></i> Tabel Mata Pelajaran</span>
+                                <span class="ml-4 text-sm tracking-wide truncate"><i class="fa-solid fa-book-open-reader mr-2"></i> Tabel Mata Pelajaran</span>
                             </a>
                         </li>
                         <li>
                             <a href="<?php echo base_url('user/tabel_guru') ?>" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6 rounded-lg">
-                                <span class="ml-4 text-sm tracking-wide truncate"><i class="fa-solid fa-clipboard-user"></i> Tabel Guru</span>
+                                <span class="ml-4 text-sm tracking-wide truncate"> <i class="fa-solid fa-clipboard-user mr-2"></i> Tabel Guru</span>
                             </a>
                         </li>
                         <!-- <li>
@@ -271,11 +270,11 @@
                                     <a href="#" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600"><i class="fa-solid fa-clipboard-user"></i> Tabel Guru</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li> -->
-                            <!-- <a href="#" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600"><i class="fa-solid fa-dumbbell"></i> Tabel Ekstrakulikuler</a>
                         </li> -->
-                        <!-- <li>
+                        <!-- <li> 
+                            <a href="#" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600"><i class="fa-solid fa-dumbbell"></i> Tabel Ekstrakulikuler</a>
+                        </li>
+                        <li>
                             <a href="#" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600"> <i class="fa-solid fa-book-open-reader"></i> Tabel Mata Pelajaran</a>
                         </li>
                         <li>

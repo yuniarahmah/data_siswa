@@ -161,12 +161,19 @@
         height: 70rem;
     }
 
-    @media only screen and (max-width: 800px) {
-
-        .container {
-            padding: 1rem 1rem 0px 1rem;
+    @media only screen and (max-width: 600px) {
+        .w-25 {
+            width: 50%;
         }
 
+        .card {
+            width: 50%;
+            margin: 0;
+        }
+
+        .container {
+            padding: 1rem;
+        }
 
         .heading {
             padding: 1.3em 9px 1.8rem 9px;
@@ -174,7 +181,6 @@
 
         .survey-form {
             padding: 1.3em 15px 1.8rem 15px;
-
         }
 
         .main-heading {
@@ -183,28 +189,37 @@
             text-align: center;
         }
 
+        /* Adjust styles for smaller screens */
+        input,
+        select {
+            width: 100%;
+        }
+
+        .submit {
+            width: 100%;
+            margin: 10px auto;
+        }
     }
+
 </style>
 
 <body>
     <?php $this->load->view('sidebar'); ?>
     <div class="w-25 mb-10">
-        <div class='card w-50 m-auto p-3'>
+        <div class='card m-auto p-3'>
             <div class="container">
                 <header class="heading">
-                    <div class="green-bar"></div>
                     <h1 id="title" class="main-heading text-gray-800">Tambah Siswa Baru</h1>
                 </header>
-
                 <form action="<?php echo base_url('admin/aksi_tambah_siswa') ?>" method="post" id="survey-form" class="survey-form w-full">
                     <div class="flex flex-wrap">
                         <div class="w-full px-1">
                             <label for="nama_siswa" class="block font-bold text-gray-800">Nama Siswa</label>
-                            <input autocomplete="off" type="text" name="nama_siswa" id="nama_siswa" placeholder="ketik nama siswa" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                            <input required autocomplete="off" type="text" name="nama_siswa" id="nama_siswa" placeholder="ketik nama siswa" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                         </div>
                         <div class="w-full px-1">
                             <label for="nisn" class="block font-bold text-gray-800">NISN</label>
-                            <input autocomplete="off" type="text" name="nisn" id="nisn" placeholder="Inputkan Ruang dulu" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                            <input autocomplete="off" type="text" name="nisn" id="nisn" placeholder="ketik nisn" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                         </div>
                         <div class="w-full px-1">
                             <label for="gender" class="block font-bold text-gray-800">Gender</label>
@@ -216,7 +231,7 @@
                         </div>
                         <div class="w-full px-1">
                             <label for="nilai_a" class="block font-bold text-gray-800">Nilai Akhir</label>
-                            <input autocomplete="off" type="text" name="ttl_display" id="ttl_display" placeholder="Pilih tanggal" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                            <input autocomplete="off" type="text" name="nilai_a" id="nilai_a" placeholder="ketik nilai akhik" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                         </div>
                         <div class="w-full px-1">
                             <label for="ttl" class="block font-bold text-gray-800">Tempat/tanggal lahir</label>
@@ -224,15 +239,15 @@
                         </div>
                         <div class="w-full px-1">
                             <label for="nama_ayah" class="block font-bold text-gray-800">Nama Ayah</label>
-                            <input autocomplete="off" type="text" name="nama_ayah" id="nama_ayah" placeholder="Inputkan Ruang dulu" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                            <input autocomplete="off" type="text" name="nama_ayah" id="nama_ayah" placeholder="ketik nama Ayah" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                         </div>
                         <div class="w-full px-1">
                             <label for="nama_ibu" class="block font-bold text-gray-800">Nama Ibu</label>
-                            <input autocomplete="off" type="text" name="nama_ibu" id="nama_ibu" placeholder="Inputkan Ruang dulu" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                            <input autocomplete="off" type="text" name="nama_ibu" id="nama_ibu" placeholder="ketik nama Ibu" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                         </div>
                         <div class="w-full px-1">
                             <label for="alamat" class="block font-bold text-gray-800">Alamat</label>
-                            <input autocomplete="off" type="text" name="alamat" id="alamat" placeholder="Inputkan Ruang dulu" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                            <input required autocomplete="off" type="text" name="alamat" id="alamat" placeholder="ketik  alamat" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                         </div>
                     </div>
                     <div class="text-center mt-1">
@@ -241,167 +256,158 @@
                 </form>
             </div>
         </div>
-        <!--Datatables -->
-        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
+    </div>
+    <!--Datatables -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
 
-        <!-- Include jQuery before SweetAlert2 and your other scripts -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!-- Include jQuery before SweetAlert2 and your other scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        $(document).ready(function() {
+            var table = $('#example_data').DataTable({
+                responsive: false
+            }).columns.adjust().responsive.recalc();
+        });
 
-        <!--Datatables -->
-        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                var table = $('#example_data').DataTable({
-                    responsive: false
-                }).columns.adjust().responsive.recalc();
-            });
 
-            document.getElementById('ttl_display').addEventListener('change', function() {
-                var selectedDate = this.value;
-                var formattedDate = new Date(selectedDate).toLocaleDateString('id-ID');
-                document.getElementById('ttl_iso').value = selectedDate;
-                this.value = formattedDate;
-            });
-
-            const setup = () => {
-                const getTheme = () => {
-                    if (window.localStorage.getItem('dark')) {
-                        return JSON.parse(window.localStorage.getItem('dark'))
-                    }
-                    return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        const setup = () => {
+            const getTheme = () => {
+                if (window.localStorage.getItem('dark')) {
+                    return JSON.parse(window.localStorage.getItem('dark'))
                 }
-
-                const setTheme = (value) => {
-                    window.localStorage.setItem('dark', value)
-                }
-
-                return {
-                    loading: true,
-                    isDark: getTheme(),
-                    toggleTheme() {
-                        this.isDark = !this.isDark
-                        setTheme(this.isDark)
-                    },
-                }
+                return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
             }
 
-            function updatePaginationInfo(start, end, total) {
-                document.getElementById('pagination-info').innerText = `Showing ${start}-${end} of ${total}`;
+            const setTheme = (value) => {
+                window.localStorage.setItem('dark', value)
             }
 
-            function changePage(page) {
-                const currentText = document.getElementById('pagination-info').innerText;
-                const ycurrentPage = parseInt(currentText.match(/\d+/)[0]);
-                const pageSize = 10;
+            return {
+                loading: true,
+                isDark: getTheme(),
+                toggleTheme() {
+                    this.isDark = !this.isDark
+                    setTheme(this.isDark)
+                },
+            }
+        }
 
-                if (page === 'prev' && currentPage > 1) {
-                    currentPage--;
-                } else if (page === 'next') {
-                    currentPage++;
-                } else {
-                    currentPage = page;
-                }
+        function updatePaginationInfo(start, end, total) {
+            document.getElementById('pagination-info').innerText = `Showing ${start}-${end} of ${total}`;
+        }
 
-                const start = (currentPage - 1) * pageSize + 1;
-                const end = Math.min(currentPage * pageSize, 100);
+        function changePage(page) {
+            const currentText = document.getElementById('pagination-info').innerText;
+            const ycurrentPage = parseInt(currentText.match(/\d+/)[0]);
+            const pageSize = 10;
 
-                updatePaginationInfo(start, end, 100);
-
-                console.log(`Changing to page ${currentPage}`);
+            if (page === 'prev' && currentPage > 1) {
+                currentPage--;
+            } else if (page === 'next') {
+                currentPage++;
+            } else {
+                currentPage = page;
             }
 
-            updatePaginationInfo(1, 10, 100);
+            const start = (currentPage - 1) * pageSize + 1;
+            const end = Math.min(currentPage * pageSize, 100);
 
-            function navigateToPage(url) {
-                window.location.href = url;
-            }
+            updatePaginationInfo(start, end, 100);
 
-            $(document).ready(function() {
-                const form = document.getElementById("survey-form");
+            console.log(`Changing to page ${currentPage}`);
+        }
 
-                form.addEventListener("submit", function(e) {
-                    e.preventDefault();
+        updatePaginationInfo(1, 10, 100);
 
-                    if (e.submitter.id === "submit") {
-                        // Display SweetAlert confirmation before submitting
-                        Swal.fire({
-                            title: 'Konfirmasi',
-                            text: 'Apakah Anda yakin ingin menambah data?',
-                            icon: 'question',
-                            showCancelButton: true,
-                            confirmButtonText: 'Ya',
-                            cancelButtonText: 'Batal'
-                        }).then(function(result) {
-                            if (result.isConfirmed) {
-                                // If user clicks "Ya", proceed with AJAX submission
-                                document.getElementById("submit").disabled = true;
+        function navigateToPage(url) {
+            window.location.href = url;
+        }
 
-                                $.ajax({
-                                    type: "POST",
-                                    url: "<?php echo base_url('operator/aksi_tambah_ruangan') ?>",
-                                    data: new FormData(form),
-                                    contentType: false,
-                                    processData: false,
-                                    dataType: "json",
-                                    success: function(response) {
-                                        if (response.status === 'success') {
-                                            // Show success SweetAlert and then redirect
-                                            Swal.fire({
-                                                title: 'Berhasil',
-                                                text: response.message,
-                                                icon: 'success',
-                                                showConfirmButton: false,
-                                                timer: 2000
-                                            }).then(function() {
-                                                window.location.href = response.redirect;
-                                            });
-                                        } else {
-                                            // Display error messages
-                                            if (response.errors) {
-                                                response.errors.forEach(function(error) {
-                                                    Swal.fire({
-                                                        title: 'Gagal',
-                                                        text: error,
-                                                        icon: 'error',
-                                                        showConfirmButton: false,
-                                                        timer: 2000
-                                                    });
-                                                });
-                                            } else {
+        $(document).ready(function() {
+            const form = document.getElementById("survey-form");
+
+            form.addEventListener("submit", function(e) {
+                e.preventDefault();
+
+                if (e.submitter.id === "submit") {
+                    // Display SweetAlert confirmation before submitting
+                    Swal.fire({
+                        title: 'Konfirmasi',
+                        text: 'Apakah Anda yakin ingin menambah data?',
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ya',
+                        cancelButtonText: 'Batal'
+                    }).then(function(result) {
+                        if (result.isConfirmed) {
+                            // If user clicks "Ya", proceed with AJAX submission
+                            document.getElementById("submit").disabled = true;
+
+                            $.ajax({
+                                type: "POST",
+                                url: "<?php echo base_url('operator/aksi_tambah_ruangan') ?>",
+                                data: new FormData(form),
+                                contentType: false,
+                                processData: false,
+                                dataType: "json",
+                                success: function(response) {
+                                    if (response.status === 'success') {
+                                        // Show success SweetAlert and then redirect
+                                        Swal.fire({
+                                            title: 'Berhasil',
+                                            text: response.message,
+                                            icon: 'success',
+                                            showConfirmButton: false,
+                                            timer: 2000
+                                        }).then(function() {
+                                            window.location.href = response.redirect;
+                                        });
+                                    } else {
+                                        // Display error messages
+                                        if (response.errors) {
+                                            response.errors.forEach(function(error) {
                                                 Swal.fire({
                                                     title: 'Gagal',
-                                                    text: response.message,
+                                                    text: error,
                                                     icon: 'error',
                                                     showConfirmButton: false,
                                                     timer: 2000
                                                 });
-                                            }
-
-                                            // Re-enable the submit button immediately upon encountering an error
-                                            document.getElementById("submit").disabled = false;
+                                            });
+                                        } else {
+                                            Swal.fire({
+                                                title: 'Gagal',
+                                                text: response.message,
+                                                icon: 'error',
+                                                showConfirmButton: false,
+                                                timer: 2000
+                                            });
                                         }
+
+                                        // Re-enable the submit button immediately upon encountering an error
+                                        document.getElementById("submit").disabled = false;
                                     }
-                                });
-                            }
-                        });
-                    } else if (e.submitter.id === "cancel") {
-                        // Handle the "Batal" button click event here
-                        Swal.fire({
-                            title: 'Aksi dibatalkan',
-                            text: 'Anda membatalkan aksi penyimpanan data.',
-                            icon: 'info',
-                            showConfirmButton: false,
-                            timer: 2000
-                        });
-                        // Optionally, you can redirect or perform other actions when canceling
-                    }
-                });
+                                }
+                            });
+                        }
+                    });
+                } else if (e.submitter.id === "cancel") {
+                    // Handle the "Batal" button click event here
+                    Swal.fire({
+                        title: 'Aksi dibatalkan',
+                        text: 'Anda membatalkan aksi penyimpanan data.',
+                        icon: 'info',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                    // Optionally, you can redirect or perform other actions when canceling
+                }
             });
-        </script>
+        });
+    </script>
 </body>
 
 </html>

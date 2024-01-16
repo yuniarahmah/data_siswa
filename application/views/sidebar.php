@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -171,9 +172,8 @@
 
             <!-- Header -->
             <div href="profil.php" class="fixed w-full flex items-center justify-between h-14 text-white z-10">
-                <div class="flex items-center justify-start md:justify-center pl-3 w-20 md:w-64 h-14 bg-blue-800 dark:bg-gray-800 border-none">
-                    <img src="https://play-lh.googleusercontent.com/qceuXlUVDDLQO9YCW3ljvDttzyAEjOoWEhzLvwrhPwu0SyUn8Dj3FawzKoWHap-BaH0" class="w-15" style="width:15%;">
-                    <span class="hidden md:block font-bold"><i>Data Siswa baru</i></span>
+                <div class="flex items-center justify-start md:justify-center pl-3 w-full md:w-64 h-14 bg-blue-800 dark:bg-gray-800 border-none">
+                    <img src="https://play-lh.googleusercontent.com/qceuXlUVDDLQO9YCW3ljvDttzyAEjOoWEhzLvwrhPwu0SyUn8Dj3FawzKoWHap-BaH0" class="w-1/6 md:w-15" alt="Logo"><i class="font-bold">Data Siswa baru</i>
                 </div>
 
                 <div class="flex justify-between items-center h-14 bg-blue-800 dark:bg-gray-800 header-right">
@@ -243,11 +243,31 @@
                                 </span>
                                 <span class="ml-2 text-sm tracking-wide truncate">Tabel tambah siswa</span>
                             </a>
-                            <!-- </li>
-                        <li class="px-5 hidden md:block">
-                            <div class="flex flex-row items-center mt-5 h-8">
-                                <div class="text-sm font-light tracking-wide text-gray-400 uppercase">Settings</div>
-                            </div>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url('admin/tabel_data_lengkap') ?>" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+                                <i class="fa-solid fa-sliders ml-5"></i>
+                                <span class="ml-2 text-sm tracking-wide truncate">Tabel Data Lengkap</span>
+                            </a>
+                        </li>
+                        <!-- <li>
+                            <button type="button" class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-lg group dark:text-white hover:bg-blue-800 dark:hover:bg-gray-600" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example" onclick="toggleSubMenu(this)">
+                                <span class="flex-1 ms-3 mr-12 whitespace-nowrap"> <i class="fa-solid fa-user-tie"></i> Tabel Tambah data</span>
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                                </svg>
+                            </button>
+                            <ul id="dropdown-example" class="hidden py-2 space-y-2 pl-11">
+                                <li>
+                                    <a href="#" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600">Tambah Ekstrakulikuler</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600">Tambah Mata Pelajaran</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600"> Tambah Guru</a>
+                                </li>
+                            </ul>
                         </li> -->
                     </ul>
                     <p class="mb-14 px-5 py-3 hidden md:block text-center text-xs">BOOTCAMP@2024</p>
@@ -259,6 +279,21 @@
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10">
                 </script>
                 <script>
+                    function toggleSubMenu(element) {
+                        // Find the next sibling (ul) of the clicked icon
+                        var submenu = element.nextElementSibling;
+
+                        // Toggle the 'hidden' class on the submenu
+                        submenu.classList.toggle('hidden');
+                    }
+
+                    document.querySelectorAll('.submenu-toggle').forEach(function(toggle) {
+                        toggle.addEventListener('click', function() {
+                            var nestedSubMenu = toggle.parentElement.nextElementSibling;
+                            nestedSubMenu.classList.toggle('hidden');
+                        });
+                    });
+
                     function KeluarOPT(id) {
                         const success_keluar = "<?php echo $this->session->flashdata('success_keluar'); ?>";
                         Swal.fire({

@@ -7,117 +7,69 @@
   <title>Data Siswa Baru</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-xxx" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
+<style>
+  body {
+    overflow-x: auto;
+  }
+
+  .container {
+    min-width: 20rem;
+    max-width: 65rem;
+    padding-right: 40%;
+  }
+
+  .heading {
+    position: relative;
+  }
+
+  .main-heading {
+    font-size: 15px;
+    margin-bottom: 5;
+    text-align: center;
+    font-weight: 700;
+  }
+</style>
 
 <body>
   <?php $this->load->view('sidebar'); ?>
   <!-- Statistics Cards -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-4 gap-4">
-    <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex justify-between p-3 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
-      <div class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
-        <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-        </svg>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="bg-slate-50 p-5 m-2 flex justify-between items-center shadow bg-blue-500 dark:bg-gray-800">
+      <div>
+        <h3 class="font-bold">Jumlah siswa</h3>
+        <p class="text-black dark:text-white"><?php echo $user; ?></p>
       </div>
-      <div class="text-right">
-      <p class="text-2xl"><?php echo $admin; ?></p>
-        <p>Siswa Baru</p>
-      </div>
+      <i class="fa-solid fa-users p-4 bg-red-200 rounded-md"></i>
     </div>
-    <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex p-3 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
-      <div class="flex items-center justify-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
-        <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-        </svg>
+    <div class="bg-slate-50 p-5 m-2 flex justify-between items-center shadow bg-blue-500 dark:bg-gray-800">
+      <div>
+        <h3 class="font-bold">Jumlah Guru</h3>
+        <p class="text-black dark:text-white"><?php echo $guru; ?></p>
       </div>
-      <div class="ml-4 text-right">
-        <p class="text-2xl"><?php echo $admin; ?></p>
-        <p>Jumlah Siswa yang masuk</p>
+      <i class="fa-solid fa-users p-4 bg-red-200 rounded-md"></i>
+    </div>
+    <div class="bg-slate-50 p-5 m-2 flex justify-between items-center shadow bg-blue-500 dark:bg-gray-800">
+      <div>
+        <h3 class="font-bold">Mapel</h3>
+        <p class="text-black dark:text-white"><?php echo $akademik; ?></p>
       </div>
+      <i class="fa-solid fa-users p-4 bg-red-200 rounded-md"></i>
     </div>
   </div>
   <!-- ./Statistics Cards -->
 
-  <div class="grid grid-cols-1 lg:grid-cols-2 p-4 gap-4">
-
-    <!-- Social Traffic -->
-    <div class="relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words bg-gray-50 dark:bg-gray-800 w-full shadow-lg rounded">
-      <div class="rounded-t mb-0 px-0 border-0">
-        <div class="flex flex-wrap items-center px-4 py-2">
-          <div class="relative w-full max-w-full flex-grow flex-1">
-            <h3 class="font-semibold text-base text-gray-900 dark:text-gray-50">Mendaftar Melalui</h3>
-          </div>
-          <div class="relative w-full max-w-full flex-grow flex-1 text-right">
-            <!-- <button class="bg-blue-500 dark:bg-gray-100 text-white active:bg-blue-600 dark:text-gray-800 dark:active:text-gray-700 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">See all</button> -->
-          </div>
-        </div>
-        <div class="block w-full overflow-x-auto">
-          <table class="items-center w-full bg-transparent border-collapse">
-            <thead>
-              <tr>
-                <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">metode</th>
-                <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">orang</th>
-                <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="text-gray-700 dark:text-gray-100">
-                <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">Prestasi</th>
-                <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">75</td>
-                <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div class="flex items-center">
-                    <span class="mr-2">40%</span>
-                    <div class="relative w-full">
-                      <div class="overflow-hidden h-2 text-xs flex rounded bg-blue-200">
-                        <div style="width: 40%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr class="text-gray-700 dark:text-gray-100">
-                <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">Zonasi</th>
-                <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">120</td>
-                <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div class="flex items-center">
-                    <span class="mr-2">55%</span>
-                    <div class="relative w-full">
-                      <div class="overflow-hidden h-2 text-xs flex rounded bg-blue-200">
-                        <div style="width: 40%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr class="text-gray-700 dark:text-gray-100">
-                <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">Perpindahan</th>
-                <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">50</td>
-                <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div class="flex items-center">
-                    <span class="mr-2">30%</span>
-                    <div class="relative w-full">
-                      <div class="overflow-hidden h-2 text-xs flex rounded bg-blue-200">
-                        <div style="width: 30%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-700"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <!-- ./Social Traffic -->
-    <!-- Social Traffic -->
-    <div class="relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words bg-gray-50 dark:bg-gray-800 w-full shadow-lg rounded">
+  <!-- <div class="grid grid-cols-1 lg:grid-cols-2 p-4 gap-4"> -->
+  <!-- Social Traffic -->
+  <!-- <div class="relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words bg-gray-50 dark:bg-gray-800 w-full shadow-lg rounded">
       <div class="rounded-t mb-0 px-0 border-0">
         <div class="flex flex-wrap items-center px-4 py-2">
           <div class="relative w-full max-w-full flex-grow flex-1">
             <h3 class="font-semibold text-base text-gray-900 dark:text-gray-50">Lokasi pendaftar</h3>
           </div>
           <div class="relative w-full max-w-full flex-grow flex-1 text-right">
-            <!-- <button class="bg-blue-500 dark:bg-gray-100 text-white active:bg-blue-600 dark:text-gray-800 dark:active:text-gray-700 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">See all</button> -->
+            <button class="bg-blue-500 dark:bg-gray-100 text-white active:bg-blue-600 dark:text-gray-800 dark:active:text-gray-700 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">See all</button>
           </div>
         </div>
         <div class="block w-full overflow-x-auto">
@@ -176,69 +128,73 @@
           </table>
         </div>
       </div>
-    </div>
-    <!-- ./Social Traffic -->
-  </div>
+    </div> -->
+  <!-- ./Social Traffic -->
+  <!-- </div> -->
 
   <!-- tabel -->
-  <div class="w-70 ml-5 overflow-x-auto">
-    <table class="w-70">
-      <thead>
-        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-blue-500">
-          <th class="px-10 py-4">No</th>
-          <th class="px-10 py-4">Nama Siswa</th>
-          <th class="px-10 py-4">Nama Ibu</th>
-          <th class="px-10 py-4">Nama Ayah</th>
-          <th class="px-10 py-4">Alamat</th>
-        </tr>
-      </thead>
-      <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-        <?php $no = 0;
-        foreach ($user as $row) : $no++ ?>
-          <tr onclick="navigateToPage('<?php echo base_url('admin/data_lengkap') ?>')" class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
-            <td class="px-10 py-3"><?php echo $no ?></td>
-            <td class="px-10 py-3"><?php echo $row->nama_siswa ?></td>
-            <td class="px-10 py-3"><?php echo $row->nama_ibu ?></td>
-            <td class="px-10 py-3"><?php echo $row->nama_ayah ?></td>
-            <td class="px-10 py-3"><?php echo $row->alamat ?></td>
-          </tr>
-        <?php endforeach ?>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- Contact Form -->
-  <div class="mt-8 mx-4">
-    <div class="grid grid-cols-1 md:grid-cols-2">
-      <div class="p-6 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
-        <h1 class="text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight">Informasi lebih lanjut</h1>
-        <p class="text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">Silahkan hubungi orang yang bersangkutan</p>
-
-        <div class="flex items-center mt-8 text-gray-600 dark:text-gray-400">
-          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-          </svg>
-          <div class="ml-4 text-md tracking-wide font-semibold w-40">Lokasi anda</div>
+  <div class="grid grid-cols-1 sm:grid-cols-2">
+    <div class="w-45 mt-20 pl-10 pr-10">
+      <div class="w-full overflow-hidden rounded-lg shadow-xs">
+        <div class="overflow-x-auto">
+          <table class="w-65 table-auto text-sm text-left text-gray-800 dark:text-gray-700 ">
+            <thead>
+              <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-blue-500 h-50">
+                <th class="px-4 py-5">No</th>
+                <th class="px-4 py-5">Ekstrakurikuler</th>
+                <th class="px-4 py-5">Nama Pembimbing</th>
+                <th class="px-4 py-5">Jam pelaksanaan</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+              <?php $no = 0;
+              foreach ($ekstra as $row) : $no++ ?>
+                <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
+                  <td class="px-4 py-5"><?php echo $no ?></td>
+                  <td class="px-4 py-5"><?php echo $row->nama_ekstra ?></td>
+                  <td class="px-4 py-5"><?php echo $row->pembimbing ?></td>
+                  <td class="px-4 py-5"><?php echo $row->waktu ?></td>
+                </tr>
+              <?php endforeach ?>
+            </tbody>
+          </table>
         </div>
+      </div>
+    </div>
 
-        <div class="flex items-center mt-4 text-gray-600 dark:text-gray-400">
-          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-          </svg>
-          <div class="ml-4 text-md tracking-wide font-semibold w-40">+6251 3456 7890</div>
-        </div>
+    <!-- Contact Form -->
+    <div class="mt-8 mx-4">
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <div class="p-6 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
+          <h1 class="text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight">Informasi lebih lanjut</h1>
+          <p class="text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">Silahkan hubungi orang yang bersangkutan</p>
 
-        <div class="flex items-center mt-4 text-gray-600 dark:text-gray-400">
-          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-          <div class="ml-4 text-md tracking-wide font-semibold w-40">sekolah@gmail.com</div>
+          <div class="flex items-center mt-8 text-gray-600 dark:text-gray-400">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <div class="ml-4 text-md tracking-wide font-semibold w-40">Lokasi anda</div>
+          </div>
+
+          <div class="flex items-center mt-4 text-gray-600 dark:text-gray-400">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            <div class="ml-4 text-md tracking-wide font-semibold w-40">+6251 3456 7890</div>
+          </div>
+
+          <div class="flex items-center mt-4 text-gray-600 dark:text-gray-400">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <div class="ml-4 text-md tracking-wide font-semibold w-40">sekolah@gmail.com</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-    <!-- /Contact Form -->
+  <!-- /Contact Form -->
 
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
   <script>
@@ -309,6 +265,38 @@
       // Redirect to WhatsApp
       window.location.href = whatsappURL;
     });
+    var candleOptions = {
+      chart: {
+        height: 350,
+        type: "candlestick",
+        stacked: false
+      },
+      colors: ["#FF1654", "#247BA0"],
+      series: [{
+        data: [
+          [1538856000000, [6593.34, 6600, 6582.63, 6600]],
+          [1538856900000, [6595.16, 6604.76, 6590.73, 6593.86]]
+        ]
+      }]
+    };
+
+    var candleChart = new ApexCharts(document.querySelector("#candle_chart"), candleOptions);
+    candleChart.render();
+
+    // pie chart
+    var pieOptions = {
+      chart: {
+        height: 350,
+        type: "pie",
+        stacked: false
+      },
+      colors: ["#FF1654", "#247BA0"],
+      series: [44, 55, 13, 33],
+      labels: ['Apple', 'Mango', 'Orange', 'Watermelon']
+    };
+
+    var pieChart = new ApexCharts(document.querySelector("#pie_chart"), pieOptions);
+    pieChart.render();
   </script>
 </body>
 
