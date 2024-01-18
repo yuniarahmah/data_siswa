@@ -234,7 +234,7 @@
                                 <span class="ml-2 text-sm tracking-wide truncate">Dashboard</span>
                             </a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="<?php echo base_url('admin/tambah_siswa') ?>" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
                                 <span class="inline-flex justify-center items-center ml-4">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -243,32 +243,35 @@
                                 </span>
                                 <span class="ml-2 text-sm tracking-wide truncate">Tabel tambah siswa</span>
                             </a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="<?php echo base_url('admin/tabel_data_lengkap') ?>" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
                                 <i class="fa-solid fa-sliders ml-5"></i>
                                 <span class="ml-2 text-sm tracking-wide truncate">Tabel Data Lengkap</span>
                             </a>
                         </li>
-                        <!-- <li>
+                        <li>
                             <button type="button" class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-lg group dark:text-white hover:bg-blue-800 dark:hover:bg-gray-600" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example" onclick="toggleSubMenu(this)">
-                                <span class="flex-1 ms-3 mr-12 whitespace-nowrap"> <i class="fa-solid fa-user-tie"></i> Tabel Tambah data</span>
+                                <span class="flex-1 ms-3 mr-12 whitespace-nowrap"> <i class="fa-solid fa-user-tie ml-1 mr-1"></i>  Tabel Tambah data</span>
                                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                                 </svg>
                             </button>
                             <ul id="dropdown-example" class="hidden py-2 space-y-2 pl-11">
                                 <li>
-                                    <a href="#" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600">Tambah Ekstrakulikuler</a>
+                                    <a href="<?php echo base_url('admin/tambah_ekstra') ?>" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600">Tambah Ekstrakulikuler</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600">Tambah Mata Pelajaran</a>
+                                    <a href="<?php echo base_url('admin/tambah_akademik') ?>" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600">Tambah Mata Pelajaran</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600"> Tambah Guru</a>
+                                    <a href="<?php echo base_url('admin/tambah_guru') ?>" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600"> Tambah Guru</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url('admin/tambah_siswa') ?>" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600"> Tambah Siswa</a>
                                 </li>
                             </ul>
-                        </li> -->
+                        </li>
                     </ul>
                     <p class="mb-14 px-5 py-3 hidden md:block text-center text-xs">BOOTCAMP@2024</p>
                 </div>

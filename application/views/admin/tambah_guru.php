@@ -200,7 +200,6 @@
             margin: 10px auto;
         }
     }
-
 </style>
 
 <body>
@@ -209,17 +208,17 @@
         <div class='card m-auto p-3'>
             <div class="container">
                 <header class="heading">
-                    <h1 id="title" class="main-heading text-gray-800">Tambah Siswa Baru</h1>
+                    <h1 id="title" class="main-heading text-gray-800">Tambah Guru Baru</h1>
                 </header>
-                <form action="<?php echo base_url('admin/aksi_tambah_siswa') ?>" method="post" id="survey-form" class="survey-form w-full">
+                <form action="<?php echo base_url('admin/aksi_tambah_guru') ?>" method="post" id="survey-form" class="survey-form w-full">
                     <div class="flex flex-wrap">
                         <div class="w-full px-1">
-                            <label for="nama_siswa" class="block font-bold text-gray-800">Nama Siswa</label>
-                            <input required autocomplete="off" type="text" name="nama_siswa" id="nama_siswa" placeholder="ketik nama siswa" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                            <label for="nama_guru" class="block font-bold text-gray-800">Nama Guru</label>
+                            <input required autocomplete="off" type="text" name="nama_guru" id="nama_guru" placeholder="ketik ekstrakurikuler baru" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                         </div>
                         <div class="w-full px-1">
-                            <label for="nisn" class="block font-bold text-gray-800">NISN</label>
-                            <input autocomplete="off" type="text" name="nisn" id="nisn" placeholder="ketik nisn" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                            <label for="nik" class="block font-bold text-gray-800">Nik</label>
+                            <input autocomplete="off" type="text" name="nik" id="nik" placeholder="ketik nik" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                         </div>
                         <div class="w-full px-1">
                             <label for="gender" class="block font-bold text-gray-800">Gender</label>
@@ -230,24 +229,8 @@
                             </select>
                         </div>
                         <div class="w-full px-1">
-                            <label for="nilai_a" class="block font-bold text-gray-800">Nilai Akhir</label>
-                            <input autocomplete="off" type="text" name="nilai_a" id="nilai_a" placeholder="ketik nilai akhik" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                        </div>
-                        <div class="w-full px-1">
-                            <label for="ttl" class="block font-bold text-gray-800">Tempat/tanggal lahir</label>
-                            <input autocomplete="off" type="date" name="ttl" id="ttl" placeholder="ketik nilai akhir" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                        </div>
-                        <div class="w-full px-1">
-                            <label for="nama_ayah" class="block font-bold text-gray-800">Nama Ayah</label>
-                            <input autocomplete="off" type="text" name="nama_ayah" id="nama_ayah" placeholder="ketik nama Ayah" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                        </div>
-                        <div class="w-full px-1">
-                            <label for="nama_ibu" class="block font-bold text-gray-800">Nama Ibu</label>
-                            <input autocomplete="off" type="text" name="nama_ibu" id="nama_ibu" placeholder="ketik nama Ibu" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                        </div>
-                        <div class="w-full px-1">
-                            <label for="alamat" class="block font-bold text-gray-800">Alamat</label>
-                            <input required autocomplete="off" type="text" name="alamat" id="alamat" placeholder="ketik  alamat" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                            <label for="no_hp" class="block font-bold text-gray-800">No Hp</label>
+                            <input autocomplete="off" type="text" name="no_hp" id="no_hp" placeholder="ketik no hp" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                         </div>
                     </div>
                     <div class="text-center mt-1">
@@ -258,14 +241,28 @@
         </div>
     </div>
     <!--Datatables -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
 
-    <!-- Include jQuery before SweetAlert2 and your other scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var inputWaktu = document.getElementById('waktu');
+
+            inputWaktu.addEventListener('input', function() {
+                // Use regular expression to enforce HH:mm format
+                var regex = /^([01]\d|2[0-3]):?([0-5]\d)?$/;
+                var value = inputWaktu.value;
+
+                if (!regex.test(value)) {
+                    // If the entered value doesn't match the format, clear the input
+                    inputWaktu.value = '';
+                }
+            });
+        });
+
         $(document).ready(function() {
             var table = $('#example_data').DataTable({
                 responsive: false
@@ -295,33 +292,6 @@
             }
         }
 
-        function updatePaginationInfo(start, end, total) {
-            document.getElementById('pagination-info').innerText = `Showing ${start}-${end} of ${total}`;
-        }
-
-        function changePage(page) {
-            const currentText = document.getElementById('pagination-info').innerText;
-            const ycurrentPage = parseInt(currentText.match(/\d+/)[0]);
-            const pageSize = 10;
-
-            if (page === 'prev' && currentPage > 1) {
-                currentPage--;
-            } else if (page === 'next') {
-                currentPage++;
-            } else {
-                currentPage = page;
-            }
-
-            const start = (currentPage - 1) * pageSize + 1;
-            const end = Math.min(currentPage * pageSize, 100);
-
-            updatePaginationInfo(start, end, 100);
-
-            console.log(`Changing to page ${currentPage}`);
-        }
-
-        updatePaginationInfo(1, 10, 100);
-
         function navigateToPage(url) {
             window.location.href = url;
         }
@@ -348,7 +318,7 @@
 
         //                     $.ajax({
         //                         type: "POST",
-        //                         url: "<?php echo base_url('admin/aksi_tambah_siswa') ?>",
+        //                         url: "<?php echo base_url('admin/aksi_tambah_guru') ?>",
         //                         data: new FormData(form),
         //                         contentType: false,
         //                         processData: false,

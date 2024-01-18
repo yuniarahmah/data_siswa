@@ -76,22 +76,11 @@
                                 <td class="px-10 py-3"><?php echo $row->nama_ayah ?></td>
                                 <td class="px-10 py-3"><?php echo $row->alamat ?></td>
                                 <td class="px-6 py-3">
-                                    <a href="<?php echo base_url('user/edit_data/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
-                                        <span class="">
-                                            <i class="fas fa-edit"></i>
-                                        </span>
-                                    </a>
                                     <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
                                         <span class="">
                                             <i class="fas fa-trash-alt"></i>
                                         </span>
                                     </button>
-                                    <a href="tambah_item_tambahan" class="btn-style ml-2 pl-1 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded py-2 px-3">
-                                        <span class="">
-                                            <i class="fas fa-plus"></i>
-                                        </span>
-                                        Tambah
-                                    </a>
                                 </td>
                             </tr>
                         <?php endforeach ?>
@@ -130,7 +119,7 @@
                                 <td class="px-10 py-3"><?php echo $row->gender ?></td>
                                 <td class="px-10 py-3"><?php echo $row->no_hp ?></td>
                                 <td class="px-10 py-3">
-                                    <a href="<?php echo base_url('user/edit_data/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
+                                    <a href="<?php echo base_url('admin/edit_guru/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
                                         <span class="">
                                             <i class="fas fa-edit"></i>
                                         </span>
@@ -140,12 +129,6 @@
                                             <i class="fas fa-trash-alt"></i>
                                         </span>
                                     </button>
-                                    <a href="tambah_item_tambahan" class="btn-style ml-2 pl-1 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded py-2 px-3">
-                                        <span class="">
-                                            <i class="fas fa-plus"></i>
-                                        </span>
-                                        Tambah
-                                    </a>
                                 </td>
                             </tr>
                         <?php endforeach ?>
@@ -181,7 +164,7 @@
                                 <td class="px-10 py-3"><?php echo namaguru_getbyid($row->id_nama_guru); ?></td>
                                 <td class="px-10 py-3"><?php echo $row->nama_mapel ?></td>
                                 <td class="px-10 py-3">
-                                    <a href="<?php echo base_url('user/edit_data/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
+                                    <a href="<?php echo base_url('admin/edit_akademik/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
                                         <span class="">
                                             <i class="fas fa-edit"></i>
                                         </span>
@@ -191,12 +174,6 @@
                                             <i class="fas fa-trash-alt"></i>
                                         </span>
                                     </button>
-                                    <a href="tambah_item_tambahan" class="btn-style ml-2 pl-1 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded py-2 px-3">
-                                        <span class="">
-                                            <i class="fas fa-plus"></i>
-                                        </span>
-                                        Tambah
-                                    </a>
                                 </td>
                             </tr>
                         <?php endforeach ?>
@@ -218,20 +195,33 @@
                 <table class="w-full table-auto text-sm text-left text-gray-800 dark:text-gray-700 ">
                     <thead>
                         <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-blue-500 h-50">
-                            <th class="px-4 py-5">No</th>
-                            <th class="px-4 py-5">Ekstrakurikuler</th>
-                            <th class="px-4 py-5">Nama Pembimbing</th>
-                            <th class="px-4 py-5">Jam pelaksanaan</th>
+                            <th class="px-10 py-4">No</th>
+                            <th class="px-10 py-4">Ekstrakurikuler</th>
+                            <th class="px-10 py-4">Nama Pembimbing</th>
+                            <th class="px-10 py-4">Jam pelaksanaan</th>
+                            <th class="px-10 py-4">Aksi</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                         <?php $no = 0;
                         foreach ($ekstra as $row) : $no++ ?>
                             <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
-                                <td class="px-4 py-5"><?php echo $no ?></td>
-                                <td class="px-4 py-5"><?php echo $row->nama_ekstra ?></td>
-                                <td class="px-4 py-5"><?php echo $row->pembimbing ?></td>
-                                <td class="px-4 py-5"><?php echo $row->waktu ?></td>
+                                <td class="px-10 py-3"><?php echo $no ?></td>
+                                <td class="px-10 py-3"><?php echo $row->nama_ekstra ?></td>
+                                <td class="px-10 py-3"><?php echo $row->pembimbing ?></td>
+                                <td class="px-10 py-3"><?php echo $row->waktu ?></td>
+                                <td class="px-10 py-3">
+                                    <a href="<?php echo base_url('admin/edit_ekstra/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
+                                        <span class="">
+                                            <i class="fas fa-edit"></i>
+                                        </span>
+                                    </a>
+                                    <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                        <span class="">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </span>
+                                    </button>
+                                </td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>
@@ -319,7 +309,7 @@
                         timer: 1500, // Adjust the duration in milliseconds (e.g., 1500 for 1.5 seconds)
                         showConfirmButton: false,
                     }).then(function() {
-                        window.location.href = "<?php echo base_url('user/hapus_data/') ?>" + id;
+                        window.location.href = "<?php echo base_url('admin/hapus_ekstra/') ?>" + id;
                     });
                 }
             });

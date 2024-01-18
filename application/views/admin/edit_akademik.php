@@ -219,52 +219,25 @@
 </head>
 
 <body class="relative min-h-screen overflow-hidden">
-    <?php $this->load->view('sidebaru'); ?>
+    <?php $this->load->view('sidebar'); ?>
 
     <main class="contain-all max-h-screen overflow-y-auto">
         <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
-                <h1 id="title" class="main-heading text-gray-800">Edit Data</h1>
+                <h1 id="title" class="main-heading text-gray-800">Edit Data Mapel</h1>
             </header>
-            <?php foreach ($ekstra as $row) : ?>
-                <form action="<?php echo base_url('admin/aksi_isi_ekstra') ?>" method="post" id="survey-form" class="survey-form w-full">
+
+            <?php foreach ($akademik as $row) : ?>
+                <form action="<?php echo base_url('admin/aksi_edit_akademik/' . $row->id); ?>" method="post" id="survey-form" class="survey-form w-full">
                     <div class="flex flex-wrap">
                         <div class="w-full px-1">
-                            <label for="nama_siswa" class="block font-bold text-gray-800">Nama Siswa</label>
-                            <input autocomplete="off" value="<?= $row->nama_siswa ?>" type="text" name="nama_siswa" id="nama_siswa" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                            <label for="nama_mapel" class="block font-bold text-gray-800">Nama Mapel</label>
+                            <input autocomplete="off" value="<?= $row->nama_mapel ?>" type="text" name="nama_mapel" id="nama_mapel" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                         </div>
                         <div class="w-full px-1">
-                            <label for="nisn" class="block font-bold text-gray-800">NISN</label>
-                            <input autocomplete="off" value="<?= $row->nisn ?>" type="text" name="nisn" id="nisn" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                        </div>
-                        <div class="w-full px-1">
-                            <label for="gender" class="block font-bold text-gray-800">Gender</label>
-                            <select name="gender" value="<?= $row->gender ?>" id="gender" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                                <option value="<?= $row->gender ?>">pilih Gender</option>
-                                <option value="laki-laki">Laki-laki</option>
-                                <option value="Perempuan">Perempuan</option>
-                            </select>
-                        </div>
-                        <div class="w-full px-1">
-                            <label for="nilai_a" class="block font-bold text-gray-800">Nilai Akhir</label>
-                            <input autocomplete="off" value="<?= $row->nilai_a ?>" type="text" name="nilai_a" id="nilai_a" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                        </div>
-                        <div class="w-full px-1">
-                            <label for="ttl" class="block font-bold text-gray-800">Tempat/tanggal lahir</label>
-                            <input autocomplete="off" value="<?= $row->ttl ?>" type="date" name="ttl" id="ttl" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                        </div>
-                        <div class="w-full px-1">
-                            <label for="nama_ayah" class="block font-bold text-gray-800">Nama Ayah</label>
-                            <input autocomplete="off" value="<?= $row->nama_ayah ?>" type="text" name="nama_ayah" id="nama_ayah" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                        </div>
-                        <div class="w-full px-1">
-                            <label for="nama_ibu" class="block font-bold text-gray-800">Nama Ibu</label>
-                            <input autocomplete="off" value="<?= $row->nama_ibu ?>" type="text" name="nama_ibu" id="nama_ibu" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                        </div>
-                        <div class="w-full px-1">
-                            <label for="alamat" class="block font-bold text-gray-800">Alamat</label>
-                            <input autocomplete="off" value="<?= $row->alamat ?>" type="text" name="alamat" id="alamat" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                            <label for="id_nama_guru" class="block font-bold text-gray-800">Nama guru Mapel</label>
+                            <input autocomplete="off" value="<?= namaguru_getbyid('$row->id_nama_guru') ?>" type="text" name="id_nama_guru" id="id_nama_guru" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                         </div>
                     </div>
                     <div class="text-center mt-1">

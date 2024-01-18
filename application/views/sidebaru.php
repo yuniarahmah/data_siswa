@@ -252,6 +252,11 @@
                             </a>
                         </li>
                         <!-- <li>
+                            <a href="<?php echo base_url('user/from_pendaftaran') ?>" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6 rounded-lg">
+                                <span class="ml-4 text-sm tracking-wide truncate"> <i class="fa-solid fa-clipboard-user mr-2"></i> Tabel Guru</span>
+                            </a>
+                        </li> -->
+                        <!-- <li>
                             <button type="button" class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-lg group dark:text-white hover:bg-blue-800 dark:hover:bg-gray-600" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example" onclick="toggleSubMenu(this)">
                                 Your SVG icon here
                                 <span class="flex-1 ms-3 mr-10 whitespace-nowrap"> <i class="fa-solid fa-user-tie"></i> </span>
