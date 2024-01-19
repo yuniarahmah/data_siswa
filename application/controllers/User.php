@@ -139,4 +139,9 @@ class User extends CI_Controller
         $this->load->view('user/tabel_siswa', $data);
     }
 
+    public function pembayarans()
+    {
+        $data['pembayaran'] = $this->m_model->get_pembayaran();
+        $this->load->view('user/pembayarans', $data);
+    }
 }

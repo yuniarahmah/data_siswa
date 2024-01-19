@@ -119,8 +119,8 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #f4f4f4;
-            background-color: #4F709C;
-            border: 3px solid #4F709C;
+            background-color: #4942E4;
+            border: 3px solid #4942E4;
             border-radius: 1rem;
             width: 8rem;
             height: 2.5rem;
@@ -142,8 +142,8 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #f4f4f4;
-            background-color: #4F709C;
-            border: 3px solid #4F709C;
+            background-color: #4942E4;
+            border: 3px solid #4942E4;
             border-radius: 1rem;
             width: 8rem;
             height: 2.5rem;

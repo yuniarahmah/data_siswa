@@ -87,4 +87,12 @@ class M_model extends CI_Model
 
         return $query->result();
     }
+
+    function get_pembayaran() {
+        $this->db->select( 'pembayaran.*, user.nama_siswa' );
+        $this->db->from( 'pembayaran' );
+        $this->db->join( 'user', 'pembayaran.id = user.id', 'left' );
+        $query = $this->db->get();
+        return $query->result();
+    }
 }

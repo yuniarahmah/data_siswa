@@ -117,8 +117,8 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         color: #f4f4f4;
-        background-color: #45474B;
-        border: 3px solid #45474B;
+        background-color: #4942E4;
+        border: 3px solid #4942E4;
         border-radius: 1rem;
         width: 8rem;
         height: 2.5rem;
@@ -140,8 +140,8 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         color: white;
-        background-color: #45474B;
-        border: 3px solid #45474B;
+        background-color: #4942E4;
+        border: 3px solid #4942E4;
         border-radius: 1rem;
         width: 8rem;
         height: 2.5rem;
@@ -200,62 +200,58 @@
             margin: 10px auto;
         }
     }
-
 </style>
 
 <body>
     <?php $this->load->view('sidebar'); ?>
-    <div class="w-25 mb-10">
-        <div class='card m-auto p-3'>
-            <div class="container">
-                <header class="heading">
-                    <h1 id="title" class="main-heading text-gray-800">Tambah Siswa Baru</h1>
-                </header>
-                <form action="<?php echo base_url('admin/aksi_tambah_siswa') ?>" method="post" id="survey-form" class="survey-form w-full">
-                    <div class="flex flex-wrap">
-                        <div class="w-full px-1">
-                            <label for="nama_siswa" class="block font-bold text-gray-800">Nama Siswa</label>
-                            <input required autocomplete="off" type="text" name="nama_siswa" id="nama_siswa" placeholder="ketik nama siswa" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                        </div>
-                        <div class="w-full px-1">
-                            <label for="nisn" class="block font-bold text-gray-800">NISN</label>
-                            <input autocomplete="off" type="text" name="nisn" id="nisn" placeholder="ketik nisn" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                        </div>
-                        <div class="w-full px-1">
-                            <label for="gender" class="block font-bold text-gray-800">Gender</label>
-                            <select name="gender" id="gender" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                                <option value="" disabled selected>pilih Gender</option>
-                                <option value="laki-laki">Laki-laki</option>
-                                <option value="Perempuan">Perempuan</option>
-                            </select>
-                        </div>
-                        <div class="w-full px-1">
-                            <label for="nilai_a" class="block font-bold text-gray-800">Nilai Akhir</label>
-                            <input autocomplete="off" type="text" name="nilai_a" id="nilai_a" placeholder="ketik nilai akhik" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                        </div>
-                        <div class="w-full px-1">
-                            <label for="ttl" class="block font-bold text-gray-800">Tempat/tanggal lahir</label>
-                            <input autocomplete="off" type="date" name="ttl" id="ttl" placeholder="ketik nilai akhir" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                        </div>
-                        <div class="w-full px-1">
-                            <label for="nama_ayah" class="block font-bold text-gray-800">Nama Ayah</label>
-                            <input autocomplete="off" type="text" name="nama_ayah" id="nama_ayah" placeholder="ketik nama Ayah" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                        </div>
-                        <div class="w-full px-1">
-                            <label for="nama_ibu" class="block font-bold text-gray-800">Nama Ibu</label>
-                            <input autocomplete="off" type="text" name="nama_ibu" id="nama_ibu" placeholder="ketik nama Ibu" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                        </div>
-                        <div class="w-full px-1">
-                            <label for="alamat" class="block font-bold text-gray-800">Alamat</label>
-                            <input required autocomplete="off" type="text" name="alamat" id="alamat" placeholder="ketik  alamat" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                        </div>
+    <div class="w-25 mb-10 dark:bg-gray-800">
+        <div class="card mb-20 px-20 ">
+            <h3 class="text-center text-2xl font-bold mb-4 dark:text-white">Tambah Siswa</h3>
+            <form action="<?php echo base_url('admin/aksi_tambah_siswa') ?>" method="post" id="survey-form" class="survey-form w-full">
+                <div class="flex flex-wrap">
+                    <div class="w-full px-1">
+                        <label for="nama_siswa" class="block font-bold text-gray-800">Nama Siswa</label>
+                        <input required autocomplete="off" type="text" name="nama_siswa" id="nama_siswa" placeholder="ketik nama siswa" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                     </div>
-                    <div class="text-center mt-1">
-                        <input type="submit" id="submit" class="submit " value="Submit">
+                    <div class="w-full px-1">
+                        <label for="nisn" class="block font-bold text-gray-800">NISN</label>
+                        <input autocomplete="off" type="text" name="nisn" id="nisn" placeholder="ketik nisn" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                     </div>
-                </form>
-            </div>
+                    <div class="w-full px-1">
+                        <label for="gender" class="block font-bold text-gray-800">Gender</label>
+                        <select name="gender" id="gender" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                            <option value="" disabled selected>pilih Gender</option>
+                            <option value="laki-laki">Laki-laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
+                    </div>
+                    <div class="w-full px-1">
+                        <label for="nilai_a" class="block font-bold text-gray-800">Nilai Akhir</label>
+                        <input autocomplete="off" type="text" name="nilai_a" id="nilai_a" placeholder="ketik nilai akhik" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                    </div>
+                    <div class="w-full px-1">
+                        <label for="ttl" class="block font-bold text-gray-800">Tempat/tanggal lahir</label>
+                        <input autocomplete="off" type="date" name="ttl" id="ttl" placeholder="ketik nilai akhir" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                    </div>
+                    <div class="w-full px-1">
+                        <label for="nama_ayah" class="block font-bold text-gray-800">Nama Ayah</label>
+                        <input autocomplete="off" type="text" name="nama_ayah" id="nama_ayah" placeholder="ketik nama Ayah" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                    </div>
+                    <div class="w-full px-1">
+                        <label for="nama_ibu" class="block font-bold text-gray-800">Nama Ibu</label>
+                        <input autocomplete="off" type="text" name="nama_ibu" id="nama_ibu" placeholder="ketik nama Ibu" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                    </div>
+                    <div class="w-full px-1">
+                        <label for="alamat" class="block font-bold text-gray-800">Alamat</label>
+                        <input required autocomplete="off" type="text" name="alamat" id="alamat" placeholder="ketik  alamat" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                    </div>
+                </div>
+                <div class="text-center mt-1">
+                    <input type="submit" id="submit" class="submit " value="Submit">
+                </div>
+            </form>
         </div>
+    </div>
     </div>
     <!--Datatables -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>

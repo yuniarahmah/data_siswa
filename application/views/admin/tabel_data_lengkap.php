@@ -10,7 +10,7 @@
 </head>
 <style>
     body {
-        overflow-x: hidden;
+        overflow-x: auto;
     }
 
     .container {
@@ -21,7 +21,7 @@
     }
 
     .heading {
-        padding: 1.3em 9px 1.8rem 9px;
+        padding: 1.3em;
     }
 
 
@@ -44,20 +44,72 @@
         text-align: center;
         font-weight: 700;
     }
+
+    .table {
+        width: 20%;
+        padding: 1.3em 9px 1.8rem 9px;
+    }
+
+    @media only screen and (max-width: 390px) {
+        h1 {
+            width: 300px;
+            margin-right: 600px;
+        }
+
+        .table {
+            max-height: max-content;
+            margin-bottom: 50px;
+            padding: 1.3em 9px 1.8rem 9px;
+
+        }
+    }
+
+    .button-edit,
+    .button-delete {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        padding: 8px 12px;
+        border-radius: 5px;
+    }
+
+    .button-edit {
+        background-color: #3498db;
+        /* Edit button color */
+    }
+
+    .button-delete {
+        background-color: #e74c3c;
+        /* Delete button color */
+    }
+
+    .button-edit:hover,
+    .button-delete:hover {
+        background-color: darken(#3498db, 10%);
+        /* Darken the color on hover */
+    }
+
+    .button-edit .icon,
+    .button-delete .icon {
+        font-size: 18px;
+        margin-right: 5px;
+    }
 </style>
 
 <body>
     <?php $this->load->view('sidebar'); ?>
     <!-- tabel siswa -->
     <div class="container">
-        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-blue-500 b-20 mb-10 rounded-lg">Tabel data Siswa</h1>
+        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 mb-10 rounded-lg">Tabel data Siswa</h1>
     </div>
-    <div class="w-45 mb-10 pl-10 pr-10">
+    <div class="w-45 mb-10 px-10">
         <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="w-full overflow-x-auto">
-                <table id="example_pelanggan" class="w-full text-sm text-left text-gray-800 dark:text-gray-700">
+                <table class="w-full text-sm text-left text-gray-800 dark:text-gray-700 heading">
                     <thead>
-                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-blue-500 h-50">
+                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
                             <th class="px-10 py-4">No</th>
                             <th class="px-10 py-4">Nama Siswa</th>
                             <th class="px-10 py-4">Nama Ibu</th>
@@ -75,9 +127,9 @@
                                 <td class="px-10 py-3"><?php echo $row->nama_ibu ?></td>
                                 <td class="px-10 py-3"><?php echo $row->nama_ayah ?></td>
                                 <td class="px-10 py-3"><?php echo $row->alamat ?></td>
-                                <td class="px-6 py-3">
-                                    <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                        <span class="">
+                                <td class="px-10 py-3 flex items-center justify-center space-x-2">
+                                    <button onclick="hapus(<?php echo $row->id ?>)" class="button-delete">
+                                        <span class="icon">
                                             <i class="fas fa-trash-alt"></i>
                                         </span>
                                     </button>
@@ -93,14 +145,14 @@
 
     <!-- tabel guru -->
     <div class="container">
-        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-blue-500 b-20 mb-10 rounded-lg">Tabel data Guru</h1>
+        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 mb-10 rounded-lg">Tabel data Guru</h1>
     </div>
     <div class="w-45 mt-17 pl-10 pr-10">
         <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="overflow-x-auto">
                 <table class="w-full table-auto text-sm text-left text-gray-800 dark:text-gray-700 ">
                     <thead>
-                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-blue-500 h-50">
+                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
                             <th class="px-10 py-4">No</th>
                             <th class="px-10 py-4">Nama Guru</th>
                             <th class="px-10 py-4">Nik</th>
@@ -118,14 +170,14 @@
                                 <td class="px-10 py-3"><?php echo $row->nik ?></td>
                                 <td class="px-10 py-3"><?php echo $row->gender ?></td>
                                 <td class="px-10 py-3"><?php echo $row->no_hp ?></td>
-                                <td class="px-10 py-3">
-                                    <a href="<?php echo base_url('admin/edit_guru/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
-                                        <span class="">
+                                <td class="px-10 py-3 flex items-center justify-center space-x-2">
+                                    <a href="<?php echo base_url('admin/edit_guru/') . $row->id ?>" class="button-edit">
+                                        <span class="icon">
                                             <i class="fas fa-edit"></i>
                                         </span>
                                     </a>
-                                    <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                        <span class="">
+                                    <button onclick="hapus(<?php echo $row->id ?>)" class="button-delete">
+                                        <span class="icon">
                                             <i class="fas fa-trash-alt"></i>
                                         </span>
                                     </button>
@@ -142,14 +194,14 @@
 
     <!-- tabel mapel -->
     <div class="container">
-        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-blue-500 b-20 mb-10 rounded-lg">Tabel data Mapel</h1>
+        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 mb-10 rounded-lg">Tabel data Mapel</h1>
     </div>
     <div class="w-45 mt-17 pl-10 pr-10">
         <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="overflow-x-auto">
                 <table class="w-full table-auto text-sm text-left text-gray-800 dark:text-gray-700 ">
                     <thead>
-                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-blue-500 h-50">
+                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
                             <th class="px-10 py-4">No</th>
                             <th class="px-10 py-4">Nama Guru Mapel</th>
                             <th class="px-10 py-4">Nama Mapel</th>
@@ -163,14 +215,14 @@
                                 <td class="px-10 py-3"><?php echo $no ?></td>
                                 <td class="px-10 py-3"><?php echo namaguru_getbyid($row->id_nama_guru); ?></td>
                                 <td class="px-10 py-3"><?php echo $row->nama_mapel ?></td>
-                                <td class="px-10 py-3">
-                                    <a href="<?php echo base_url('admin/edit_akademik/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
-                                        <span class="">
+                                <td class="px-10 py-3 flex items-center justify-center space-x-2">
+                                    <a href="<?php echo base_url('admin/edit_akademik/') . $row->id ?>" class="button-edit">
+                                        <span class="icon">
                                             <i class="fas fa-edit"></i>
                                         </span>
                                     </a>
-                                    <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                        <span class="">
+                                    <button onclick="hapus(<?php echo $row->id ?>)" class="button-delete">
+                                        <span class="icon">
                                             <i class="fas fa-trash-alt"></i>
                                         </span>
                                     </button>
@@ -187,14 +239,14 @@
 
     <!-- tabel ekstra -->
     <div class="container">
-        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-blue-500 b-20 mb-10 rounded-lg">Tabel data Ekstrakulikuler</h1>
+        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 mb-10 rounded-lg">Tabel data Ekstrakulikuler</h1>
     </div>
     <div class="w-45 mt-17 pl-10 pr-10">
         <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="overflow-x-auto">
                 <table class="w-full table-auto text-sm text-left text-gray-800 dark:text-gray-700 ">
                     <thead>
-                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-blue-500 h-50">
+                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
                             <th class="px-10 py-4">No</th>
                             <th class="px-10 py-4">Ekstrakurikuler</th>
                             <th class="px-10 py-4">Nama Pembimbing</th>
@@ -210,14 +262,14 @@
                                 <td class="px-10 py-3"><?php echo $row->nama_ekstra ?></td>
                                 <td class="px-10 py-3"><?php echo $row->pembimbing ?></td>
                                 <td class="px-10 py-3"><?php echo $row->waktu ?></td>
-                                <td class="px-10 py-3">
-                                    <a href="<?php echo base_url('admin/edit_ekstra/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
-                                        <span class="">
+                                <td class="px-10 py-3 flex items-center justify-center space-x-2">
+                                    <a href="<?php echo base_url('admin/edit_ekstra/') . $row->id ?>" class="button-edit">
+                                        <span class="icon">
                                             <i class="fas fa-edit"></i>
                                         </span>
                                     </a>
-                                    <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                        <span class="">
+                                    <button onclick="hapus(<?php echo $row->id ?>)" class="button-delete">
+                                        <span class="icon">
                                             <i class="fas fa-trash-alt"></i>
                                         </span>
                                     </button>

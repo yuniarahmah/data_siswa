@@ -49,14 +49,14 @@
 <body>
     <?php $this->load->view('sidebaru'); ?>
     <div class="container">
-        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-blue-500 b-20 mb-10 rounded-lg">Tabel data Ekstrakulikuler</h1>
+        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-500 b-20 mb-10 rounded-lg">Tabel data Ekstrakulikuler</h1>
     </div>
     <div class="w-45 mt-17 pl-10 pr-10">
         <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="overflow-x-auto">
                 <table class="w-full table-auto text-sm text-left text-gray-800 dark:text-gray-700 ">
                     <thead>
-                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-blue-500 h-50">
+                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 dark:text-white dark:bg-gray-800 bg-indigo-500 h-50">
                             <th class="px-4 py-5">No</th>
                             <th class="px-4 py-5">Ekstrakurikuler</th>
                             <th class="px-4 py-5">Nama Pembimbing</th>
@@ -66,7 +66,7 @@
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                         <?php $no = 0;
                         foreach ($ekstra as $row) : $no++ ?>
-                            <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
+                            <tr class="cursor-pointer dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
                                 <td class="px-4 py-5"><?php echo $no ?></td>
                                 <td class="px-4 py-5"><?php echo $row->nama_ekstra ?></td>
                                 <td class="px-4 py-5"><?php echo $row->pembimbing ?></td>

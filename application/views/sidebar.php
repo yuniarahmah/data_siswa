@@ -3,334 +3,540 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--<title>Dashboard Sidebar Menu</title>-->
 </head>
+<style>
+    /* Google Font Import - Poppins */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    :root {
+        /* ===== Colors ===== */
+        --body-color: #E4E9F7;
+        --sidebar-color: #FFF;
+        --primary-color: #695CFE;
+        --primary-color-light: #F6F5FF;
+        --toggle-color: #DDD;
+        --text-color: #707070;
+
+        /* ====== Transition ====== */
+        --tran-03: all 0.2s ease;
+        --tran-03: all 0.3s ease;
+        --tran-04: all 0.3s ease;
+        --tran-05: all 0.3s ease;
+    }
+
+    body {
+        min-height: 100vh;
+        background-color: var(--body-color);
+        transition: var(--tran-05);
+    }
+
+    ::selection {
+        background-color: var(--primary-color);
+        color: #fff;
+    }
+
+    body.dark {
+        --body-color: #18191a;
+        --sidebar-color: #242526;
+        --primary-color: #3a3b3c;
+        --primary-color-light: #3a3b3c;
+        --toggle-color: #fff;
+        --text-color: #ccc;
+    }
+
+    /* ===== Sidebar ===== */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 250px;
+        padding: 10px 14px;
+        background: var(--sidebar-color);
+        transition: var(--tran-05);
+        z-index: 100;
+    }
+
+    .sidebar.close {
+        width: 88px;
+    }
+
+    /* ===== Reusable code - Here ===== */
+    .sidebar li {
+        height: 50px;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .sidebar header .image,
+    .sidebar .icon {
+        min-width: 60px;
+        border-radius: 6px;
+    }
+
+    .sidebar .icon {
+        min-width: 60px;
+        border-radius: 6px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+    }
+
+    .sidebar .text,
+    .sidebar .icon {
+        color: var(--text-color);
+        transition: var(--tran-03);
+    }
+
+    .sidebar .text {
+        font-size: 17px;
+        font-weight: 500;
+        white-space: nowrap;
+        opacity: 1;
+    }
+
+    .sidebar.close .text {
+        opacity: 0;
+    }
+
+    /* =========================== */
+
+    .sidebar header {
+        position: relative;
+    }
+
+    .sidebar header .image-text {
+        display: flex;
+        align-items: center;
+    }
+
+    .sidebar header .logo-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    header .image-text .name {
+        margin-top: 2px;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    header .image-text .profession {
+        font-size: 16px;
+        margin-top: -2px;
+        display: block;
+    }
+
+    .sidebar header .image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sidebar header .image img {
+        width: 40px;
+        border-radius: 6px;
+    }
+
+    .sidebar header .toggle {
+        position: absolute;
+        top: 50%;
+        right: -25px;
+        transform: translateY(-50%) rotate(180deg);
+        height: 25px;
+        width: 25px;
+        background-color: var(--primary-color);
+        color: var(--sidebar-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        cursor: pointer;
+        transition: var(--tran-05);
+    }
+
+    body.dark .sidebar header .toggle {
+        color: var(--text-color);
+    }
+
+    .sidebar.close .toggle {
+        transform: translateY(-50%) rotate(0deg);
+    }
+
+    .sidebar .menu {
+        margin-top: 40px;
+    }
+
+    .sidebar li.search-box {
+        border-radius: 6px;
+        background-color: var(--primary-color-light);
+        cursor: pointer;
+        transition: var(--tran-05);
+    }
+
+    .sidebar li.search-box input {
+        height: 100%;
+        width: 100%;
+        outline: none;
+        border: none;
+        background-color: var(--primary-color-light);
+        color: var(--text-color);
+        border-radius: 6px;
+        font-size: 17px;
+        font-weight: 500;
+        transition: var(--tran-05);
+    }
+
+    .sidebar li a {
+        list-style: none;
+        height: 100%;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: var(--tran-03);
+    }
+
+    .sidebar li a:hover {
+        background-color: var(--primary-color);
+    }
+
+    .sidebar li a:hover .icon,
+    .sidebar li a:hover .text {
+        color: var(--sidebar-color);
+    }
+
+    body.dark .sidebar li a:hover .icon,
+    body.dark .sidebar li a:hover .text {
+        color: var(--text-color);
+    }
+
+    .sidebar .menu-bar {
+        height: calc(100% - 55px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow-y: scroll;
+    }
+
+    .menu-bar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .sidebar .menu-bar .mode {
+        border-radius: 6px;
+        background-color: var(--primary-color-light);
+        position: relative;
+        transition: var(--tran-05);
+    }
+
+    .menu-bar .mode .sun-moon {
+        height: 50px;
+        width: 60px;
+    }
+
+    .mode .sun-moon i {
+        position: absolute;
+    }
+
+    .mode .sun-moon i.sun {
+        opacity: 0;
+    }
+
+    body.dark .mode .sun-moon i.sun {
+        opacity: 1;
+    }
+
+    body.dark .mode .sun-moon i.moon {
+        opacity: 0;
+    }
+
+    .menu-bar .bottom-content .toggle-switch {
+        position: absolute;
+        right: 0;
+        height: 100%;
+        min-width: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .toggle-switch .switch {
+        position: relative;
+        height: 22px;
+        width: 40px;
+        border-radius: 25px;
+        background-color: var(--toggle-color);
+        transition: var(--tran-05);
+    }
+
+    .switch::before {
+        content: '';
+        position: absolute;
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        top: 50%;
+        left: 5px;
+        transform: translateY(-50%);
+        background-color: var(--sidebar-color);
+        transition: var(--tran-04);
+    }
+
+    body.dark .switch::before {
+        left: 20px;
+    }
+
+    .home {
+        position: absolute;
+        top: 0;
+        top: 0;
+        left: 250px;
+        height: 100vh;
+        width: calc(100% - 250px);
+        background-color: var(--body-color);
+        transition: var(--tran-05);
+    }
+
+    .home .text {
+        font-size: 30px;
+        font-weight: 500;
+        color: var(--text-color);
+        padding: 12px 60px;
+    }
+
+    .sidebar.close~.home {
+        left: 78px;
+        height: 100vh;
+        width: calc(100% - 78px);
+    }
+
+    body.dark .home .text {
+        color: var(--text-color);
+    }
+
+    @media only screen and (max-width: 600px) {
+        .menu-links {
+            width: 30px;
+        }
+    }
+
+    /* ===== Sidebar in Responsive Mode ===== */
+    @media (max-width: 768px) {
+        .sidebar {
+            width: 88px !important;
+            /* Override width for responsive mode */
+        }
+
+        .sidebar .text {
+            opacity: 0;
+        }
+
+        .sidebar.close {
+            width: 88px !important;
+            /* Keep it closed in responsive mode */
+        }
+
+        .sidebar.close .toggle {
+            transform: translateY(-50%) rotate(0deg);
+        }
+
+        body.dark .sidebar header .toggle {
+            color: var(--text-color);
+        }
+
+        .sidebar .menu {
+            margin-top: 0;
+            /* Adjust margin if needed */
+        }
+
+        .sidebar li.search-box {
+            display: none;
+            /* Hide search box in responsive mode if needed */
+        }
+
+        .sidebar li a {
+            justify-content: center;
+        }
+
+        .sidebar li a .icon {
+            margin-right: 0;
+        }
+
+        .sidebar li a .text {
+            display: none;
+        }
+    }
+</style>
 
 <body>
-    <style>
-        /* Compiled dark classes from Tailwind */
-        .dark .dark\:divide-gray-700> :not([hidden])~ :not([hidden]) {
-            border-color: rgba(55, 65, 81);
-        }
+    <nav class="sidebar">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="https://play-lh.googleusercontent.com/qceuXlUVDDLQO9YCW3ljvDttzyAEjOoWEhzLvwrhPwu0SyUn8Dj3FawzKoWHap-BaH0" class="w-1/6 md:w-15" alt="Logo">
+                </span>
 
-        .dark .dark\:bg-gray-50 {
-            background-color: rgba(249, 250, 251);
-        }
+                <div class="text logo-text">
+                    <span class="name"><i class="font-bold text nav-text">Data Siswa baru</i></span>
+                </div>
+            </div>
 
-        .dark .dark\:bg-gray-100 {
-            background-color: rgba(243, 244, 246);
-        }
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
 
-        .dark .dark\:bg-gray-600 {
-            background-color: rgba(75, 85, 99);
-        }
+        <div class="menu-bar">
+            <div class="menu">
 
-        .dark .dark\:bg-gray-700 {
-            background-color: rgba(55, 65, 81);
-        }
+                <!-- <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Search...">
+                </li> -->
 
-        .dark .dark\:bg-gray-800 {
-            background-color: rgba(31, 41, 55);
-        }
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="<?php echo base_url('admin/dashboard') ?>">
+                            <i class="fa-solid fa-house mr-1 icon"></i>
+                            <span class="ml-2 text nav-text tracking-wide truncate"> Dashboard</span>
+                        </a>
+                    </li>
 
-        .dark .dark\:bg-gray-900 {
-            background-color: rgba(17, 24, 39);
-        }
+                    <li class="nav-link">
+                        <a href="<?php echo base_url('admin/tabel_data_lengkap') ?>">
+                        <i class="fa-solid fa-calendar-check icon mr-2"></i>
+                            <span class=" text nav-text tracking-wide truncate">Data Lengkap</span>
+                        </a>
+                    </li>
 
-        .dark .dark\:bg-red-700 {
-            background-color: rgba(185, 28, 28);
-        }
+                    <li class="nav-link">
+                        <a href="<?php echo base_url('admin/tambah_siswa') ?>">
+                            <i class="fa-regular fa-message mr-2 icon"></i>
+                            <span class=" text nav-text tracking-wide truncate">tambah siswa</span>
+                        </a>
+                    </li>
 
-        .dark .dark\:bg-green-700 {
-            background-color: rgba(4, 120, 87);
-        }
+                    <li class="nav-link">
+                        <a href="<?php echo base_url('admin/tambah_ekstra') ?>">
+                            <i class="fa-solid fa-dumbbell mr-2 icon"></i>
+                            <span class="text nav-text"> Ekstrakulikuler</span>
+                        </a>
+                    </li>
 
-        .dark .dark\:hover\:bg-gray-200:hover {
-            background-color: rgba(229, 231, 235);
-        }
+                    <li class="nav-link">
+                        <a href="<?php echo base_url('admin/tambah_akademik') ?>">
+                            <i class="fa-solid fa-book mr-2 icon"></i>
+                            <span class="text nav-text"> Mata Pelajaran</span>
+                        </a>
+                    </li>
 
-        .dark .dark\:hover\:bg-gray-600:hover {
-            background-color: rgba(75, 85, 99);
-        }
+                    <li class="nav-link">
+                        <a href="<?php echo base_url('admin/tambah_guru') ?>">
+                            <i class="fa-solid fa-user-plus mr-2 icon"></i>
+                            <span class="text nav-text">Tambah Guru</span>
+                        </a>
+                    </li>
 
-        .dark .dark\:hover\:bg-gray-700:hover {
-            background-color: rgba(55, 65, 81);
-        }
+                </ul>
+            </div>
 
-        .dark .dark\:hover\:bg-gray-900:hover {
-            background-color: rgba(17, 24, 39);
-        }
+            <div class="bottom-content">
+                <li class="">
+                    <a onclick="KeluarOPT()">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
 
-        .dark .dark\:border-gray-100 {
-            border-color: rgba(243, 244, 246);
-        }
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
 
-        .dark .dark\:border-gray-400 {
-            border-color: rgba(156, 163, 175);
-        }
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </div>
+        </div>
+    </nav>
+    <div class="h-full ml-48 mt-14 mb-10 md:ml-64">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script>
+            const body = document.querySelector('body'),
+                sidebar = body.querySelector('nav'),
+                toggle = body.querySelector(".toggle"),
+                searchBtn = body.querySelector(".search-box"),
+                modeSwitch = body.querySelector(".toggle-switch"),
+                modeText = body.querySelector(".mode-text");
 
-        .dark .dark\:border-gray-500 {
-            border-color: rgba(107, 114, 128);
-        }
 
-        .dark .dark\:border-gray-600 {
-            border-color: rgba(75, 85, 99);
-        }
+            toggle.addEventListener("click", () => {
+                sidebar.classList.toggle("close");
+            })
 
-        .dark .dark\:border-gray-700 {
-            border-color: rgba(55, 65, 81);
-        }
+            searchBtn.addEventListener("click", () => {
+                sidebar.classList.remove("close");
+            })
 
-        .dark .dark\:border-gray-900 {
-            border-color: rgba(17, 24, 39);
-        }
+            modeSwitch.addEventListener("click", () => {
+                body.classList.toggle("dark");
 
-        .dark .dark\:hover\:border-gray-800:hover {
-            border-color: rgba(31, 41, 55);
-        }
+                if (body.classList.contains("dark")) {
+                    modeText.innerText = "Dark mode";
+                } else {
+                    modeText.innerText = "Light mode";
 
-        .dark .dark\:text-white {
-            color: rgba(255, 255, 255);
-        }
+                }
+            });
 
-        .dark .dark\:text-gray-50 {
-            color: rgba(249, 250, 251);
-        }
-
-        .dark .dark\:text-gray-100 {
-            color: rgba(243, 244, 246);
-        }
-
-        .dark .dark\:text-gray-200 {
-            color: rgba(229, 231, 235);
-        }
-
-        .dark .dark\:text-gray-400 {
-            color: rgba(156, 163, 175);
-        }
-
-        .dark .dark\:text-gray-500 {
-            color: rgba(107, 114, 128);
-        }
-
-        .dark .dark\:text-gray-700 {
-            color: rgba(55, 65, 81);
-        }
-
-        .dark .dark\:text-gray-800 {
-            color: rgba(31, 41, 55);
-        }
-
-        .dark .dark\:text-red-100 {
-            color: rgba(254, 226, 226);
-        }
-
-        .dark .dark\:text-green-100 {
-            color: rgba(209, 250, 229);
-        }
-
-        .dark .dark\:text-blue-400 {
-            color: rgba(96, 165, 250);
-        }
-
-        .dark .group:hover .dark\:group-hover\:text-gray-500 {
-            color: rgba(107, 114, 128);
-        }
-
-        .dark .group:focus .dark\:group-focus\:text-gray-700 {
-            color: rgba(55, 65, 81);
-        }
-
-        .dark .dark\:hover\:text-gray-100:hover {
-            color: rgba(243, 244, 246);
-        }
-
-        .dark .dark\:hover\:text-blue-500:hover {
-            color: rgba(59, 130, 246);
-        }
-
-        /* Custom style */
-        .header-right {
-            width: calc(100% - 3.5rem);
-        }
-
-        .sidebar:hover {
-            width: 16rem;
-        }
-
-        @media only screen and (min-width: 768px) {
-            .header-right {
-                width: calc(100% - 16rem);
+            function KeluarOPT(id) {
+                const success_keluar = "<?php echo $this->session->flashdata('success_keluar'); ?>";
+                Swal.fire({
+                    title: 'Yakin Ingin Keluar',
+                    text: "",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Batal',
+                    confirmButtonText: 'Keluar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Redirect to logout controller/action
+                        window.location.href = "<?php echo base_url('auth/logout') ?>"; // Change this to your logout URL
+                    }
+                });
             }
-        }
-    </style>
-    <div x-data="setup()" :class="{ 'dark': isDark }">
-        <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white">
-
-            <!-- Header -->
-            <div href="profil.php" class="fixed w-full flex items-center justify-between h-14 text-white z-10">
-                <div class="flex items-center justify-start md:justify-center pl-3 w-full md:w-64 h-14 bg-blue-800 dark:bg-gray-800 border-none">
-                    <img src="https://play-lh.googleusercontent.com/qceuXlUVDDLQO9YCW3ljvDttzyAEjOoWEhzLvwrhPwu0SyUn8Dj3FawzKoWHap-BaH0" class="w-1/6 md:w-15" alt="Logo"><i class="font-bold">Data Siswa baru</i>
-                </div>
-
-                <div class="flex justify-between items-center h-14 bg-blue-800 dark:bg-gray-800 header-right">
-                    <!-- <div class="bg-white rounded flex items-center w-full max-w-xl mr-4 p-2 shadow-sm border border-gray-200">
-                        <button class="outline-none focus:outline-none">
-                            <svg class="w-5 text-gray-600 h-5 cursor-pointer" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24">
-                                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                            </svg>
-                        </button>
-                        <input type="search" id="searchInput" name="" placeholder="Search" class="w-full pl-3 text-sm text-black outline-none focus:outline-none bg-transparent" />
-                    </div> -->
-                    <ul class="flex items-center ml-auto">
-                        <li>
-                            <button aria-hidden="true" @click="toggleTheme" class="group p-2 transition-colors duration-200 rounded-full shadow-md bg-blue-200 hover:bg-blue-200 dark:bg-gray-50 dark:hover:bg-gray-200 text-gray-900 focus:outline-none">
-                                <svg x-show="isDark" width="24" height="24" class="fill-current text-gray-700 group-hover:text-gray-500 group-focus:text-gray-700 dark:text-gray-700 dark:group-hover:text-gray-500 dark:group-focus:text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                                </svg>
-                                <svg x-show="!isDark" width="24" height="24" class="fill-current text-gray-700 group-hover:text-gray-500 group-focus:text-gray-700 dark:text-gray-700 dark:group-hover:text-gray-500 dark:group-focus:text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a1 1 0 011 1v2a1 1 0 11-2 0V3a1 1 0 011-1zm0 18a1 1 0 011-1v-2a1 1 0 11 2 0v2a1 1 0 01-1 1zm9.899-12.778a1 1 0 010 1.414l-1.414 1.414a1 1 0 01-1.414-1.414l1.414-1.414a1 1 0 011.414 0zM4.101 9.222a1 1 0 010-1.414L5.515 6.394a1 1 0 011.414 1.414L5.515 9.222a1 1 0 01-1.414 0zM12 21a1 1 0 01-1-1v-2a1 1 0 112 0v2a1 1 0 01-1 1z" />
-
-                                </svg>
-                            </button>
-                        </li>
-                        <li>
-                            <div class="block w-px h-6 mx-3 bg-gray-400 dark:bg-gray-700"></div>
-                        </li>
-                        <li>
-                            <a onclick="KeluarOPT()" class="flex items-center mr-4 hover:text-blue-100">
-                                <span class="inline-flex mr-1">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
-                                    </svg>
-                                </span>
-                                Logout
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- ./Header -->
-
-            <!-- Sidebar -->
-            <div class="fixed flex flex-col top-14 left-0 w-14 hover:w-64 md:w-64 bg-blue-900 dark:bg-gray-900 h-full text-white transition-all duration-300 border-none z-10 sidebar">
-                <div class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
-                    <ul class="flex flex-col py-4 space-y-1">
-                        <li class="px-5 hidden md:block">
-                            <div class="flex flex-row items-center h-8">
-                                <div class="text-sm font-large tracking-wide text-gray-400 uppercase">Admin</div>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="<?php echo base_url('admin/dashboard') ?>" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
-                                <span class="inline-flex justify-center items-center ml-4">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                                    </svg>
-                                </span>
-                                <span class="ml-2 text-sm tracking-wide truncate">Dashboard</span>
-                            </a>
-                        </li>
-                        <!-- <li>
-                            <a href="<?php echo base_url('admin/tambah_siswa') ?>" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
-                                <span class="inline-flex justify-center items-center ml-4">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
-                                    </svg>
-                                </span>
-                                <span class="ml-2 text-sm tracking-wide truncate">Tabel tambah siswa</span>
-                            </a>
-                        </li> -->
-                        <li>
-                            <a href="<?php echo base_url('admin/tabel_data_lengkap') ?>" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
-                                <i class="fa-solid fa-sliders ml-5"></i>
-                                <span class="ml-2 text-sm tracking-wide truncate">Tabel Data Lengkap</span>
-                            </a>
-                        </li>
-                        <li>
-                            <button type="button" class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-lg group dark:text-white hover:bg-blue-800 dark:hover:bg-gray-600" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example" onclick="toggleSubMenu(this)">
-                                <span class="flex-1 ms-3 mr-12 whitespace-nowrap"> <i class="fa-solid fa-user-tie ml-1 mr-1"></i>  Tabel Tambah data</span>
-                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                                </svg>
-                            </button>
-                            <ul id="dropdown-example" class="hidden py-2 space-y-2 pl-11">
-                                <li>
-                                    <a href="<?php echo base_url('admin/tambah_ekstra') ?>" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600">Tambah Ekstrakulikuler</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('admin/tambah_akademik') ?>" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600">Tambah Mata Pelajaran</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('admin/tambah_guru') ?>" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600"> Tambah Guru</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('admin/tambah_siswa') ?>" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group dark:text-white  hover:bg-blue-800 dark:hover:bg-gray-600"> Tambah Siswa</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <p class="mb-14 px-5 py-3 hidden md:block text-center text-xs">BOOTCAMP@2024</p>
-                </div>
-            </div>
-            <div class="h-full ml-14 mt-14 mb-10 md:ml-64">
-                <!--  Sidebar -->
-
-                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10">
-                </script>
-                <script>
-                    function toggleSubMenu(element) {
-                        // Find the next sibling (ul) of the clicked icon
-                        var submenu = element.nextElementSibling;
-
-                        // Toggle the 'hidden' class on the submenu
-                        submenu.classList.toggle('hidden');
-                    }
-
-                    document.querySelectorAll('.submenu-toggle').forEach(function(toggle) {
-                        toggle.addEventListener('click', function() {
-                            var nestedSubMenu = toggle.parentElement.nextElementSibling;
-                            nestedSubMenu.classList.toggle('hidden');
-                        });
-                    });
-
-                    function KeluarOPT(id) {
-                        const success_keluar = "<?php echo $this->session->flashdata('success_keluar'); ?>";
-                        Swal.fire({
-                            title: 'Yakin Ingin Keluar',
-                            text: "",
-                            icon: 'question',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            cancelButtonText: 'Batal',
-                            confirmButtonText: 'Keluar'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                // Redirect to logout controller/action
-                                window.location.href = "<?php echo base_url('auth/logout') ?>"; // Change this to your logout URL
-                            }
-                        });
-                    }
-
-                    // Function to handle search
-                    function handleSearch() {
-                        const searchInput = document.getElementById('searchInput');
-                        const searchTerm = searchInput.value.toLowerCase(); // Convert to lowercase for case-insensitive search
-
-                        // Perform actions based on the search term (e.g., filter and display results)
-                        // You can customize this part based on your application's requirements
-
-                        // Example: Log the search term to the console
-                        console.log('Search Term:', searchTerm);
-                    }
-
-                    // Add event listener to the search input
-                    document.getElementById('searchInput').addEventListener('input', handleSearch);
-                </script>
+        </script>
 </body>
 
 </html>

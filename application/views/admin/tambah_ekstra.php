@@ -117,8 +117,8 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         color: #f4f4f4;
-        background-color: #45474B;
-        border: 3px solid #45474B;
+        background-color: #4942E4;
+        border: 3px solid #4942E4;
         border-radius: 1rem;
         width: 8rem;
         height: 2.5rem;
@@ -140,8 +140,8 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         color: white;
-        background-color: #45474B;
-        border: 3px solid #45474B;
+        background-color: #4942E4;
+        border: 3px solid #4942E4;
         border-radius: 1rem;
         width: 8rem;
         height: 2.5rem;
@@ -204,33 +204,30 @@
 
 <body>
     <?php $this->load->view('sidebar'); ?>
-    <div class="w-25 mb-10">
-        <div class='card m-auto p-3'>
-            <div class="container">
-                <header class="heading">
-                    <h1 id="title" class="main-heading text-gray-800">Tambah Kegiatan Ekstrakurikuler</h1>
-                </header>
-                <form action="<?php echo base_url('admin/aksi_tambah_ekstra') ?>" method="post" id="survey-form" class="survey-form w-full">
-                    <div class="flex flex-wrap">
-                        <div class="w-full px-1">
-                            <label for="nama_ekstra" class="block font-bold text-gray-800">Nama Ekstrakurikuler</label>
-                            <input required autocomplete="off" type="text" name="nama_ekstra" id="nama_ekstra" placeholder="ketik ekstrakurikuler baru" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                        </div>
-                        <div class="w-full px-1">
-                            <label for="pembimbing" class="block font-bold text-gray-800">Nama Pembimbing</label>
-                            <input autocomplete="off" type="text" name="pembimbing" id="pembimbing" placeholder="ketik pembimbing" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                        </div>
-                        <div class="w-full px-1">
-                            <label for="waktu" class="block font-bold text-gray-800">Waktu</label>
-                            <input autocomplete="off" type="time" name="waktu" id="waktu" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                        </div>
+    <div class="w-25 mb-10 dark:bg-gray-500">
+        <div class="card mb-20 px-20 ">
+            <h3 class="text-center text-2xl font-bold mb-4 dark:text-white">Tambah Ekatrakurikuler</h3>
+            <form action="<?php echo base_url('admin/aksi_tambah_ekstra') ?>" method="post" id="survey-form" class="survey-form w-full">
+                <div class="flex flex-wrap">
+                    <div class="w-full px-1">
+                        <label for="nama_ekstra" class="block font-bold text-gray-800">Nama Ekstrakurikuler</label>
+                        <input required autocomplete="off" type="text" name="nama_ekstra" id="nama_ekstra" placeholder="ketik ekstrakurikuler baru" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                     </div>
-                    <div class="text-center mt-1">
-                        <input type="submit" id="submit" class="submit " value="Submit">
+                    <div class="w-full px-1">
+                        <label for="pembimbing" class="block font-bold text-gray-800">Nama Pembimbing</label>
+                        <input autocomplete="off" type="text" name="pembimbing" id="pembimbing" placeholder="ketik pembimbing" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                     </div>
-                </form>
-            </div>
+                    <div class="w-full px-1">
+                        <label for="waktu" class="block font-bold text-gray-800">Waktu</label>
+                        <input autocomplete="off" type="time" name="waktu" id="waktu" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                    </div>
+                </div>
+                <div class="text-center mt-1">
+                    <input type="submit" id="submit" class="submit " value="Submit">
+                </div>
+            </form>
         </div>
+    </div>
     </div>
     <!--Datatables -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

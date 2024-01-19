@@ -119,8 +119,8 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #f4f4f4;
-            background-color: #4F709C;
-            border: 3px solid #4F709C;
+            background-color: #4942E4;
+            border: 3px solid #4942E4;
             border-radius: 1rem;
             width: 8rem;
             height: 2.5rem;
@@ -142,8 +142,8 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #f4f4f4;
-            background-color: #4F709C;
-            border: 3px solid #4F709C;
+            background-color: #4942E4;
+            border: 3px solid #4942E4;
             border-radius: 1rem;
             width: 8rem;
             height: 2.5rem;
@@ -221,42 +221,40 @@
     <?php $this->load->view('sidebar'); ?>
 
     <main class="contain-all max-h-screen overflow-y-auto">
-        <div class="container">
-            <header class="heading">
-                <div class="green-bar"></div>
-                <h1 id="title" class="main-heading text-gray-800">Edit Data Guru</h1>
-            </header>
+        <div class="w-25 mb-10 dark:bg-gray-500">
+            <div class="card mb-20 px-20 ">
+                <h3 class="text-center text-2xl font-bold mb-4 dark:text-white">Edit Data Guru</h3>
 
-            <?php foreach ($guru as $row) : ?>
-                <form action="<?php echo base_url('admin/aksi_edit_guru/' . $row->id); ?>" method="post" id="survey-form" class="survey-form w-full">
-                    <div class="flex flex-wrap">
-                        <div class="w-full px-1">
-                            <label for="nama_guru" class="block font-bold text-gray-800">Nama Guru</label>
-                            <input autocomplete="off" value="<?= $row->nama_guru ?>" type="text" name="nama_guru" id="nama_guru" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                <?php foreach ($guru as $row) : ?>
+                    <form action="<?php echo base_url('admin/aksi_edit_guru/' . $row->id); ?>" method="post" id="survey-form" class="survey-form w-full">
+                        <div class="flex flex-wrap">
+                            <div class="w-full px-1">
+                                <label for="nama_guru" class="block font-bold text-gray-800">Nama Guru</label>
+                                <input autocomplete="off" value="<?= $row->nama_guru ?>" type="text" name="nama_guru" id="nama_guru" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                            </div>
+                            <div class="w-full px-1">
+                                <label for="nik" class="block font-bold text-gray-800">NIK</label>
+                                <input autocomplete="off" value="<?= $row->nik ?>" type="text" name="nik" id="nik" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                            </div>
+                            <div class="w-full px-1">
+                                <label for="gender" class="block font-bold text-gray-800">Gender</label>
+                                <select name="gender" value="<?php $row->gender ?>" id="gender" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                                    <option value="<?= $row->gender ?>">pilih Gender</option>
+                                    <option value="laki-laki">Laki-laki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                </select>
+                            </div>
+                            <div class="w-full px-1">
+                                <label for="no_hp" class="block font-bold text-gray-800">No Hp</label>
+                                <input autocomplete="off" value="<?= $row->no_hp ?>" type="text" name="no_hp" id="no_hp" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                            </div>
                         </div>
-                        <div class="w-full px-1">
-                            <label for="nik" class="block font-bold text-gray-800">NIK</label>
-                            <input autocomplete="off" value="<?= $row->nik ?>" type="text" name="nik" id="nik" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                        <div class="text-center mt-1">
+                            <input type="submit" id="submit" class="submit" value="Submit">
                         </div>
-                        <div class="w-full px-1">
-                            <label for="gender" class="block font-bold text-gray-800">Gender</label>
-                            <select name="gender" value="<?php $row->gender ?>" id="gender" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                                <option value="<?= $row->gender ?>">pilih Gender</option>
-                                <option value="laki-laki">Laki-laki</option>
-                                <option value="Perempuan">Perempuan</option>
-                            </select>
-                        </div>
-                        <div class="w-full px-1">
-                            <label for="no_hp" class="block font-bold text-gray-800">No Hp</label>
-                            <input autocomplete="off" value="<?= $row->no_hp ?>" type="text" name="no_hp" id="no_hp" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                        </div>
-                    </div>
-                    <div class="text-center mt-1">
-                        <input type="submit" id="submit" class="submit" value="Submit">
-                    </div>
-                </form>
-            <?php endforeach ?>
-        </div>
+                    </form>
+                <?php endforeach ?>
+            </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

@@ -7,7 +7,6 @@
     <title>Data Siswa Baru</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap');
@@ -117,8 +116,8 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         color: #f4f4f4;
-        background-color: #45474B;
-        border: 3px solid #45474B;
+        background-color: #4942E4;
+        border: 3px solid #4942E4;
         border-radius: 1rem;
         width: 8rem;
         height: 2.5rem;
@@ -140,8 +139,8 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         color: white;
-        background-color: #45474B;
-        border: 3px solid #45474B;
+        background-color: #4942E4;
+        border: 3px solid #4942E4;
         border-radius: 1rem;
         width: 8rem;
         height: 2.5rem;
@@ -204,7 +203,7 @@
 
 <body>
     <?php $this->load->view('sidebar'); ?>
-    <div class="w-25 mb-10">
+    <!-- <div class="w-25 mb-10">
         <div class='card m-auto p-3'>
             <div class="container">
                 <header class="heading">
@@ -217,8 +216,11 @@
                             <input required autocomplete="off" type="text" name="nama_mapel" id="nama_mapel" placeholder="ketik ekstrakurikuler baru" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                         </div>
                         <div class="w-full px-1">
-                            <label for="id_nama_guru" class="block font-bold text-gray-800">Nama Guru Mapel</label>
-                            <input autocomplete="off" type="text" name="id_nama_guru" id="id_nama_guru" placeholder="ketik pembimbing" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                            <label for="gender" class="block font-bold text-gray-800">Gender</label>
+                            <select name="gender" id="gender" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                                <option value="" disabled selected>pilih Guru</option>
+                                <option value="<?php echo namaguru_getbyid('$row->id_nama_guru') ?>"><?php echo namaguru_getbyid('$row->id_nama_guru') ?></option>
+                            </select>
                         </div>
                     </div>
                     <div class="text-center mt-1">
@@ -227,7 +229,25 @@
                 </form>
             </div>
         </div>
+    </div> -->
+
+    <div class="w-25 mb-10 dark:bg-gray-500">
+        <div class="card mb-20 px-20 ">
+            <h3 class="text-center text-2xl font-bold mb-4 dark:text-white">Tambah Mapel</h3>
+            <form action="<?php echo base_url('keuangan/aksi_tambah_akademik') ?>" method="post" id="survey-form" class="survey-form w-full">
+                <div class="flex flex-wrap gap-4">
+                    <div class="w-full px-1">
+                        <label for="nama_mapel" class="block font-bold text-gray-800">Nama Mapel</label>
+                        <input required autocomplete="off" type="text" name="nama_mapel" id="nama_mapel" placeholder="ketik mapel baru" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                    </div>
+                </div>
+                <div class="text-center mt-1">
+                    <input type="submit" id="submit" class="submit " value="Submit">
+                </div>
+            </form>
+        </div>
     </div>
+
     <!--Datatables -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

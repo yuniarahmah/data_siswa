@@ -40,24 +40,24 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4 text-gray-800">
           <div>
             <label for="nama_panggilan" class="block text-sm font-medium text-gray-600">Nama</label>
-            <input type="text" id="nama_panggilan" name="nama_panggilan" class="mt-1 p-2 w-full bg-blue-100 border rounded-md" value="<?php echo $row->nama_panggilan; ?>">
+            <input type="text" id="nama_panggilan" name="nama_panggilan" class="mt-1 p-2 w-full bg-indigo-100 border rounded-md" value="<?php echo $row->nama_panggilan; ?>">
           </div>
 
           <div>
             <label for="nomor" class="block text-sm font-medium text-gray-600">Sekolah</label>
-            <input type="text" class="mt-1 p-2 w-full bg-blue-100 border rounded-md" id="sekolah" name="sekolah" value="<?php echo $row->sekolah; ?>">
+            <input type="text" class="mt-1 p-2 w-full bg-indigo-100 border rounded-md" id="sekolah" name="sekolah" value="<?php echo $row->sekolah; ?>">
           </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4 ">
           <div class="mb-4 text-gray-800">
             <label for="email" class="block text-sm font-medium text-gray-600">Email</label>
-            <input type="text" id="email" name="email" class="mt-1 p-2 w-full bg-blue-100 border rounded-md text-gray-800" value="<?php echo $row->email; ?>">
+            <input type="text" id="email" name="email" class="mt-1 p-2 w-full bg-indigo-100 border rounded-md text-gray-800" value="<?php echo $row->email; ?>">
           </div>
 
           <div class="mb-4 relative">
             <label for="foto" class="block text-sm font-medium text-gray-800">Foto</label>
-            <input type="file" id="foto" name="foto" class="mt-1 p-2 w-full bg-blue-100 border rounded-md file-input text-gray-8">
+            <input type="file" id="foto" name="foto" class="mt-1 p-2 w-full bg-indigo-100 border rounded-md file-input text-gray-8">
           </div>
 
         </div>
@@ -66,7 +66,7 @@
           <div class="mb-4 relative">
             <label for="password_baru" class="block text-sm font-medium text-gray-600">Password Baru</label>
             <div class="relative">
-              <input type="password" class="mt-1 p-2 w-full bg-blue-100 border rounded-md" id="password_baru" name="password_baru">
+              <input type="password" class="mt-1 p-2 w-full bg-indigo-100 border rounded-md" id="password_baru" name="password_baru">
               <button class="btn btn-outline-secondary absolute top-1/2 transform -translate-y-1/2 right-2" type="button" id="togglePasswordBaru" onclick="togglePassword('password_baru', 'togglePasswordBaru')">
                 <i class="fas fa-eye-slash text-gray-800"></i>
               </button>
@@ -76,14 +76,14 @@
           <div class="mb-4 relative">
             <label for="konfirmasi_password" class="block text-sm font-medium text-gray-600">Konfirmasi Password</label>
             <div class="relative">
-              <input type="password" class="mt-1 p-2 w-full bg-blue-100 border rounded-md" id="konfirmasi_password" name="konfirmasi_password">
+              <input type="password" class="mt-1 p-2 w-full bg-indigo-100 border rounded-md" id="konfirmasi_password" name="konfirmasi_password">
               <button class="btn btn-outline-secondary absolute top-1/2 transform -translate-y-1/2 right-2" type="button" id="toggleKonfirmasiPassword" onclick="togglePassword('konfirmasi_password', 'toggleKonfirmasiPassword')">
                 <i class="fas fa-eye-slash text-gray-800"></i>
               </button>
             </div>
           </div>
         </div>
-        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mr-2" name="submit">Ubah</button>
+        <button type="submit" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full mr-2" name="submit">Ubah</button>
         <button type="button" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full" onclick="navigateTo('<?php echo base_url('admin/hapus_image'); ?>')">Hapus Foto</button>
       </form>
     </div>
