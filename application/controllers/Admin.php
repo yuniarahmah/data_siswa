@@ -65,7 +65,7 @@ class Admin extends CI_Controller
     public function hapus_siswa($id)
     {
         $this->m_model->delete('user', 'id', $id);
-        redirect(base_url('admin/tambah_siswa'));
+        redirect(base_url('admin/tabel_data_lengkap'));
     }
 
     public function tambah_guru()
@@ -191,9 +191,65 @@ class Admin extends CI_Controller
         }
     }
 
-    public function hapusakademik($id)
+    public function hapus_akademik($id)
     {
         $this->m_model->delete('akademik', 'id', $id);
         redirect(base_url('admin/tabel_data_lengkap'));
+    }
+
+    public function pembayaran()
+    {
+        $data['pembayaran'] = $this->m_model->get_pembayaran();
+        $this->load->view('admin/pembayaran', $data);
+    }
+
+    public function tambah_pembayaran()
+    {
+        $data['pembayaran'] = $this->m_model->get_data('pembayaran')->result();
+        $data['user'] = $this->m_model->get_data('user')->result();
+        $this->load->view('admin/tambah_pembayaran', $data);
+    }
+
+    public function aksi_tambah_pembayaran()
+    {
+        $data = [
+            'id_nama_siswa' => $this->input->post('nama_siswa'),
+            'jenis_pembayaran' => $this->input->post('jenis_pembayaran'),
+            'total_pembayaran' => $this->input->post('total_pembayaran'),
+            'status' => $this->input->post('status'),
+        ];
+        $this->m_model->tambah_data('pembayaran', $data);
+        redirect(base_url('admin/pembayaran'));
+    }
+
+    public function edit_pembayaran($id)
+    {
+        $data['pembayaran'] = $this->m_model->get_by_id('pembayaran', 'id', $id)->result();
+        $data['user'] = $this->m_model->get_data('user')->result();
+        $this->load->view('admin/edit_pembayaran', $data);
+    }
+
+    public function aksi_edit_pembayaran()
+    {
+        $data = [
+            'id_nama_siswa' => $this->input->post('nama_siswa'),
+            'jenis_pembayaran' => $this->input->post('jenis_pembayaran'),
+            'total_pembayaran' => $this->input->post('total_pembayaran'),
+            'status' => $this->input->post('status'),
+        ];
+        $eksekusi = $this->m_model->ubah_data('pembayaran', $data, ['id' => $this->input->post('id')]);
+        if ($eksekusi) {
+            $this->session->set_flashdata('sukses', 'berhasil');
+            redirect(base_url('keuangan/pembayaran'));
+        } else {
+            $this->session->set_flashdata('sukses', 'berhasil');
+            redirect(base_url('keuangan/ubah_pembayaran/' . $this->input->post('id')));
+        }
+    }
+
+    public function delete_pembayaran($id)
+    {
+        $this->m_model->delete('pembayaran', 'id', $id);
+        redirect(base_url('Keuangan/pembayaran'));
     }
 }

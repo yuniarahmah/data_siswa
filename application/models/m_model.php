@@ -88,11 +88,25 @@ class M_model extends CI_Model
         return $query->result();
     }
 
-    function get_pembayaran() {
-        $this->db->select( 'pembayaran.*, user.nama_siswa' );
-        $this->db->from( 'pembayaran' );
-        $this->db->join( 'user', 'pembayaran.id = user.id', 'left' );
+    function get_pembayaran()
+    {
+        $this->db->select('pembayaran.*, user.nama_siswa');
+        $this->db->from('pembayaran');
+        $this->db->join('user', 'pembayaran.id = user.id', 'left');
         $query = $this->db->get();
         return $query->result();
+    }
+
+    public function get_jenis_pembayaran()
+    {
+        // Replace 'your_table_name' with the actual table name
+        $result = $this->db->get('pembayaran')->row();
+
+        if ($result) {
+            return $result->jenis_pembayaran;
+        }
+
+        // Return a default value or handle the case when the result is empty
+        return "Default Value";
     }
 }

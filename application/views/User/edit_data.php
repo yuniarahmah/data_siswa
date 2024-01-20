@@ -186,7 +186,6 @@
 
         .contain-all {
             overflow-y: scroll;
-            height: 70rem;
         }
 
         @media only screen and (max-width: 800px) {
@@ -216,7 +215,6 @@
             }
         }
     </style>
-</head>
 
 <body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebaru'); ?>

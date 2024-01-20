@@ -197,111 +197,37 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <script>
-    const setup = () => {
-      const getTheme = () => {
-        if (window.localStorage.getItem('dark')) {
-          return JSON.parse(window.localStorage.getItem('dark'));
-        }
-        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      };
+    const body = document.querySelector('body'),
+      sidebar = document.querySelector('nav'), // Fix: use document.querySelector instead of body.querySelector
+      toggle = document.querySelector(".toggle"),
+      searchBtn = document.querySelector(".search-box"),
+      modeSwitch = document.querySelector(".toggle-switch"),
+      modeText = document.querySelector(".mode-text");
 
-      const setTheme = (value) => {
-        window.localStorage.setItem('dark', value);
-      };
+    toggle.addEventListener("click", () => {
+      sidebar.classList.toggle("close");
+    });
 
-      const toggleTheme = () => {
-        if (!loading) {
-          theme.isDark = !theme.isDark;
-          document.body.classList.toggle('dark', theme.isDark);
-          setTheme(theme.isDark);
-        }
-      };
+    searchBtn.addEventListener("click", () => {
+      sidebar.classList.remove("close");
+    });
 
-      return {
-        loading: true,
-        isDark: getTheme(),
-        toggleTheme,
-      };
-    };
+    modeSwitch.addEventListener("click", () => {
+      body.classList.toggle("dark");
 
-    function updatePaginationInfo(start, end, total) {
-      document.getElementById('pagination-info').innerText = `Showing ${start}-${end} of ${total}`;
-    }
-
-    function changePage(page) {
-      const currentText = document.getElementById('pagination-info').innerText;
-      const currentPage = parseInt(currentText.match(/\d+/)[0]);
-      const pageSize = 10;
-
-      if (page === 'prev' && currentPage > 1) {
-        currentPage--;
-      } else if (page === 'next') {
-        currentPage++;
+      if (body.classList.contains("dark")) {
+        modeText.innerText = "Dark mode";
       } else {
-        currentPage = page;
+        modeText.innerText = "Light mode";
       }
+    });
 
-      const start = (currentPage - 1) * pageSize + 1;
-      const end = Math.min(currentPage * pageSize, 100);
-
-      updatePaginationInfo(start, end, 100);
-
-      console.log(`Changing to page ${currentPage}`);
-    }
-
-    updatePaginationInfo(1, 10, 100);
 
     function navigateToPage(url) {
       window.location.href = url;
     }
-    document.querySelector('form').addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      // Get form data
-      const formData = new FormData(this);
-
-      // You may customize the WhatsApp message here
-      const message = `Hi, my name is ${formData.get('name')}. My email is ${formData.get('email')} and my phone number is ${formData.get('tel')}.`;
-
-      // Construct WhatsApp URL
-      const whatsappURL = `https://api.whatsapp.com/send?phone=YOUR_PHONE_NUMBER&text=${encodeURIComponent(message)}`;
-
-      // Redirect to WhatsApp
-      window.location.href = whatsappURL;
-    });
-    var candleOptions = {
-      chart: {
-        height: 350,
-        type: "candlestick",
-        stacked: false
-      },
-      colors: ["#FF1654", "#247BA0"],
-      series: [{
-        data: [
-          [1538856000000, [6593.34, 6600, 6582.63, 6600]],
-          [1538856900000, [6595.16, 6604.76, 6590.73, 6593.86]]
-        ]
-      }]
-    };
-
-    var candleChart = new ApexCharts(document.querySelector("#candle_chart"), candleOptions);
-    candleChart.render();
-
-    // pie chart
-    var pieOptions = {
-      chart: {
-        height: 350,
-        type: "pie",
-        stacked: false
-      },
-      colors: ["#FF1654", "#247BA0"],
-      series: [44, 55, 13, 33],
-      labels: ['Apple', 'Mango', 'Orange', 'Watermelon']
-    };
-
-    var pieChart = new ApexCharts(document.querySelector("#pie_chart"), pieOptions);
-    pieChart.render();
   </script>
 </body>
 

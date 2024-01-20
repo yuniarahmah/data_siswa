@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Coding by CodingLab | www.codinglabweb.com -->
 <html lang="en">
 
 <head>
@@ -265,16 +266,25 @@
     }
 
     .mode .sun-moon i.sun {
+        opacity: 1;
+        /* Set opacity to 1 for sun in light mode */
+    }
+
+    .mode .sun-moon i.moon {
         opacity: 0;
+        /* Set opacity to 0 for moon in light mode */
     }
 
     body.dark .mode .sun-moon i.sun {
-        opacity: 1;
+        opacity: 0;
+        /* Set opacity to 0 for sun in dark mode */
     }
 
     body.dark .mode .sun-moon i.moon {
-        opacity: 0;
+        opacity: 1;
+        /* Set opacity to 1 for moon in dark mode */
     }
+
 
     .menu-bar .bottom-content .toggle-switch {
         position: absolute;
@@ -341,59 +351,6 @@
     body.dark .home .text {
         color: var(--text-color);
     }
-
-    @media only screen and (max-width: 600px) {
-        .menu-links {
-            width: 30px;
-        }
-    }
-
-    /* ===== Sidebar in Responsive Mode ===== */
-    @media (max-width: 768px) {
-        .sidebar {
-            width: 88px !important;
-            /* Override width for responsive mode */
-        }
-
-        .sidebar .text {
-            opacity: 0;
-        }
-
-        .sidebar.close {
-            width: 88px !important;
-            /* Keep it closed in responsive mode */
-        }
-
-        .sidebar.close .toggle {
-            transform: translateY(-50%) rotate(0deg);
-        }
-
-        body.dark .sidebar header .toggle {
-            color: var(--text-color);
-        }
-
-        .sidebar .menu {
-            margin-top: 0;
-            /* Adjust margin if needed */
-        }
-
-        .sidebar li.search-box {
-            display: none;
-            /* Hide search box in responsive mode if needed */
-        }
-
-        .sidebar li a {
-            justify-content: center;
-        }
-
-        .sidebar li a .icon {
-            margin-right: 0;
-        }
-
-        .sidebar li a .text {
-            display: none;
-        }
-    }
 </style>
 
 <body>
@@ -415,30 +372,30 @@
         <div class="menu-bar">
             <div class="menu">
 
-                <!-- <li class="search-box">
-                    <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Search...">
-                </li> -->
+                <li class="search-box">
+                    <i class='fa-solid fa-user icon'></i>
+                    <span class="ml-2 text nav-text">User</span>
+                </li>
 
                 <ul class="menu-links">
                     <li class="nav-link">
                         <a href="<?php echo base_url('user/dashboard_u') ?>">
                             <i class="fa-solid fa-house mr-2 icon"></i>
-                            <span class="ml-2 text nav-text tracking-wide truncate"> Dashboard</span>
+                            <span class="ml-2 text nav-text"> Dashboard</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
                         <a href="<?php echo base_url('user/tabel_ekstra') ?>">
                             <i class="fa-solid fa-dumbbell icon"></i>
-                            <span class="ml-4 text nav-text tracking-wide truncate"> Tabel Ekstrakulikuler</span>
+                            <span class="ml-4 text nav-text"> Tabel Ekstrakulikuler</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
                         <a href="<?php echo base_url('user/tabel_akademik') ?>">
                             <i class="fa-solid fa-book-open-reader icon"></i>
-                            <span class="ml-4 text nav-text tracking-wide truncate">Tabel Mata Pelajaran</span>
+                            <span class="ml-4 text nav-text">Tabel Mata Pelajaran</span>
                         </a>
                     </li>
 
@@ -446,20 +403,20 @@
                         <a href="<?php echo base_url('user/tabel_siswa') ?>">
                             <i class="fa-solid fa-users-viewfinder mr-2 icon"></i>
                             <span class="ml-2 text nav-text tracking-wide truncate">Tabel siswa</span>
-                         </a>
+                        </a>
                     </li>
 
                     <li class="nav-link">
                         <a href="<?php echo base_url('user/tabel_guru') ?>">
                             <i class="fa-solid fa-clipboard-user mr-1 icon"></i>
-                            <span class="ml-4 text nav-text tracking-wide truncate">Tabel Guru</span>
+                            <span class="ml-4 text nav-text">Tabel Guru</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
                         <a href="<?php echo base_url('user/pembayarans') ?>">
                             <i class="fa-solid fa-file-invoice-dollar mr-1 icon"></i>
-                            <span class="ml-4 text nav-text tracking-wide truncate">Tabel Pembayaran</span>
+                            <span class="ml-4 text nav-text">Tabel Pembayaran</span>
                         </a>
                     </li>
 
@@ -485,10 +442,12 @@
                         <span class="switch"></span>
                     </div>
                 </li>
+
             </div>
         </div>
     </nav>
     <div class="h-full ml-48 mt-14 mb-10 md:ml-64">
+
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script>
             const body = document.querySelector('body'),
@@ -537,6 +496,7 @@
                 });
             }
         </script>
+
 </body>
 
 </html>

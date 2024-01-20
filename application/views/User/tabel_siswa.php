@@ -44,6 +44,32 @@
         text-align: center;
         font-weight: 700;
     }
+    
+    .button-edit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        padding: 8px;
+        border-radius: 5px;
+        max-width: 50px;
+    }
+
+    .button-edit {
+        background-color: #3498db;
+        /* Edit button color */
+    }
+
+    .button-edit:hover {
+        background-color: darken(#3498db, 10%);
+        /* Darken the color on hover */
+    }
+
+    .button-edit .icon {
+        font-size: 18px;
+        margin-right: 3px;
+    }
 </style>
 
 <body>
@@ -75,22 +101,11 @@
                                 <td class="px-10 py-3"><?php echo $row->nama_ayah ?></td>
                                 <td class="px-10 py-3"><?php echo $row->alamat ?></td>
                                 <td class="px-6 py-3">
-                                    <a href="<?php echo base_url('user/edit_data/') . $row->id ?>" class="bg-indigo-800 hover:-700 text-white font-bold py-2 px-3 rounded">
-                                        <span class="">
+                                    <a href="<?php echo base_url('user/edit_data/') . $row->id ?>" class="button-edit">
+                                        <span class="icon">
                                             <i class="fas fa-edit"></i>
                                         </span>
                                     </a>
-                                    <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                        <span class="">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </span>
-                                    </button>
-                                    <!-- <a href="tambah_item_tambahan" class="btn-style ml-2 pl-1 bg-indigo-800 hover:bg-blue-700 font-bold text-white rounded py-2 px-3">
-                                        <span class="">
-                                            <i class="fas fa-plus"></i>
-                                        </span>
-                                        Tambah
-                                    </a> -->
                                 </td>
                             </tr>
                         <?php endforeach ?>

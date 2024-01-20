@@ -20,7 +20,7 @@
     <!-- Task Summaries -->
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 p-4 gap-6 text-black dark:text-white">
       <div class="md:col-span-2 xl:col-span-3">
-        <h3 class="text-lg font-bold" style="font-size: 3rem;">Informasi Sekolah</h3>
+        <h3 class="text-lg font-bold text-gray-800" style="font-size: 3rem;">Informasi Sekolah</h3>
       </div>
       <div class="md:col-span-2 xl:col-span-1">
         <div class="rounded bg-gray-200 dark:bg-gray-800 p-6 overflow-x-auto">

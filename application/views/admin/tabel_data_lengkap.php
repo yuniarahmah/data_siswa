@@ -176,7 +176,7 @@
                                             <i class="fas fa-edit"></i>
                                         </span>
                                     </a>
-                                    <button onclick="hapus(<?php echo $row->id ?>)" class="button-delete">
+                                    <button onclick="hapus_g(<?php echo $row->id ?>)" class="button-delete">
                                         <span class="icon">
                                             <i class="fas fa-trash-alt"></i>
                                         </span>
@@ -221,7 +221,7 @@
                                             <i class="fas fa-edit"></i>
                                         </span>
                                     </a>
-                                    <button onclick="hapus(<?php echo $row->id ?>)" class="button-delete">
+                                    <button onclick="hapus_a(<?php echo $row->id ?>)" class="button-delete">
                                         <span class="icon">
                                             <i class="fas fa-trash-alt"></i>
                                         </span>
@@ -268,7 +268,7 @@
                                             <i class="fas fa-edit"></i>
                                         </span>
                                     </a>
-                                    <button onclick="hapus(<?php echo $row->id ?>)" class="button-delete">
+                                    <button onclick="hapus_e(<?php echo $row->id ?>)" class="button-delete">
                                         <span class="icon">
                                             <i class="fas fa-trash-alt"></i>
                                         </span>
@@ -344,6 +344,80 @@
 
         function hapus(id) {
             Swal.fire({
+                title: 'Yakin nama siswa ini Ingin Dihapus?',
+                text: "data ini tidak bisa dikembalikan lagi!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Hapus'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Berhasil Menghapus',
+                        text: 'Data berhasil dihapus.',
+                        icon: 'success',
+                        timer: 1500, // Adjust the duration in milliseconds (e.g., 1500 for 1.5 seconds)
+                        showConfirmButton: false,
+                    }).then(function() {
+                        window.location.href = "<?php echo base_url('admin/hapus_siswa/') ?>" + id;
+                    });
+                }
+            });
+        }
+        
+        
+        function hapus_g(id) {
+            Swal.fire({
+                title: 'Yakin Data Ingin Dihapus?',
+                text: "data ini tidak bisa dikembalikan lagi!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Hapus'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Berhasil Menghapus',
+                        text: 'Data berhasil dihapus.',
+                        icon: 'success',
+                        timer: 1500, // Adjust the duration in milliseconds (e.g., 1500 for 1.5 seconds)
+                        showConfirmButton: false,
+                    }).then(function() {
+                        window.location.href = "<?php echo base_url('admin/hapus_guru/') ?>" + id;
+                    });
+                }
+            });
+        }
+        function hapus_a(id) {
+            Swal.fire({
+                title: 'Yakin Data Ingin Dihapus?',
+                text: "data ini tidak bisa dikembalikan lagi!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Hapus'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Berhasil Menghapus',
+                        text: 'Data berhasil dihapus.',
+                        icon: 'success',
+                        timer: 1500, // Adjust the duration in milliseconds (e.g., 1500 for 1.5 seconds)
+                        showConfirmButton: false,
+                    }).then(function() {
+                        window.location.href = "<?php echo base_url('admin/hapus_akademik/') ?>" + id;
+                    });
+                }
+            });
+        }
+        function hapus_e(id) {
+            Swal.fire({
                 title: 'Yakin Data Ingin Dihapus?',
                 text: "data ini tidak bisa dikembalikan lagi!",
                 icon: 'warning',
@@ -366,8 +440,6 @@
                 }
             });
         }
-
-
         function handleSearchChange() {
             var input = document.getElementById('searchInput').value;
 
@@ -394,14 +466,6 @@
             document.getElementById('yourTableBodyId').innerHTML = data;
         }
 
-        $(document).ready(function() {
-
-            var table = $('#example_pelanggan').DataTable({
-                    responsive: false
-                })
-                .columns.adjust()
-                .responsive.recalc();
-        });
     </script>
 
 </body>

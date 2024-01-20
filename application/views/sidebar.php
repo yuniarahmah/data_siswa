@@ -415,30 +415,37 @@
         <div class="menu-bar">
             <div class="menu">
 
-                <!-- <li class="search-box">
-                    <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Search...">
-                </li> -->
+                <li class="search-box">
+                    <i class='fa-solid fa-chalkboard-user icon'></i>
+                    <span class="text nav-text">Admin</span>
+                </li>
 
                 <ul class="menu-links">
                     <li class="nav-link">
                         <a href="<?php echo base_url('admin/dashboard') ?>">
                             <i class="fa-solid fa-house mr-1 icon"></i>
-                            <span class="ml-2 text nav-text tracking-wide truncate"> Dashboard</span>
+                            <span class="ml-2 text nav-text"> Dashboard</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
                         <a href="<?php echo base_url('admin/tabel_data_lengkap') ?>">
-                        <i class="fa-solid fa-calendar-check icon mr-2"></i>
-                            <span class=" text nav-text tracking-wide truncate">Data Lengkap</span>
+                            <i class="fa-solid fa-calendar-check icon mr-2"></i>
+                            <span class=" text nav-text">Data Lengkap</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                         <a href="<?php echo base_url('admin/pembayaran') ?>">
+                            <i class="fa-solid fa-file-invoice-dollar mr-1 icon"></i>
+                            <span class="ml-1 text nav-text">Tabel Pembayaran</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
                         <a href="<?php echo base_url('admin/tambah_siswa') ?>">
                             <i class="fa-regular fa-message mr-2 icon"></i>
-                            <span class=" text nav-text tracking-wide truncate">tambah siswa</span>
+                            <span class=" text nav-text ">tambah siswa</span>
                         </a>
                     </li>
 
@@ -460,6 +467,13 @@
                         <a href="<?php echo base_url('admin/tambah_guru') ?>">
                             <i class="fa-solid fa-user-plus mr-2 icon"></i>
                             <span class="text nav-text">Tambah Guru</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="<?php echo base_url('admin/tambah_pembayaran') ?>">
+                            <i class="fa-solid fa-file-circle-plus mr-2 icon"></i>
+                            <span class="text nav-text">Tambah pembayaran</span>
                         </a>
                     </li>
 
