@@ -92,9 +92,8 @@ class Admin extends CI_Controller
     public function aksi_tambah_akademik()
     {
         $data = [
-            'nama_akademik' => $this->input->post('nama_akademik'),
-            'pembimbing' => $this->input->post('pembimbing'),
-            'waktu' => $this->input->post('waktu'),
+            'id_nama_guru' => $this->input->post('id_nama_guru'),
+            'nama_mapel' => $this->input->post('nama_mapel'),
         ];
         $this->m_model->tambah_data('akademik', $data);
         redirect(base_url('admin/tambah_akademik'));
@@ -229,7 +228,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/edit_pembayaran', $data);
     }
 
-    public function aksi_edit_pembayaran()
+    public function aksi_edit_pembayaran($id)
     {
         $data = [
             'id_nama_siswa' => $this->input->post('nama_siswa'),
@@ -237,19 +236,19 @@ class Admin extends CI_Controller
             'total_pembayaran' => $this->input->post('total_pembayaran'),
             'status' => $this->input->post('status'),
         ];
-        $eksekusi = $this->m_model->ubah_data('pembayaran', $data, ['id' => $this->input->post('id')]);
+        $eksekusi = $this->m_model->ubah_data('pembayaran', $data, array('id' => $id)); // Gunakan $id dari parameter
         if ($eksekusi) {
             $this->session->set_flashdata('sukses', 'berhasil');
-            redirect(base_url('keuangan/pembayaran'));
+            redirect(base_url('admin/pembayaran'));
         } else {
             $this->session->set_flashdata('sukses', 'berhasil');
-            redirect(base_url('keuangan/ubah_pembayaran/' . $this->input->post('id')));
+            redirect(base_url('admin/edit_pembayaran/' . $this->input->post('id')));
         }
     }
 
-    public function delete_pembayaran($id)
+    public function hapus_pembayaran($id)
     {
         $this->m_model->delete('pembayaran', 'id', $id);
-        redirect(base_url('Keuangan/pembayaran'));
+        redirect(base_url('admin/pembayaran'));
     }
 }

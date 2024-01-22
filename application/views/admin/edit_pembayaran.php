@@ -223,31 +223,39 @@
         <div class="card mb-20 px-20 ">
             <h3 class="text-center text-2xl font-bold mb-4 dark:text-white">Edit Pembayaran</h3>
             <?php foreach ($pembayaran as $row) : ?>
-                <form action="<?php echo base_url('admin/aksi_edit_guru/' . $row->id); ?>" method="post" id="survey-form" class="survey-form w-full">
+                <form action="<?php echo base_url('admin/aksi_edit_pembayaran/' . $row->id); ?>" method="post" id="survey-form" class="survey-form w-full">
                     <div class="flex flex-wrap">
                         <div class="w-full px-1">
                             <label for="nama_siswa" class="block font-bold text-gray-800">Nama Siswa</label>
                             <select name="nama_siswa" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                                <?php foreach ($user as $row) : ?>
-                                    <option value="<?= $row->id . ' - ' . $row->nama_siswa ?>"><?= $row->id . ' - ' . $row->nama_siswa ?></option>
+                                <?php foreach ($user as $users) : ?>
+                                    <option value="<?= $users->id . ' - ' . $users->nama_siswa ?>"><?= $users->id . ' - ' . $users->nama_siswa ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="w-full px-1">
                             <label for="jenis_pembayaran" class="block font-bold text-gray-800">Jenis Pembayaran</label>
                             <select name="jenis_pembayaran" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                                <option value="">Pilih Pembayaran</option>
-                                <option value="jumlah_pembayaran_uang_gedung">Pembayaran Uang Gedung</option>
-                                <option value="jumlah_pembayaran_uang_sragam">Pembayaran Seragam</option>
+                                <?php if ($row->jenis_pembayaran === "pembayaran_uang_gedung") : ?>
+                                    <option value="pembayaran_uang_gedung" selected>Pembayaran Uang Gedung</option>
+                                    <option value="pembayaran_uang_sragam">Pembayaran Seragam</option>
+                                <?php elseif ($row->jenis_pembayaran === "pembayaran_uang_sragam") : ?>
+                                    <option value="pembayaran_uang_gedung">Pembayaran Uang Gedung</option>
+                                    <option value="pembayaran_uang_sragam" selected>Pembayaran Seragam</option>
+                                <?php else : ?>
+                                    <option value="" selected disabled>Pilih Pembayaran</option>
+                                    <option value="pembayaran_uang_gedung">Pembayaran Uang Gedung</option>
+                                    <option value="pembayaran_uang_sragam">Pembayaran Seragam</option>
+                                <?php endif; ?>
                             </select>
                         </div>
                         <div class="w-full px-1">
                             <label for="total_pembayaran" class="block font-bold text-gray-800">Total Pembayaran</label>
-                            <input type="numer" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800" id="total_pembayaran" name="total_pembayaran" value="Rp 0">
+                            <input type="text" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800" id="total_pembayaran" name="total_pembayaran" value="<?php echo $row->total_pembayaran; ?>">
                         </div>
                         <div class="w-full px-1">
                             <label for="status" class="block font-bold text-gray-800">Status Pembayaran</label>
-                            <input type="text" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800" id="status" name="status">
+                            <input type="text" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800" id="status" name="status" value="<?php echo $row->status; ?>">
                         </div>
                     </div>
                     <div class="text-center mt-1">

@@ -49,14 +49,14 @@
 <body>
     <?php $this->load->view('sidebaru'); ?>
     <div class="container">
-        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-500 b-20 mb-10 rounded-lg">Tabel data Mapel</h1>
+        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 mb-10 rounded-lg">Tabel data Mapel</h1>
     </div>
     <div class="w-45 mt-17 pl-10 pr-10">
         <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="overflow-x-auto">
                 <table class="w-full table-auto text-sm text-left text-gray-800 dark:text-gray-700 ">
                     <thead>
-                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-500 h-50">
+                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
                             <th class="px-4 py-5">No</th>
                             <th class="px-4 py-5">Nama Guru Mapel</th>
                             <th class="px-4 py-5">Nama Mapel</th>
@@ -155,7 +155,7 @@
                         timer: 1500, // Adjust the duration in milliseconds (e.g., 1500 for 1.5 seconds)
                         showConfirmButton: false,
                     }).then(function() {
-                        window.location.href = "<?php echo base_url('user/hapus_data/') ?>" + id;
+                        window.location.href = "<?php echo base_url('user/hapus_akademik/') ?>" + id;
                     });
                 }
             });

@@ -236,8 +236,8 @@
                             <input autocomplete="off" value="<?= $row->nama_mapel ?>" type="text" name="nama_mapel" id="nama_mapel" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                         </div>
                         <div class="w-full px-1">
-                            <label for="id_nama_guru" class="block font-bold text-gray-800">Nama guru Mapel</label>
-                            <input autocomplete="off" value="<?= namaguru_getbyid('$row->id_nama_guru') ?>" type="text" name="id_nama_guru" id="id_nama_guru" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                            <label for="id_nama_guru" class="block font-bold text-gray-800">guru</label>
+                            <input autocomplete="off" value="<?= $row->id_nama_guru ?>" type="text" name="id_nama_guru" id="id_nama_guru" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                         </div>
                     </div>
                     <div class="text-center mt-1">

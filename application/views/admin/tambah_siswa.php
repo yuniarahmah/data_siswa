@@ -241,11 +241,11 @@
                     </div>
                     <div class="w-full px-1">
                         <label for="nilai_a" class="block font-bold text-gray-800">Nilai Akhir</label>
-                        <input autocomplete="off" type="text" name="nilai_a" id="nilai_a" placeholder="ketik nilai akhik" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                        <input autocomplete="off" type="text" name="nilai_a" id="nilai_a" placeholder="ketik nilai akhir" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                     </div>
                     <div class="w-full px-1">
                         <label for="ttl" class="block font-bold text-gray-800">Tempat/tanggal lahir</label>
-                        <input autocomplete="off" type="date" name="ttl" id="ttl" placeholder="ketik nilai akhir" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                        <input autocomplete="off" type="text" name="ttl" id="ttl" placeholder="ketik tanggal lahir" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                     </div>
                     <div class="w-full px-1">
                         <label for="nama_ayah" class="block font-bold text-gray-800">Nama Ayah</label>

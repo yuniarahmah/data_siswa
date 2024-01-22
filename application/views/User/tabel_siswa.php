@@ -75,14 +75,14 @@
 <body>
     <?php $this->load->view('sidebaru'); ?>
     <div class="container">
-        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-500 b-20 mb-10 rounded-lg">Tabel data Siswa</h1>
+        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 mb-10 rounded-lg">Tabel data Siswa</h1>
     </div>
     <div class="w-45 mb-10 pl-10 pr-10">
         <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="w-full overflow-x-auto">
                 <table id="example_pelanggan" class="w-full text-sm text-left text-gray-800 dark:text-gray-700">
                     <thead>
-                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-500 h-50">
+                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
                             <th class="px-10 py-4">No</th>
                             <th class="px-10 py-4">Nama Siswa</th>
                             <th class="px-10 py-4">Nama Ibu</th>

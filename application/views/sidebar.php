@@ -317,7 +317,6 @@
     .home {
         position: absolute;
         top: 0;
-        top: 0;
         left: 250px;
         height: 100vh;
         width: calc(100% - 250px);
@@ -333,23 +332,60 @@
     }
 
     .sidebar.close~.home {
-        left: 78px;
-        height: 100vh;
-        width: calc(100% - 78px);
+        left: 88px;
+        width: calc(100% - 88px);
     }
 
     body.dark .home .text {
         color: var(--text-color);
     }
 
+    .toggle-responsive {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: var(--primary-color);
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    @media (max-width: 368px) {
+        .toggle-responsive {
+            display: block;
+        }
+
+        .toggle-responsive i {
+            transform: rotate(180deg);
+            /* Adjust the rotation as needed */
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar.close .toggle-responsive i {
+            transform: rotate(0deg);
+        }
+    }
+
     @media only screen and (max-width: 600px) {
         .menu-links {
-            width: 30px;
+            width: 100%;
         }
     }
 
     /* ===== Sidebar in Responsive Mode ===== */
-    @media (max-width: 768px) {
+    @media (max-width: 468px) {
+        .toggle-responsive {
+            display: block;
+        }
+
+        .toggle-responsive i {
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar.close .toggle-responsive i {
+            transform: rotate(0deg);
+        }
+
         .sidebar {
             width: 88px !important;
             /* Override width for responsive mode */
@@ -359,9 +395,9 @@
             opacity: 0;
         }
 
-        .sidebar.close {
-            width: 88px !important;
-            /* Keep it closed in responsive mode */
+        .sidebar.close~.home {
+            left: 88px;
+            width: calc(100% - 88px);
         }
 
         .sidebar.close .toggle {
@@ -436,7 +472,7 @@
                     </li>
 
                     <li class="nav-link">
-                         <a href="<?php echo base_url('admin/pembayaran') ?>">
+                        <a href="<?php echo base_url('admin/pembayaran') ?>">
                             <i class="fa-solid fa-file-invoice-dollar mr-1 icon"></i>
                             <span class="ml-1 text nav-text">Tabel Pembayaran</span>
                         </a>
@@ -510,27 +546,39 @@
                 toggle = body.querySelector(".toggle"),
                 searchBtn = body.querySelector(".search-box"),
                 modeSwitch = body.querySelector(".toggle-switch"),
-                modeText = body.querySelector(".mode-text");
-
+                modeText = body.querySelector(".mode-text"),
+                toggleResponsive = body.querySelector(".toggle-responsive");
 
             toggle.addEventListener("click", () => {
                 sidebar.classList.toggle("close");
-            })
+            });
 
             searchBtn.addEventListener("click", () => {
                 sidebar.classList.remove("close");
-            })
+            });
 
             modeSwitch.addEventListener("click", () => {
                 body.classList.toggle("dark");
-
                 if (body.classList.contains("dark")) {
                     modeText.innerText = "Dark mode";
                 } else {
                     modeText.innerText = "Light mode";
-
                 }
             });
+
+            toggleResponsive.addEventListener("click", () => {
+                sidebar.classList.toggle("close");
+            });
+
+            toggleResponsive.addEventListener("click", () => {
+                sidebar.classList.toggle("close");
+                if (sidebar.classList.contains("close")) {
+                    toggleResponsive.innerHTML = '<i class="bx bx-chevron-right"></i>';
+                } else {
+                    toggleResponsive.innerHTML = '<i class="bx bx-chevron-left"></i>';
+                }
+            });
+
 
             function KeluarOPT(id) {
                 const success_keluar = "<?php echo $this->session->flashdata('success_keluar'); ?>";

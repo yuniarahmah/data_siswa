@@ -20,7 +20,7 @@
     <!-- Task Summaries -->
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 p-4 gap-6 text-black dark:text-white">
       <div class="md:col-span-2 xl:col-span-3">
-        <h3 class="text-lg font-bold text-gray-800" style="font-size: 3rem;">Informasi Sekolah</h3>
+        <h3 class="text-lg font-bold text-gray-800" style="font-size: 3rem; color: #FAF6F0;">Informasi Sekolah</h3>
       </div>
       <div class="md:col-span-2 xl:col-span-1">
         <div class="rounded bg-gray-200 dark:bg-gray-800 p-6 overflow-x-auto">
@@ -107,7 +107,7 @@
     <div class="w-90 ml-2 overflow-x-auto">
       <table class="w-90 ml-2">
         <thead>
-          <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-500">
+          <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600">
             <th class="px-10 py-4">No</th>
             <th class="px-10 py-4">Nama Siswa</th>
             <th class="px-10 py-4">Nama Ibu</th>

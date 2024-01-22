@@ -22,7 +22,7 @@
             <div class="w-full overflow-x-auto">
                 <table class="w-full">
                     <thead>
-                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-800 bg-black">
+                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 bg-black">
                             <th class="px-5 py-4">No</th>
                             <th class="px-5 py-4">Nama Siswa</th>
                             <th class="px-5 py-4">Nisn</th>

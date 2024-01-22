@@ -227,7 +227,7 @@
                 <div class="flex flex-wrap">
                     <div class="w-full px-1">
                         <label for="nama_guru" class="block font-bold text-gray-800">Nama Guru</label>
-                        <input required autocomplete="off" type="text" name="nama_guru" id="nama_guru" placeholder="ketik ekstrakurikuler baru" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                        <input required autocomplete="off" type="text" name="nama_guru" id="nama_guru" placeholder="ketik nama guru baru" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                     </div>
                     <div class="w-full px-1">
                         <label for="nik" class="block font-bold text-gray-800">Nik</label>

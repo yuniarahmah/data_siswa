@@ -95,7 +95,6 @@
                             <th class="px-6 py-3 text-left">Jenis Pembayaran</th>
                             <th class="px-6 py-3 text-left">Jumlah Pembayaran</th>
                             <th class="px-6 py-3 text-left">Status</th>
-                            <th class="px-6 py-3 text-left">Aksi</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
@@ -107,18 +106,6 @@
                                 <td class="px-6 py-4"><?php echo $row->jenis_pembayaran ?></td>
                                 <td class="px-6 py-4"><?php echo $row->total_pembayaran ?></td>
                                 <td class="px-6 py-4"><?php echo $row->status ?></td>
-                                <td class="px-10 py-3 flex items-center justify-center space-x-2">
-                                    <a href="<?php echo base_url('admin/edit_pembayaran/') . $row->id ?>" class="button-edit">
-                                        <span class="icon">
-                                            <i class="fas fa-edit"></i>
-                                        </span>
-                                    </a>
-                                    <button onclick="hapus_g(<?php echo $row->id ?>)" class="button-delete">
-                                        <span class="icon">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </span>
-                                    </button>
-                                </td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>

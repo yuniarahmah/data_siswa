@@ -234,7 +234,7 @@
                     </div>
                     <div class="w-full px-1">
                         <label for="waktu" class="block font-bold text-gray-800">Waktu</label>
-                        <input autocomplete="off" type="time" name="waktu" id="waktu" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                        <input autocomplete="off" type="text" name="waktu" id="waktu" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800" placeholder="ketik waktu pelaksanaan">
                     </div>
                 </div>
                 <div class="text-center mt-1">
