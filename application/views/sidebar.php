@@ -430,6 +430,70 @@
             display: none;
         }
     }
+
+    @media only screen and (max-width: 768px) {
+        .h-full {
+            height: 100%;
+        }
+
+        .ml-48 {
+            margin-left: 100px;
+        }
+
+        .toggle-responsive {
+            display: block;
+        }
+
+        .menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #2a3f54;
+            overflow-y: auto;
+            transition: 0.5s;
+        }
+
+        .menu.show {
+            left: 0;
+        }
+
+        .toggle-responsive i {
+            font-size: 28px;
+            cursor: pointer;
+            color: #fff;
+            position: absolute;
+            right: 15px;
+            top: 15px;
+        }
+
+        .menu-links {
+            padding-top: 70px;
+        }
+
+        .menu-links a {
+            padding: 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #fff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .menu-links a:hover {
+            background-color: #1c2b3a;
+        }
+
+        .bottom-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            padding-bottom: 20px;
+        }
+    }
 </style>
 
 <body>
@@ -488,14 +552,14 @@
                     <li class="nav-link">
                         <a href="<?php echo base_url('admin/tambah_ekstra') ?>">
                             <i class="fa-solid fa-dumbbell mr-2 icon"></i>
-                            <span class="text nav-text"> Ekstrakulikuler</span>
+                            <span class="text nav-text">Tambah Ekstra</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
                         <a href="<?php echo base_url('admin/tambah_akademik') ?>">
                             <i class="fa-solid fa-book mr-2 icon"></i>
-                            <span class="text nav-text"> Mata Pelajaran</span>
+                            <span class="text nav-text">Tambah Mapel</span>
                         </a>
                     </li>
 
@@ -538,7 +602,8 @@
             </div>
         </div>
     </nav>
-    <div class="h-full ml-48 mt-14 mb-10 md:ml-64">
+    <section class="home">
+
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script>
             const body = document.querySelector('body'),
@@ -568,17 +633,14 @@
 
             toggleResponsive.addEventListener("click", () => {
                 sidebar.classList.toggle("close");
-            });
 
-            toggleResponsive.addEventListener("click", () => {
-                sidebar.classList.toggle("close");
+                // Toggle the icon based on sidebar state
                 if (sidebar.classList.contains("close")) {
                     toggleResponsive.innerHTML = '<i class="bx bx-chevron-right"></i>';
                 } else {
                     toggleResponsive.innerHTML = '<i class="bx bx-chevron-left"></i>';
                 }
             });
-
 
             function KeluarOPT(id) {
                 const success_keluar = "<?php echo $this->session->flashdata('success_keluar'); ?>";

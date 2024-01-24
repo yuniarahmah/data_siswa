@@ -13,13 +13,6 @@
         overflow-x: hidden;
     }
 
-    .container {
-        min-width: 20rem;
-        max-width: 65rem;
-        margin: 1rem auto;
-        padding: 30px 7.5rem 5px 7.5rem;
-    }
-
     .heading {
         padding: 1.3em 9px 1.8rem 9px;
     }
@@ -40,9 +33,7 @@
 
     .main-heading {
         font-size: 30px;
-        margin-bottom: 5;
         text-align: center;
-        font-weight: 700;
     }
 
     .button-edit,
@@ -84,6 +75,10 @@
             margin-right: 60%;
         }
 
+        .main-heading {
+            font-size: x-large;
+        }
+
         .table .w-45 {
             margin: auto;
             width: 100%;
@@ -100,33 +95,33 @@
 
 <body>
     <?php $this->load->view('sidebar'); ?>
-    <div class="container text-center">
-        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 mb-10 rounded-lg">Tabel data Pembayaran</h1>
+    <div class="container md:px-48 md:py-10 py-5 px-5">
+        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 rounded-lg">Tabel data Pembayaran</h1>
     </div>
 
-    <div class="w-full xl:w-full mx-auto mt-4 px-20 text-center">
+    <div class="w-screen xl:w-full mx-auto mt-4 px-20 text-center">
         <div class="w-full overflow-x-auto overflow-y-auto sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
             <table class="text-sm text-left text-gray-800 dark:text-gray-700 heading w-full">
                 <thead>
                     <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
-                        <th class="px-6 py-3 text-left">No</th>
-                        <th class="px-6 py-3 text-left">Nama Siswa</th>
-                        <th class="px-6 py-3 text-left">Jenis Pembayaran</th>
-                        <th class="px-6 py-3 text-left">Jumlah Pembayaran</th>
-                        <th class="px-6 py-3 text-left">Status</th>
-                        <th class="px-6 py-3 text-left">Aksi</th>
+                        <th class="px-10 py-5">No</th>
+                        <th class="px-10 py-5">Nama Siswa</th>
+                        <th class="px-10 py-5">Jenis Pembayaran</th>
+                        <th class="px-10 py-5">Jumlah Pembayaran</th>
+                        <th class="px-10 py-5">Status</th>
+                        <th class="px-10 py-4">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                     <?php $no = 0;
                     foreach ($pembayaran as $row) : $no++ ?>
                         <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
-                            <td class="px-6 py-4"><?php echo $no ?></td>
-                            <td class="px-6 py-4"><?php echo nama_full_siswa_id($row->id_nama_siswa) ?></td>
-                            <td class="px-6 py-4"><?php echo $row->jenis_pembayaran ?></td>
-                            <td class="px-6 py-4"><?php echo $row->total_pembayaran ?></td>
-                            <td class="px-6 py-4"><?php echo $row->status ?></td>
-                            <td class="px-10 py-3 flex items-center justify-center space-x-2">
+                            <td class="px-10 py-5"><?php echo $no ?></td>
+                            <td class="px-10 py-5"><?php echo nama_full_siswa_id($row->id_nama_siswa) ?></td>
+                            <td class="px-10 py-5"><?php echo $row->jenis_pembayaran ?></td>
+                            <td class="px-10 py-5"><?php echo $row->total_pembayaran ?></td>
+                            <td class="px-10 py-5"><?php echo $row->status ?></td>
+                            <td class="px-10 py-5 flex items-center justify-center space-x-2">
                                 <a href="<?php echo base_url('admin/edit_pembayaran/') . $row->id ?>" class="button-edit">
                                     <span class="icon">
                                         <i class="fas fa-edit"></i>

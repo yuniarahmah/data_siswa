@@ -13,13 +13,6 @@
         overflow-x: auto;
     }
 
-    .container {
-        min-width: 20rem;
-        max-width: 65rem;
-        margin: 1rem auto;
-        padding: 30px 7.5rem 5px 7.5rem;
-    }
-
     .heading {
         padding: 1.3em;
     }
@@ -60,7 +53,7 @@
         .table .w-45 {
             margin: auto;
             width: 100%;
-            padding: 50%;
+            /* padding: 50%; */
         }
 
     }
@@ -95,7 +88,7 @@
     .button-edit .icon,
     .button-delete .icon {
         font-size: 18px;
-        margin-right: 5px;
+        /* margin-right: 5px; */
     }
 
     .responsive-table {
@@ -105,7 +98,7 @@
 
     .responsive-table th,
     .responsive-table td {
-        min-width: 150px;
+        min-width: 100px;
         /* Sesuaikan lebar minimal untuk sel */
         text-align: center;
     }
@@ -114,75 +107,77 @@
 <body>
     <?php $this->load->view('sidebar'); ?>
     <!-- tabel siswa -->
-    <div class="container text-center">
-        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 mb-10 rounded-lg">Tabel data siswa</h1>
+    <div class="md:px-64 py-8 px-5">
+        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 rounded-lg mb-5">Tabel data siswa</h1>
     </div>
 
-    <div class="w-full sm:w-2/3 mx-auto mt-4 p-4 text-center">
-        <div class="w-full overflow-x-auto overflow-y-auto sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
-            <table class="text-sm text-left text-gray-800 dark:text-gray-700 heading w-full">
-                <thead>
-                    <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
-                        <th class="px-10 py-4">No</th>
-                        <th class="px-10 py-4">Nama Siswa</th>
-                        <th class="px-10 py-4">Nama Ibu</th>
-                        <th class="px-10 py-4">Nama Ayah</th>
-                        <th class="px-10 py-4">Alamat</th>
-                        <th class="px-10 py-4">aksi</th>
-                    </tr>
-                </thead>
-                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                    <?php $no = 0;
-                    foreach ($user as $row) : $no++ ?>
-                        <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
-                            <td class="px-10 py-3"><?php echo $no ?></td>
-                            <td class="px-10 py-3"><?php echo $row->nama_siswa ?></td>
-                            <td class="px-10 py-3"><?php echo $row->nama_ibu ?></td>
-                            <td class="px-10 py-3"><?php echo $row->nama_ayah ?></td>
-                            <td class="px-10 py-3"><?php echo $row->alamat ?></td>
-                            <td class="px-10 py-3 flex items-center justify-center space-x-2">
-                                <button onclick="hapus(<?php echo $row->id ?>)" class="button-delete">
-                                    <span class="icon">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </span>
-                                </button>
-                            </td>
+    <div class="w-full mx-full px-10 text-center">
+        <div class="w-full rounded-lg shadow-xs">
+            <div class="overflow-x-auto">
+                <table class="w-full table-auto text-sm text-left text-gray-800 dark:text-gray-700">
+                    <thead>
+                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
+                            <th class="px-10 sm:px-6 py-5">No</th>
+                            <th class="px-10 sm:px-6 py-5">Nama Siswa</th>
+                            <th class="px-10 sm:px-6 py-5">Nama Ibu</th>
+                            <th class="px-10 sm:px-6 py-5">Nama Ayah</th>
+                            <th class="px-10 sm:px-6 py-5">Alamat</th>
+                            <th class="px-10 sm:px-10 py-5">Aksi</th>
                         </tr>
-                    <?php endforeach ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                        <?php $no = 0;
+                        foreach ($user as $row) : $no++ ?>
+                            <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
+                                <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $no ?></td>
+                                <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $row->nama_siswa ?></td>
+                                <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $row->nama_ibu ?></td>
+                                <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $row->nama_ayah ?></td>
+                                <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $row->alamat ?></td>
+                                <td class="px-10 sm:px-2 py-5 flex items-center justify-center space-x-2">
+                                    <button onclick="hapus(<?php echo $row->id ?>)" class="button-delete">
+                                        <span class="icon">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </span>
+                                    </button>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <!-- tabel siswa -->
 
     <!-- tabel guru -->
-    <div class="container text-center">
-        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 mb-10 rounded-lg">Tabel data Guru</h1>
+    <div class="md:px-64 py-8 px-5">
+        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 mb-5 rounded-lg">Tabel data Guru</h1>
     </div>
 
-    <div class="w-full sm:w-2/3 mx-auto mt-4 p-4 text-center">
-        <div class="overflow-y-auto responsive-table">
-            <table class="text-sm text-left text-gray-800 dark:text-gray-700 heading w-full">
+    <div class="w-full sm:w-2/1 mx-auto mt-4 px-20 text-center">
+        <div class="w-full overflow-x-auto">
+            <table class="min-w-full table-auto text-sm text-left text-gray-800 dark:text-gray-700">
                 <thead>
                     <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
-                        <th class="px-10 py-4">No</th>
-                        <th class="px-10 py-4">Nama Guru</th>
-                        <th class="px-10 py-4">Nik</th>
-                        <th class="px-10 py-4">Gender</th>
-                        <th class="px-10 py-4">No Hp</th>
-                        <th class="px-10 py-4">Aksi</th>
+                        <th class="px-4 sm:px-6 py-10 sm:py-4">No</th>
+                        <th class="px-4 sm:px-6 py-10 sm:py-4">Nama Guru</th>
+                        <th class="px-4 sm:px-6 py-10 sm:py-4">Nik</th>
+                        <th class="px-4 sm:px-6 py-10 sm:py-4">Gender</th>
+                        <th class="px-4 sm:px-6 py-10 sm:py-4">No Hp</th>
+                        <th class="px-10 sm:px-6 py-10 sm:py-4">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                     <?php $no = 0;
                     foreach ($guru as $row) : $no++ ?>
                         <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
-                            <td class="px-10 py-3"><?php echo $no ?></td>
-                            <td class="px-10 py-3"><?php echo $row->nama_guru ?></td>
-                            <td class="px-10 py-3"><?php echo $row->nik ?></td>
-                            <td class="px-10 py-3"><?php echo $row->gender ?></td>
-                            <td class="px-10 py-3"><?php echo $row->no_hp ?></td>
-                            <td class="px-10 py-3 flex items-center justify-center space-x-2">
+                            <td class="px-2 sm:px-6 py-10 sm:py-4"><?php echo $no ?></td>
+                            <td class="px-2 sm:px-6 py-10 sm:py-4"><?php echo $row->nama_guru ?></td>
+                            <td class="px-2 sm:px-6 py-10 sm:py-4"><?php echo $row->nik ?></td>
+                            <td class="px-2 sm:px-6 py-10 sm:py-4"><?php echo $row->gender ?></td>
+                            <td class="px-2 sm:px-6 py-10 sm:py-4"><?php echo $row->no_hp ?></td>
+                            <td class="px-6 sm:px-6 py-10 sm:py-4 flex items-center justify-center space-x-2">
                                 <a href="<?php echo base_url('admin/edit_guru/') . $row->id ?>" class="button-edit">
                                     <span class="icon">
                                         <i class="fas fa-edit"></i>
@@ -200,32 +195,33 @@
             </table>
         </div>
     </div>
+
     <!-- tabel guru -->
 
     <!-- tabel mapel -->
-    <div class="container text-center">
+    <div class="md:px-64 py-8">
         <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 mb-10 rounded-lg">Tabel data Mapel</h1>
     </div>
 
-    <div class="w-full sm:w-2/3 mx-auto mt-4 px-20 text-center">
+    <div class="w-full sm:w-2/1 mx-auto mt-4 px-20 text-center">
         <div class="w-full overflow-x-auto overflow-y-auto sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
             <table class="text-sm text-left text-gray-800 dark:text-gray-700 heading w-full">
                 <thead>
                     <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
-                        <th class="px-10 py-4">No</th>
-                        <th class="px-10 py-4">Nama Guru Mapel</th>
-                        <th class="px-10 py-4">Nama Mapel</th>
-                        <th class="px-10 py-4">Aksi</th>
+                        <th class="px-9 py-4">No</th>
+                        <th class="px-9 py-4">Nama Guru Mapel</th>
+                        <th class="px-9 py-4">Nama Mapel</th>
+                        <th class="px-9 py-4">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                     <?php $no = 0;
                     foreach ($akademik as $row) : $no++ ?>
                         <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
-                            <td class="px-10 py-3"><?php echo $no ?></td>
-                            <td class="px-10 py-3"><?php echo namaguru_getbyid($row->id_nama_guru); ?></td>
-                            <td class="px-10 py-3"><?php echo $row->nama_mapel ?></td>
-                            <td class="px-10 py-3 flex items-center justify-center space-x-2">
+                            <td class="px-8 py-4"><?php echo $no ?></td>
+                            <td class="px-8 py-4"><?php echo namaguru_getbyid($row->id_nama_guru); ?></td>
+                            <td class="px-8 py-4"><?php echo $row->nama_mapel ?></td>
+                            <td class="px-1 py-4 flex items-center justify-center space-x-2">
                                 <a href="<?php echo base_url('admin/edit_akademik/') . $row->id ?>" class="button-edit">
                                     <span class="icon">
                                         <i class="fas fa-edit"></i>
@@ -246,12 +242,12 @@
     <!-- tabel mapel -->
 
     <!-- Tabel Ekstra -->
-    <div class="container text-center">
-        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 mb-10 rounded-lg">Tabel data Ekstrakulikuler</h1>
+    <div class="md:px-64 py-8">
+        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 mb-10 rounded-lg">Tabel data Ekstrakurikuler</h1>
     </div>
 
-    <div class="w-full sm:w-2/3 mx-auto mt-4 p-4 text-center">
-        <div class="overflow-x-auto overflow-y-auto sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
+    <div class="w-full sm:w-2/1 mx-auto mt-4 px-20 text-center">
+        <div class="w-full overflow-x-auto overflow-y-auto sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
             <table class="text-sm text-left text-gray-800 dark:text-gray-700 heading w-full">
                 <thead>
                     <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600">

@@ -134,10 +134,10 @@
     <!-- </div> -->
 
     <!-- tabel -->
-    <div class="w-45 mt-10 px-8">
-      <div class="w-full overflow-hidden rounded-lg shadow-xs">
-        <div class="overflow-x-auto">
-          <table class="w-full table-auto text-sm text-left text-gray-800 dark:text-gray-700 ">
+    <div class="w-45 mt-10 px-8 overflow-x-auto">
+      <div class="w-full rounded-lg shadow-xs">
+        <div class="overflow-x-hidden">
+          <table class="min-w-full table-auto text-sm text-left text-gray-800 dark:text-gray-700">
             <thead>
               <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-600 bg-indigo-600 h-50">
                 <th class="px-4 py-5">No</th>
@@ -161,7 +161,6 @@
         </div>
       </div>
     </div>
-
     <!-- Contact Form -->
     <div class="mt-8 mx-7">
       <div class="grid grid-cols-1 md:grid-cols-2">
@@ -195,7 +194,7 @@
     </div>
     <!-- /Contact Form -->
   </div>
-
+  <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <script>

@@ -25,13 +25,6 @@
             padding: 0 0px;
         }
 
-        .container {
-            min-width: 20rem;
-            max-width: 65rem;
-            margin: 1rem auto;
-            padding: 30px 7.5rem 5px 7.5rem;
-        }
-
         .heading,
         .survey-form {
             background-color: #f4f4f4;

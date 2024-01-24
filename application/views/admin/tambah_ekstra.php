@@ -220,7 +220,7 @@
 <body>
     <?php $this->load->view('sidebar'); ?>
     <div class="w-25 mb-10 dark:bg-gray-500">
-        <div class="card mb-20 px-20 ">
+        <div class="card mb-20 px-5 ">
             <h3 class="text-center text-2xl font-bold mb-4 dark:text-white">Tambah Ekatrakurikuler</h3>
             <form action="<?php echo base_url('admin/aksi_tambah_ekstra') ?>" method="post" id="survey-form" class="survey-form w-full">
                 <div class="flex flex-wrap">
@@ -242,7 +242,6 @@
                 </div>
             </form>
         </div>
-    </div>
     </div>
     <!--Datatables -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
