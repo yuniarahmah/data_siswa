@@ -112,9 +112,9 @@
     </div>
 
     <div class="w-full mx-full px-10 text-center">
-        <div class="w-full rounded-lg shadow-xs">
-            <div class="overflow-x-auto">
-                <table class="w-full table-auto text-sm text-left text-gray-800 dark:text-gray-700">
+        <div class="w-full rounded-lg overflow-x-auto" style="overflow-x: auto;">
+            <div class="w-full overflow-x-auto overflow-y-auto sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
+                <table class="w-full overflow-x-auto table-auto text-sm text-left text-gray-800 dark:text-gray-700">
                     <thead>
                         <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
                             <th class="px-10 sm:px-6 py-5">No</th>
@@ -126,7 +126,8 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                        <?php $no = 0;
+                        <?php
+                        $no = 0;
                         foreach ($user as $row) : $no++ ?>
                             <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
                                 <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $no ?></td>
@@ -134,7 +135,7 @@
                                 <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $row->nama_ibu ?></td>
                                 <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $row->nama_ayah ?></td>
                                 <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $row->alamat ?></td>
-                                <td class="px-10 sm:px-2 py-5 flex items-center justify-center space-x-2">
+                                <td class="px-1 py-4 flex space-x-1 ml-7">
                                     <button onclick="hapus(<?php echo $row->id ?>)" class="button-delete">
                                         <span class="icon">
                                             <i class="fas fa-trash-alt"></i>
@@ -143,11 +144,35 @@
                                 </td>
                             </tr>
                         <?php endforeach ?>
+
+                        <!-- JavaScript to show/hide the "View All" link based on the count -->
+                        <script>
+                            const studentCount = <?php echo count($user); ?>;
+                            if (studentCount > 5) {
+                                const viewAllLink = document.createElement('a');
+                                viewAllLink.href = '#'; // Set the href attribute to the link you want
+                                viewAllLink.textContent = 'View All Students';
+                                viewAllLink.addEventListener('click', function() {
+                                    // Add logic to navigate to the page containing all student data
+                                    alert('Navigate to the page containing all student data');
+                                });
+
+                                const viewAllCell = document.createElement('td');
+                                viewAllCell.colSpan = 6; // Adjust the colspan based on the number of columns in your table
+                                viewAllCell.appendChild(viewAllLink);
+
+                                const viewAllRow = document.createElement('tr');
+                                viewAllRow.appendChild(viewAllCell);
+
+                                document.querySelector('tbody').appendChild(viewAllRow);
+                            }
+                        </script>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
     <!-- tabel siswa -->
 
     <!-- tabel guru -->
@@ -177,7 +202,7 @@
                             <td class="px-2 sm:px-6 py-10 sm:py-4"><?php echo $row->nik ?></td>
                             <td class="px-2 sm:px-6 py-10 sm:py-4"><?php echo $row->gender ?></td>
                             <td class="px-2 sm:px-6 py-10 sm:py-4"><?php echo $row->no_hp ?></td>
-                            <td class="px-6 sm:px-6 py-10 sm:py-4 flex items-center justify-center space-x-2">
+                            <td class="px-1 py-4 flex space-x-2">
                                 <a href="<?php echo base_url('admin/edit_guru/') . $row->id ?>" class="button-edit">
                                     <span class="icon">
                                         <i class="fas fa-edit"></i>
@@ -221,7 +246,7 @@
                             <td class="px-8 py-4"><?php echo $no ?></td>
                             <td class="px-8 py-4"><?php echo namaguru_getbyid($row->id_nama_guru); ?></td>
                             <td class="px-8 py-4"><?php echo $row->nama_mapel ?></td>
-                            <td class="px-1 py-4 flex items-center justify-center space-x-2">
+                            <td class="px-1 py-4 flex space-x-2">
                                 <a href="<?php echo base_url('admin/edit_akademik/') . $row->id ?>" class="button-edit">
                                     <span class="icon">
                                         <i class="fas fa-edit"></i>
@@ -266,7 +291,7 @@
                             <td class="px-4 py-2 sm:px-10 sm:py-3"><?php echo $row->nama_ekstra ?></td>
                             <td class="px-4 py-2 sm:px-10 sm:py-3"><?php echo $row->pembimbing ?></td>
                             <td class="px-4 py-2 sm:px-10 sm:py-3"><?php echo $row->waktu ?></td>
-                            <td class="px-4 py-2 sm:px-10 sm:py-3 flex items-center justify-center space-x-2">
+                            <td class="px-1 py-4 flex space-x-2">
                                 <a href="<?php echo base_url('admin/edit_ekstra/') . $row->id ?>" class="button-edit">
                                     <span class="icon">
                                         <i class="fas fa-edit"></i>

@@ -219,7 +219,7 @@
 <body>
     <?php $this->load->view('sidebar'); ?>
     <div class="w-25 mb-10 dark:bg-gray-800">
-        <div class="card mb-20 px-20 ">
+        <div class="card px-5 py-5">
             <h3 class="text-center text-2xl font-bold mb-4 dark:text-white">Tambah Siswa</h3>
             <form action="<?php echo base_url('admin/aksi_tambah_siswa') ?>" method="post" id="survey-form" class="survey-form w-full">
                 <div class="flex flex-wrap">

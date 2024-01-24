@@ -7,24 +7,37 @@
     <title>Data Siswa Baru</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-
+</head>
     <style>
         * {
             margin: 0px;
             font-family: "DM Sans", sans-serif;
         }
 
+        body {
+            background: #4F46E5;
+        }
+
         .form-group {
             position: relative;
         }
 
-        .password-toggle-register {
+        .password-input-container {
+            position: relative;
+        }
+
+        .password-input-container input {
+            padding-right: 30px;
+            /* Menambahkan ruang di sebelah kanan untuk ikon mata */
+        }
+
+        .password-toggle-login {
             position: absolute;
-            top: 70%;
+            right: 10px;
+            top: 50%;
             transform: translateY(-50%);
-            right: 8rem;
             cursor: pointer;
+            color: #666;
         }
 
         .LoginPageContainer {
@@ -38,14 +51,14 @@
 
         .LoginPageInnerContainer {
             display: flex;
+            margin-top: 6%;
             min-height: 100%;
+            margin-left: 34%;
+            margin-right: 34%;
         }
 
         .LoginPageInnerContainer .ImageContianer {
-            width: 40%;
-            background-color: rgba(31, 41, 55);
-            min-height: 100%;
-            padding: 5%;
+            width: 10%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -56,47 +69,42 @@
             display: block;
         }
 
-        .LoginPageInnerContainer .LoginFormContainer {
+        .LoginPageInnerContainer .card {
             flex-grow: 2;
-            background-color: white;
+            background: #C7D2FE;
+            /* Ubah nilai RGBA sesuai kebutuhan transparansi */
             min-height: 100%;
             padding: 5%;
-            background: url(https://i.imgur.com/BKyjjFa.png) no-repeat center center fixed;
-            -webkit-background-size: cover;
+            border-radius: 2%;
+            /* background: url() no-repeat center center fixed; */
+            /* -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
-            background-size: cover;
+            background-size: cover; */
         }
 
-        .LoginPageInnerContainer .LoginFormContainer .LogoContainer .logo {
+        .LoginPageInnerContainer .card .LogoContainer .logo {
             height: 60px;
             margin-bottom: 30px;
         }
 
-        .LoginPageInnerContainer .LoginFormContainer .header {
+        .LoginPageInnerContainer .card .header {
             font-size: 32px;
             font-weight: 500;
         }
 
-        .LoginPageInnerContainer .LoginFormContainer .subHeader {
+        .LoginPageInnerContainer .card .subHeader {
             color: #9aa4ad;
             margin-top: 5px;
             margin-bottom: 40px;
         }
 
-        .subArteris {
-            color: red;
-            font-size: 14px;
-            margin-top: 5px;
-            margin-bottom: 40px;
-        }
-
-        .LoginPageInnerContainer .LoginFormContainer .inputContainer {
+        .LoginPageInnerContainer .card .inputContainer {
             color: #3f3f45;
             margin: 20px 0px;
         }
 
-        .LoginPageInnerContainer .LoginFormContainer .inputContainer .label {
+        .LoginPageInnerContainer .card .inputContainer .label {
             display: flex;
             width: 100%;
             justify-content: flex-start;
@@ -105,13 +113,13 @@
             margin-bottom: 10px;
         }
 
-        .LoginPageInnerContainer .LoginFormContainer .inputContainer .label .labelIcon {
+        .LoginPageInnerContainer .card .inputContainer .label .labelIcon {
             width: 20px;
             margin-right: 10px;
             display: block;
         }
 
-        .LoginPageInnerContainer .LoginFormContainer .inputContainer .input {
+        .LoginPageInnerContainer .card .inputContainer .input {
             display: block;
             width: calc(100% - 20px);
             font-size: 15px;
@@ -122,21 +130,23 @@
             outline: 0px !important;
         }
 
-        .LoginPageInnerContainer .LoginFormContainer .OptionsContainer {
+        .LoginPageInnerContainer .card .OptionsContainer {
             display: flex;
             justify-content: space-between;
         }
 
-        .LoginFormContainer {
+        .card {
             display: flex;
             align-items: center;
         }
 
         .LoginFormInnerContainer {
-            max-width: 500px;
+            max-width: 1000px;
+            /* background-color: #666; */
+            padding: 10px 15px 20px 15px;
         }
 
-        .LoginPageInnerContainer .LoginFormContainer .checkbox {
+        .LoginPageInnerContainer .card .checkbox {
             width: 15px;
             height: 15px;
             margin: 0px;
@@ -144,25 +154,24 @@
             border: 1px solid #d6d7db;
         }
 
-        .LoginPageInnerContainer .LoginFormContainer .checkboxContainer {
+        .LoginPageInnerContainer .card .checkboxContainer {
             display: flex;
             justify-content: flex-start;
             align-items: center;
         }
 
-        .LoginPageInnerContainer .LoginFormContainer .checkboxContainer label {
+        .LoginPageInnerContainer .card .checkboxContainer label {
             display: block;
             padding: 0px 5px;
-            margin-left: 5px;
             color: #9aa4ad;
         }
 
-        .LoginPageInnerContainer .LoginFormContainer .ForgotPasswordLink {
+        .LoginPageInnerContainer .card .ForgotPasswordLink {
             color: #e7483b;
             text-decoration: none;
         }
 
-        .LoginFormContainer .LoginFormInnerContainer .LoginButton {
+        .card .LoginFormInnerContainer .LoginButton {
             margin-top: 30px;
             display: block;
             width: 100%;
@@ -170,13 +179,13 @@
             border-radius: 20px;
             font-weight: bold;
             color: white;
-            background-color: rgba(31, 41, 55);
+            background: #4F46E5;
             border: 0px;
             outline: 0px;
             cursor: pointer;
         }
 
-        .LoginFormContainer .LoginFormInnerContainer .LoginButton:active {
+        .card .LoginFormInnerContainer .LoginButton:active {
             background-color: rgba(31, 41, 55);
         }
 
@@ -196,108 +205,81 @@
                 position: relative;
             }
 
-            .password-toggle-register {
+            .password-toggle-login {
                 position: absolute;
-                top: 37rem;
+                top: 55%;
                 transform: translateY(-50%);
-                right: 1.8rem;
+                right: 0.5rem;
                 cursor: pointer;
             }
 
-            .LoginFormContainer {
+
+            .card {
                 justify-content: center;
             }
         }
 
-
         .LoginPageContainer::-webkit-scrollbar {
             width: 5px;
-        }
-
-        .LoginPageContainer::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        .ImageContianer .LoginPageContainer::-webkit-scrollbar-thumb {
-            background: #2e1f7a;
-        }
-
-        .LoginPageContainer::-webkit-scrollbar-thumb:hover {
-            background: #4520ff;
-        }
-
-        .inputContainer {
-            position: relative;
-        }
-
-        .password-input-container {
-            position: relative;
-        }
-
-        .password-toggle-login {
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #555;
-            /* Adjust the color as needed */
         }
 
         .header-text {
             font-weight: bold;
             font-size: 15px;
         }
+
+        .forgetPass {
+            display: block;
+            /* Jadikan elemen block agar bisa memiliki lebar dan tinggi */
+            margin-top: 10px;
+            /* Jarak atas setiap link */
+            color: #3498db;
+            /* Warna teks link */
+            text-decoration: none;
+            /* Hilangkan garis bawah link */
+        }
     </style>
 
-
-</head>
-
 <body>
-    <div class="LoginPageContainer">
-        <div class="LoginPageInnerContainer">
-            <div class="ImageContianer">
-                <img src="<?php echo base_url() ?>image/foto1.png" class="GroupImage">
-            </div>
-            <div class="LoginFormContainer">
-                <div class="LoginFormInnerContainer">
+    <div class="ImageContianer LoginPageInnerContainer">
+        <div class="card">
+            <div class="LoginFormInnerContainer">
 
-                    <header class="header">Register</header>
-                    <header class="subHeader">Selamat Datang di <b>Website Data Siswa Baru</b> Silahkan lengkapi data anda
-                    </header>
+                <u class="text-bold bg-white lg:bg-transparent" style="font-size: 32px; font-weight: 500;">Register</u>
+                <header class="subHeader">Silahkan resgiterasi untuk membuat akun di website ini dan selamat bergabung</header>
 
-                    <form action="<?php echo base_url('auth/aksi_registeru') ?>" method="post">
-                        <div class="inputContainer">
-                            <label class="label header-text" for="username"><img src="https://cdn2.iconfinder.com/data/icons/e-commerce-line-4-1/1024/user4-512.png" class="labelIcon"><span>Username
-                                </span></label>
-                            <input autocomplete="off" required type="text" name="username" class="input" id="username" placeholder="Enter your nama lengkap">
+                <form action="<?php echo base_url('auth/aksi_registeru') ?>" method="post">
+                    <div class="inputContainer">
+                        <label class="label header-text" for="username"><img src="https://cdn2.iconfinder.com/data/icons/e-commerce-line-4-1/1024/user4-512.png" class="labelIcon"><span>Username
+                            </span></label>
+                        <input autocomplete="off" required type="text" name="username" class="input" id="username" placeholder="Enter your nama lengkap">
+                    </div>
+                    <div class="inputContainer">
+                        <label class="label header-text" for="nama_lengkap"><img src="https://cdn2.iconfinder.com/data/icons/e-commerce-line-4-1/1024/user4-512.png" class="labelIcon"><span>Nama Lengkap
+                            </span></label>
+                        <input autocomplete="off" required type="text" name="nama_lengkap" class="input" id="nama_lengkap" placeholder="Enter your nama lengkap">
+                    </div>
+                    <div class="inputContainer">
+                        <label class="label header-text" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png" class="labelIcon"><span>Email
+                            </span></label>
+                        <input required type="email" name="email" class="input" id="emailAddress" placeholder="Enter your Email Address">
+                    </div>
+                    <div class="inputContainer">
+                        <label class="label header-text" for="passwordfAddress">
+                            <img src="https://i.imgur.com/g5SvdfG.png" class="labelIcon"><span>Password</span></label>
+                        <div class="password-input-container">
+                            <input type="password" required name="password" class="input" id="password" placeholder="Enter your Password">
+                            <i class="password-toggle-login fa fa-eye-slash" onclick="togglePassword()"></i>
                         </div>
-                        <div class="inputContainer">
-                            <label class="label header-text" for="nama_lengkap"><img src="https://cdn2.iconfinder.com/data/icons/e-commerce-line-4-1/1024/user4-512.png" class="labelIcon"><span>Nama Lengkap
-                                </span></label>
-                            <input autocomplete="off" required type="text" name="nama_lengkap" class="input" id="nama_lengkap" placeholder="Enter your nama lengkap">
-                        </div>
-                        <div class="inputContainer">
-                            <label class="label header-text" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png" class="labelIcon"><span>Email
-                                </span></label>
-                            <input required type="email" name="email" class="input" id="emailAddress" placeholder="Enter your Email Address">
-                        </div>
-                        <div class="inputContainer">
-                            <label class="label header-text" for="passwordfAddress">
-                                <img src="https://i.imgur.com/g5SvdfG.png" class="labelIcon"><span>Password</span></label>
-                            <div class="password-input-container">
-                                <input type="password" required name="password" class="input" id="password" placeholder="Enter your Password">
-                                <i class="password-toggle-login fa fa-eye-slash" onclick="togglePassword()"></i>
-                            </div>
-                        </div>
+                    </div>
 
-                        <p class="subArteris">*Gunakan kombinasi minimal 8 karakter dengan huruf dan angka</p>
-                        <button name="submit" type="submit" class="LoginButton">Register</button>
+                    <p class="subArteris">*Gunakan kombinasi minimal 8 karakter dengan huruf dan angka</p>
+                    <button name="submit" type="submit" class="LoginButton">Register</button>
 
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
+    </div>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

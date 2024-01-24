@@ -220,7 +220,7 @@
 <body>
     <?php $this->load->view('sidebar'); ?>
     <div class="w-25 mb-10 dark:bg-gray-500">
-        <div class="card mb-20 px-20 ">
+        <div class="card px-5 py-5">
             <h3 class="text-center text-2xl font-bold mb-4 dark:text-white">Tambah Pembayaran</h3>
             <form action="<?= base_url('admin/aksi_tambah_pembayaran') ?>" method="post" id="survey-form" class="survey-form w-full">
                 <div class="flex flex-wrap">
@@ -237,8 +237,8 @@
                         <label for="jenis_pembayaran" class="block font-bold text-gray-800">Jenis Pembayaran</label>
                         <select name="jenis_pembayaran" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                             <option selected>Pilih Pembayaran</option>
-                            <option value="jumlah_pembayaran_uang_gedung">Pembayaran Uang Gedung</option>
-                            <option value="jumlah_pembayaran_uang_sragam">Pembayaran Seragam</option>
+                            <option value="pembayaran_uang_gedung">Pembayaran Uang Gedung</option>
+                            <option value="pembayaran_uang_sragam">Pembayaran Seragam</option>
                         </select>
                     </div>
                     <div class="w-full px-1">

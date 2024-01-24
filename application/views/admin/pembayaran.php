@@ -95,76 +95,76 @@
 
 <body>
     <?php $this->load->view('sidebar'); ?>
-    <div class="container md:px-48 md:py-10 py-5 px-5">
+    <div class="md:px-64 py-8 px-5">
         <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 rounded-lg">Tabel data Pembayaran</h1>
     </div>
 
-    <div class="w-screen xl:w-full mx-auto mt-4 px-20 text-center">
-        <div class="w-full overflow-x-auto overflow-y-auto sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
-            <table class="text-sm text-left text-gray-800 dark:text-gray-700 heading w-full">
-                <thead>
+    <div class="w-full mx-full px-10 text-center">
+        <div class="w-full rounded-lg shadow-xs">
+            <div class="overflow-x-auto">
+                <table class="w-full table-auto text-sm text-left text-gray-800 dark:text-gray-700">
                     <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
-                        <th class="px-10 py-5">No</th>
-                        <th class="px-10 py-5">Nama Siswa</th>
-                        <th class="px-10 py-5">Jenis Pembayaran</th>
-                        <th class="px-10 py-5">Jumlah Pembayaran</th>
-                        <th class="px-10 py-5">Status</th>
-                        <th class="px-10 py-4">Aksi</th>
+                        <th class="px-5 py-5">No</th>
+                        <th class="px-5 py-5">Nama Siswa</th>
+                        <th class="px-5 py-5">Jenis Pembayaran</th>
+                        <th class="px-5 py-5">Jumlah Pembayaran</th>
+                        <th class="px-5 py-5">Status</th>
+                        <th class="px-8 py-4">Aksi</th>
                     </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-200">
-                    <?php $no = 0;
-                    foreach ($pembayaran as $row) : $no++ ?>
-                        <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
-                            <td class="px-10 py-5"><?php echo $no ?></td>
-                            <td class="px-10 py-5"><?php echo nama_full_siswa_id($row->id_nama_siswa) ?></td>
-                            <td class="px-10 py-5"><?php echo $row->jenis_pembayaran ?></td>
-                            <td class="px-10 py-5"><?php echo $row->total_pembayaran ?></td>
-                            <td class="px-10 py-5"><?php echo $row->status ?></td>
-                            <td class="px-10 py-5 flex items-center justify-center space-x-2">
-                                <a href="<?php echo base_url('admin/edit_pembayaran/') . $row->id ?>" class="button-edit">
-                                    <span class="icon">
-                                        <i class="fas fa-edit"></i>
-                                    </span>
-                                </a>
-                                <button onclick="hapus(<?php echo $row->id ?>)" class="button-delete">
-                                    <span class="icon">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </span>
-                                </button>
-                            </td>
-                        </tr>
-                    <?php endforeach ?>
-                </tbody>
-            </table>
-        </div>
-    </body>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
-    <script>
-           function hapus(id) {
-            Swal.fire({
-                title: 'Apakah Mau Dihapus?',
-                text: "data ini tidak bisa dikembalikan lagi!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Hapus'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        title: 'Berhasil Menghapus',
-                        text: 'Data berhasil dihapus.',
-                        icon: 'success',
-                        timer: 1500, // Adjust the duration in milliseconds (e.g., 1500 for 1.5 seconds)
-                        showConfirmButton: false,
-                    }).then(function() {
-                        window.location.href = "<?php echo base_url('admin/hapus_pembayaran/') ?>" + id;
-                    });
-                }
-            });
-        }
-    </script>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <?php $no = 0;
+                        foreach ($pembayaran as $row) : $no++ ?>
+                            <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
+                                <td class="px-5 py-5"><?php echo $no ?></td>
+                                <td class="px-5 py-5"><?php echo nama_full_siswa_id($row->id_nama_siswa) ?></td>
+                                <td class="px-5 py-5"><?php echo $row->jenis_pembayaran ?></td>
+                                <td class="px-5 py-5"><?php echo $row->total_pembayaran ?></td>
+                                <td class="px-5 py-5"><?php echo $row->status ?></td>
+                                <td class="px-1 py-4 flex space-x-1 ml-7">
+                                    <a href="<?php echo base_url('admin/edit_pembayaran/') . $row->id ?>" class="button-edit">
+                                        <span class="icon">
+                                            <i class="fas fa-edit"></i>
+                                        </span>
+                                    </a>
+                                    <button onclick="hapus(<?php echo $row->id ?>)" class="button-delete">
+                                        <span class="icon">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </span>
+                                    </button>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>
+</body>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
+<script>
+    function hapus(id) {
+        Swal.fire({
+            title: 'Apakah Mau Dihapus?',
+            text: "data ini tidak bisa dikembalikan lagi!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Batal',
+            confirmButtonText: 'Hapus'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'Berhasil Menghapus',
+                    text: 'Data berhasil dihapus.',
+                    icon: 'success',
+                    timer: 1500, // Adjust the duration in milliseconds (e.g., 1500 for 1.5 seconds)
+                    showConfirmButton: false,
+                }).then(function() {
+                    window.location.href = "<?php echo base_url('admin/hapus_pembayaran/') ?>" + id;
+                });
+            }
+        });
+    }
+</script>
 
 </html>
