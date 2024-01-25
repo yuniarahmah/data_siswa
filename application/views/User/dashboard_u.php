@@ -12,6 +12,24 @@
   body {
     overflow-x: hidden;
   }
+
+  @media only screen and (max-width: 800px) {
+
+    /* Teks aslinya akan tampil secara normal di perangkat dengan lebar lebih besar dari 600px */
+    .text-lg {
+      font-size: 10px;
+    }
+
+    /* Ketika lebar perangkat kurang dari atau sama dengan 600px, teks akan menjadi sampingan */
+    @media (max-width: 600px) {
+      .text-lg {
+        font-size: 10px;
+        /* Atur ukuran teks yang lebih kecil untuk perangkat berukuran kecil */
+        display: block;
+        /* Menetapkan tampilan blok untuk melewatkan baris baru */
+      }
+    }
+  }
 </style>
 
 <body>
@@ -20,7 +38,7 @@
     <!-- Task Summaries -->
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 p-4 gap-6 text-black dark:text-white">
       <div class="md:col-span-2 xl:col-span-3">
-        <h3 class="text-lg font-bold text-gray-800" style="font-size: 3rem; color: #FAF6F0;">Informasi Sekolah</h3>
+        <h3 class="text-lg font-bold text-indigo-300" style="font-size: 3rem;">Informasi Sekolah</h3>
       </div>
       <div class="md:col-span-2 xl:col-span-1">
         <div class="rounded bg-gray-200 dark:bg-gray-800 p-6 overflow-x-auto">
@@ -104,35 +122,77 @@
     <!-- ./Task Summaries -->
 
     <!-- Table -->
-    <div class="w-90 ml-2 overflow-x-auto">
-      <table class="w-90 ml-2">
-        <thead>
-          <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600">
-            <th class="px-10 py-4">No</th>
-            <th class="px-10 py-4">Nama Siswa</th>
-            <th class="px-10 py-4">Nama Ibu</th>
-            <th class="px-10 py-4">Nama Ayah</th>
-            <th class="px-10 py-4">Alamat</th>
-          </tr>
-        </thead>
-        <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-          <?php $no = 0;
-          foreach ($user as $row) : $no++ ?>
-            <tr onclick="navigateToPage('<?php echo base_url('admin/data_lengkap') ?>')" class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
-              <td class="px-10 py-3"><?php echo $no ?></td>
-              <td class="px-10 py-3"><?php echo $row->nama_siswa ?></td>
-              <td class="px-10 py-3"><?php echo $row->nama_ibu ?></td>
-              <td class="px-10 py-3"><?php echo $row->nama_ayah ?></td>
-              <td class="px-10 py-3"><?php echo $row->alamat ?></td>
-            </tr>
-          <?php endforeach ?>
-        </tbody>
-      </table>
+    <div class="w-full mx-full px-10 text-center">
+      <div class="w-full rounded-lg overflow-x-auto" style="overflow-x: auto;">
+        <div class="w-full overflow-x-auto overflow-y-auto sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
+          <table class="w-full overflow-x-auto table-auto text-sm text-left text-gray-800 dark:text-gray-700">
+            <thead>
+              <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
+                <th class="px-10 sm:px-6 py-5">No</th>
+                <th class="px-10 sm:px-6 py-5">Nama Siswa</th>
+                <th class="px-10 sm:px-6 py-5">Nama Ibu</th>
+                <th class="px-10 sm:px-6 py-5">Nama Ayah</th>
+                <th class="px-10 sm:px-6 py-5">Alamat</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+              <?php
+              $no = 0;
+              $maxRows = 5; // Jumlah maksimum baris yang ingin ditampilkan
+              foreach ($user as $row) :
+                $no++;
+                if ($no <= $maxRows) :
+              ?>
+                  <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
+                    <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $no ?></td>
+                    <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $row->nama_siswa ?></td>
+                    <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $row->nama_ibu ?></td>
+                    <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $row->nama_ayah ?></td>
+                    <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $row->alamat ?></td>
+                  </tr>
+              <?php
+                endif;
+              endforeach;
+              ?>
+
+              <!-- <?php if (count($user) > $maxRows) : ?>
+                <tr>
+                  <td colspan="5" class="text-center">
+                    <a href="#" id="viewAllLink">Lihat selengkapnya <i class="fa-solid fa-forward"></i></a>
+                  </td>
+                </tr>
+                <script>
+                  document.getElementById('viewAllLink').addEventListener('click', function(event) {
+                    event.preventDefault();
+
+                    // Menampilkan SweetAlert untuk konfirmasi
+                    Swal.fire({
+                      title: 'Konfirmasi',
+                      text: 'Apakah Anda yakin ingin melihat semua data siswa?',
+                      icon: 'warning',
+                      showCancelButton: true,
+                      confirmButtonColor: '#3085d6',
+                      cancelButtonColor: '#d33',
+                      confirmButtonText: 'Ya, Tampilkan!'
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        // Mengarahkan ke halaman tabel siswa
+                        window.location.href = '<?php echo base_url('user/tabel_siswa') ?>';
+                      }
+                    });
+                  });
+                </script>
+              <?php endif; ?> -->
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
+
     <!-- ./Table -->
 
     <!-- Contact Form -->
-    <div class="mt-8 mx-4">
+    <div class="mt-8 mx-7">
       <div class="grid grid-cols-1 md:grid-cols-2">
         <div class="p-6 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
           <h1 class="text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight">Informasi lebih lanjut</h1>

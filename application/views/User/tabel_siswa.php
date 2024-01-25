@@ -44,7 +44,7 @@
         text-align: center;
         font-weight: 700;
     }
-    
+
     .button-edit {
         display: flex;
         align-items: center;
@@ -70,15 +70,29 @@
         font-size: 18px;
         margin-right: 3px;
     }
+
+    @media only screen and (max-width: 390px) {
+        h1 {
+            width: 300px;
+            margin-right: 60%;
+        }
+
+        .table .w-45 {
+            margin: auto;
+            width: 100%;
+            /* padding: 50%; */
+        }
+
+    }
 </style>
 
 <body>
     <?php $this->load->view('sidebaru'); ?>
-    <div class="container">
-        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 mb-10 rounded-lg">Tabel data Siswa</h1>
+    <div class="md:px-64 py-8 px-5">
+        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 rounded-lg mb-5">Tabel data siswa</h1>
     </div>
     <div class="w-45 mb-10 pl-10 pr-10">
-        <div class="w-full overflow-hidden rounded-lg shadow-xs">
+        <div class="w-full overflow-hidden rounded-lg shadow-xs" style="overflow-x: auto;">
             <div class="w-full overflow-x-auto">
                 <table id="example_pelanggan" class="w-full text-sm text-left text-gray-800 dark:text-gray-700">
                     <thead>

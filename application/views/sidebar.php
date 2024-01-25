@@ -1,13 +1,15 @@
 <!DOCTYPE html>
+<!-- Coding by CodingLab | www.codinglabweb.com -->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="style.css">
 
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
@@ -265,16 +267,25 @@
     }
 
     .mode .sun-moon i.sun {
+        opacity: 1;
+        /* Set opacity to 1 for sun in light mode */
+    }
+
+    .mode .sun-moon i.moon {
         opacity: 0;
+        /* Set opacity to 0 for moon in light mode */
     }
 
     body.dark .mode .sun-moon i.sun {
-        opacity: 1;
+        opacity: 0;
+        /* Set opacity to 0 for sun in dark mode */
     }
 
     body.dark .mode .sun-moon i.moon {
-        opacity: 0;
+        opacity: 1;
+        /* Set opacity to 1 for moon in dark mode */
     }
+
 
     .menu-bar .bottom-content .toggle-switch {
         position: absolute;
@@ -317,6 +328,7 @@
     .home {
         position: absolute;
         top: 0;
+        top: 0;
         left: 250px;
         height: 100vh;
         width: calc(100% - 250px);
@@ -332,167 +344,13 @@
     }
 
     .sidebar.close~.home {
-        left: 88px;
-        width: calc(100% - 88px);
+        left: 78px;
+        height: 100vh;
+        width: calc(100% - 78px);
     }
 
     body.dark .home .text {
         color: var(--text-color);
-    }
-
-    .toggle-responsive {
-        display: none;
-        background: none;
-        border: none;
-        font-size: 24px;
-        color: var(--primary-color);
-        cursor: pointer;
-        margin-right: 10px;
-    }
-
-    @media (max-width: 368px) {
-        .toggle-responsive {
-            display: block;
-        }
-
-        .toggle-responsive i {
-            transform: rotate(180deg);
-            /* Adjust the rotation as needed */
-            transition: transform 0.3s ease;
-        }
-
-        .sidebar.close .toggle-responsive i {
-            transform: rotate(0deg);
-        }
-    }
-
-    @media only screen and (max-width: 600px) {
-        .menu-links {
-            width: 100%;
-        }
-    }
-
-    /* ===== Sidebar in Responsive Mode ===== */
-    @media (max-width: 468px) {
-        .toggle-responsive {
-            display: block;
-        }
-
-        .toggle-responsive i {
-            transition: transform 0.3s ease;
-        }
-
-        .sidebar.close .toggle-responsive i {
-            transform: rotate(0deg);
-        }
-
-        .sidebar {
-            width: 88px !important;
-            /* Override width for responsive mode */
-        }
-
-        .sidebar .text {
-            opacity: 0;
-        }
-
-        .sidebar.close~.home {
-            left: 88px;
-            width: calc(100% - 88px);
-        }
-
-        .sidebar.close .toggle {
-            transform: translateY(-50%) rotate(0deg);
-        }
-
-        body.dark .sidebar header .toggle {
-            color: var(--text-color);
-        }
-
-        .sidebar .menu {
-            margin-top: 0;
-            /* Adjust margin if needed */
-        }
-
-        .sidebar li.search-box {
-            display: none;
-            /* Hide search box in responsive mode if needed */
-        }
-
-        .sidebar li a {
-            justify-content: center;
-        }
-
-        .sidebar li a .icon {
-            margin-right: 0;
-        }
-
-        .sidebar li a .text {
-            display: none;
-        }
-    }
-
-    @media only screen and (max-width: 768px) {
-        .h-full {
-            height: 100%;
-        }
-
-        .ml-48 {
-            margin-left: 100px;
-        }
-
-        .toggle-responsive {
-            display: block;
-        }
-
-        .menu {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background-color: #2a3f54;
-            overflow-y: auto;
-            transition: 0.5s;
-        }
-
-        .menu.show {
-            left: 0;
-        }
-
-        .toggle-responsive i {
-            font-size: 28px;
-            cursor: pointer;
-            color: #fff;
-            position: absolute;
-            right: 15px;
-            top: 15px;
-        }
-
-        .menu-links {
-            padding-top: 70px;
-        }
-
-        .menu-links a {
-            padding: 15px;
-            text-decoration: none;
-            font-size: 18px;
-            color: #fff;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .menu-links a:hover {
-            background-color: #1c2b3a;
-        }
-
-        .bottom-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-            padding-bottom: 20px;
-        }
     }
 </style>
 
@@ -611,34 +469,25 @@
                 toggle = body.querySelector(".toggle"),
                 searchBtn = body.querySelector(".search-box"),
                 modeSwitch = body.querySelector(".toggle-switch"),
-                modeText = body.querySelector(".mode-text"),
-                toggleResponsive = body.querySelector(".toggle-responsive");
+                modeText = body.querySelector(".mode-text");
+
 
             toggle.addEventListener("click", () => {
                 sidebar.classList.toggle("close");
-            });
+            })
 
             searchBtn.addEventListener("click", () => {
                 sidebar.classList.remove("close");
-            });
+            })
 
             modeSwitch.addEventListener("click", () => {
                 body.classList.toggle("dark");
+
                 if (body.classList.contains("dark")) {
                     modeText.innerText = "Dark mode";
                 } else {
                     modeText.innerText = "Light mode";
-                }
-            });
 
-            toggleResponsive.addEventListener("click", () => {
-                sidebar.classList.toggle("close");
-
-                // Toggle the icon based on sidebar state
-                if (sidebar.classList.contains("close")) {
-                    toggleResponsive.innerHTML = '<i class="bx bx-chevron-right"></i>';
-                } else {
-                    toggleResponsive.innerHTML = '<i class="bx bx-chevron-left"></i>';
                 }
             });
 
@@ -661,6 +510,7 @@
                 });
             }
         </script>
+
 </body>
 
 </html>

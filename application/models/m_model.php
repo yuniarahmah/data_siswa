@@ -109,4 +109,9 @@ class M_model extends CI_Model
         // Return a default value or handle the case when the result is empty
         return "Default Value";
     }
+
+    public function registera($data)
+    {
+        $this->db->insert('admin', $data); // Sesuaikan dengan nama tabel yang digunakan di database
+    }
 }

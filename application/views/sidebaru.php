@@ -446,7 +446,7 @@
             </div>
         </div>
     </nav>
-    <div class="h-full ml-48 mt-14 mb-10 md:ml-64">
+    <section class="home">
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script>

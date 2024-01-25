@@ -160,7 +160,7 @@
 
         /* style comboboxs */
         input {
-            padding: 5px;
+            padding: 10px;
             height: 35px;
             border-bottom: 1px solid;
             outline: none;

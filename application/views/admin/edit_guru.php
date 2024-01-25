@@ -9,6 +9,7 @@
 
     <!-- cdn fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap');
 
@@ -23,6 +24,13 @@
             background-color: #E4F1FF;
             color: #222;
             padding: 0 0px;
+        }
+
+        .container {
+            min-width: 20rem;
+            max-width: 65rem;
+            margin: 1rem auto;
+            padding: 30px 7.5rem 5px 7.5rem;
         }
 
         .heading,
@@ -185,6 +193,7 @@
 
             .container {
                 padding: 1rem 1rem 0px 1rem;
+                max-width: 100rem;
             }
 
 
@@ -208,7 +217,6 @@
             }
         }
     </style>
-</head>
 
 <body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>

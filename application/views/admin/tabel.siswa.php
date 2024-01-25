@@ -73,7 +73,7 @@
 </style>
 
 <body>
-    <?php $this->load->view('sidebaru'); ?>
+    <?php $this->load->view('sidebar'); ?>
     <div class="container">
         <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 mb-10 rounded-lg">Tabel data Siswa</h1>
     </div>

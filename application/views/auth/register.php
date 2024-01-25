@@ -8,7 +8,6 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
-
 <style>
     * {
         margin: 0px;
@@ -44,7 +43,7 @@
 
     .LoginPageContainer {
         height: 100vh;
-        overflow: auto;
+        /* overflow: auto; */
     }
 
     .showPassword {
@@ -53,7 +52,7 @@
 
     .LoginPageInnerContainer {
         display: flex;
-        margin-top: 6%;
+        margin-top: 1%;
         min-height: 100%;
         margin-left: 34%;
         margin-right: 34%;
@@ -78,11 +77,6 @@
         min-height: 100%;
         padding: 5%;
         border-radius: 2%;
-        /* background: url() no-repeat center center fixed; */
-        /* -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover; */
     }
 
     .LoginPageInnerContainer .card .LogoContainer .logo {
@@ -90,15 +84,16 @@
         margin-bottom: 30px;
     }
 
-    .LoginPageInnerContainer .card .header {
+    .LoginPageInnerContainer .card .subheader {
         font-size: 32px;
         font-weight: 500;
     }
 
-    .LoginPageInnerContainer .card .subHeader {
-        color: #9aa4ad;
-        margin-top: 5px;
+    .LoginPageInnerContainer .card .Header {
+        color: #4F46E5;
+        /* margin-top: 5px; */
         margin-bottom: 40px;
+        font-size: 32px;
     }
 
     .LoginPageInnerContainer .card .inputContainer {
@@ -174,7 +169,7 @@
     }
 
     .card .LoginFormInnerContainer .LoginButton {
-        margin-top: 30px;
+        margin-top: 15px;
         display: block;
         width: 100%;
         padding: 10px;
@@ -192,15 +187,21 @@
     }
 
 
-    @media only screen and (max-width: 1200px) {
+    @media only screen and (max-width: 900px) {
         .LoginPageInnerContainer .ImageContianer {
-            width: 50%;
+            width: 37.5%;
+            /* Adjusted for responsiveness */
         }
     }
 
-    @media only screen and (max-width: 800px) {
-        .LoginPageInnerContainer .ImageContianer {
-            display: none;
+    @media only screen and (max-width: 600px) {
+        .LoginPageInnerContainer {
+            margin-left: auto;
+            margin-right: auto;
+            overflow-y: auto;
+            /* Add vertical scrolling */
+            max-height: 100vh;
+            /* Limit the maximum height to the viewport height */
         }
 
         .form-group {
@@ -211,13 +212,20 @@
             position: absolute;
             top: 55%;
             transform: translateY(-50%);
-            right: 0.5rem;
+            /* right: 0.75rem; */
             cursor: pointer;
         }
 
-
         .card {
             justify-content: center;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        .inputContainer {
+            color: #9aa4ad;
+            margin-top: 5px;
+            margin-bottom: 40px;
         }
     }
 
@@ -235,7 +243,7 @@
         /* Jadikan elemen block agar bisa memiliki lebar dan tinggi */
         margin-top: 10px;
         /* Jarak atas setiap link */
-        color: #3498db;
+        color: #4F46E5;
         /* Warna teks link */
         text-decoration: none;
         /* Hilangkan garis bawah link */
@@ -281,7 +289,6 @@
                 </form>
             </div>
         </div>
-    </div>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

@@ -16,7 +16,7 @@
     font-family: "DM Sans", sans-serif;
   }
 
-  body{
+  body {
     background: #4F46E5;
   }
 
@@ -90,7 +90,7 @@
     margin-bottom: 30px;
   }
 
-  .LoginPageInnerContainer .card .header {
+  .LoginPageInnerContainer .card .subheader {
     font-size: 32px;
     font-weight: 500;
   }
@@ -99,11 +99,13 @@
     color: #4F46E5;
     margin-top: 5px;
     margin-bottom: 40px;
+    font-size: 32px;
   }
 
   .LoginPageInnerContainer .card .inputContainer {
     color: #3f3f45;
     margin: 20px 0px;
+    width: 30rem;
   }
 
   .LoginPageInnerContainer .card .inputContainer .label {
@@ -192,15 +194,18 @@
   }
 
 
-  @media only screen and (max-width: 1200px) {
+  @media only screen and (max-width: 900px) {
     .LoginPageInnerContainer .ImageContianer {
-      width: 50%;
+      width: 37.5%;
+      /* Adjusted for responsiveness */
     }
   }
 
-  @media only screen and (max-width: 800px) {
-    .LoginPageInnerContainer .ImageContianer {
-      display: none;
+  @media only screen and (max-width: 600px) {
+    .LoginPageInnerContainer {
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 30%;
     }
 
     .form-group {
@@ -211,13 +216,21 @@
       position: absolute;
       top: 55%;
       transform: translateY(-50%);
-      right: 0.5rem;
+      right: 0.75rem;
       cursor: pointer;
     }
 
-
     .card {
       justify-content: center;
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+
+    .inputContainer {
+      color: #9aa4ad;
+      /* margin-top: 5px; */
+      margin-bottom: 40px;
+      max-width: 18rem;
     }
   }
 
@@ -248,7 +261,7 @@
       <div class="LoginFormInnerContainer">
 
         <u class="text-bold bg-white lg:bg-transparent" style="font-size: 32px; font-weight: 500;">Login</u>
-        <header class="subHeader">Silahkan Login dengan akun anda masukkan email yang sesuai dengan email akun anda</header>
+        <!-- <header class="subHeader">Silahkan Login dengan akun anda masukkan email yang sesuai dengan email akun anda</header> -->
 
         <form action="<?php echo base_url('auth/fungsi_login') ?>" method="post">
           <div class="inputContainer">
@@ -264,7 +277,6 @@
               <i class="password-toggle-login fa fa-eye-slash" onclick="togglePassword()"></i>
             </div>
           </div>
-          <a href="forgot_password" class="forgetPass">Lupa password?</a>
           <a href="<?php echo base_url('auth/registeru') ?>" class="forgetPass">Belum punya akun?</a>
 
           <button name="submit" type="submit" class="LoginButton">Login</button>
