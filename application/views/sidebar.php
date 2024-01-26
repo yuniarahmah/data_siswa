@@ -403,7 +403,7 @@
                     <li class="nav-link">
                         <a href="<?php echo base_url('admin/tambah_siswa') ?>">
                             <i class="fa-regular fa-message mr-2 icon"></i>
-                            <span class=" text nav-text ">tambah siswa</span>
+                            <span class="text nav-text">tambah siswa</span>
                         </a>
                     </li>
 
@@ -423,14 +423,14 @@
 
                     <li class="nav-link">
                         <a href="<?php echo base_url('admin/tambah_guru') ?>">
-                            <i class="fa-solid fa-user-plus mr-2 icon"></i>
+                            <i class="fa-solid fa-user-plus icon"></i>
                             <span class="text nav-text">Tambah Guru</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
                         <a href="<?php echo base_url('admin/tambah_pembayaran') ?>">
-                            <i class="fa-solid fa-file-circle-plus mr-2 icon"></i>
+                            <i class="fa-solid fa-file-circle-plus icon"></i>
                             <span class="text nav-text">Tambah pembayaran</span>
                         </a>
                     </li>
@@ -461,56 +461,54 @@
         </div>
     </nav>
     <section class="home">
-
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-        <script>
-            const body = document.querySelector('body'),
-                sidebar = body.querySelector('nav'),
-                toggle = body.querySelector(".toggle"),
-                searchBtn = body.querySelector(".search-box"),
-                modeSwitch = body.querySelector(".toggle-switch"),
-                modeText = body.querySelector(".mode-text");
-
-
-            toggle.addEventListener("click", () => {
-                sidebar.classList.toggle("close");
-            })
-
-            searchBtn.addEventListener("click", () => {
-                sidebar.classList.remove("close");
-            })
-
-            modeSwitch.addEventListener("click", () => {
-                body.classList.toggle("dark");
-
-                if (body.classList.contains("dark")) {
-                    modeText.innerText = "Dark mode";
-                } else {
-                    modeText.innerText = "Light mode";
-
-                }
-            });
-
-            function KeluarOPT(id) {
-                const success_keluar = "<?php echo $this->session->flashdata('success_keluar'); ?>";
-                Swal.fire({
-                    title: 'Yakin Ingin Keluar',
-                    text: "",
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    cancelButtonText: 'Batal',
-                    confirmButtonText: 'Keluar'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // Redirect to logout controller/action
-                        window.location.href = "<?php echo base_url('auth/logout') ?>"; // Change this to your logout URL
-                    }
-                });
-            }
-        </script>
-
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    const body = document.querySelector('body'),
+        sidebar = body.querySelector('nav'),
+        toggle = body.querySelector(".toggle"),
+        searchBtn = body.querySelector(".search-box"),
+        modeSwitch = body.querySelector(".toggle-switch"),
+        modeText = body.querySelector(".mode-text");
+
+
+    toggle.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
+    })
+
+    searchBtn.addEventListener("click", () => {
+        sidebar.classList.remove("close");
+    })
+
+    modeSwitch.addEventListener("click", () => {
+        body.classList.toggle("dark");
+
+        if (body.classList.contains("dark")) {
+            modeText.innerText = "Dark mode";
+        } else {
+            modeText.innerText = "Light mode";
+
+        }
+    });
+
+    function KeluarOPT(id) {
+        const success_keluar = "<?php echo $this->session->flashdata('success_keluar'); ?>";
+        Swal.fire({
+            title: 'Yakin Ingin Keluar',
+            text: "",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Batal',
+            confirmButtonText: 'Keluar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Redirect to logout controller/action
+                window.location.href = "<?php echo base_url('auth/logout') ?>"; // Change this to your logout URL
+            }
+        });
+    }
+</script>
 
 </html>

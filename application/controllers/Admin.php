@@ -32,19 +32,44 @@ class Admin extends CI_Controller
     }
     public function aksi_tambah_siswa()
     {
-        $data = [
-            'nama_siswa' => $this->input->post('nama_siswa'),
-            'nisn' => $this->input->post('nisn'),
-            'gender' => $this->input->post('gender'),
-            'ttl' => $this->input->post('ttl'),
-            'nilai_a' => $this->input->post('nilai_a'),
-            'nama_ayah' => $this->input->post('nama_ayah'),
-            'nama_ibu' => $this->input->post('nama_ibu'),
-            'alamat' => $this->input->post('alamat'),
-        ];
-        $this->m_model->tambah_data('user', $data);
-        redirect(base_url('admin/tambah_siswa'));
+        // Mengatur konfigurasi upload
+        $config['upload_path']   = './path/to/your/upload/folder/';
+        $config['allowed_types'] = 'gif|jpg|jpeg|png';
+        $config['max_size']      = 2048; // Ukuran file maksimum dalam KB
+        $config['file_name']     = 'foto_' . uniqid(); // Nama file unik, sesuaikan dengan kebutuhan
+
+        $this->load->library('upload', $config);
+
+        // Memeriksa apakah ada file foto yang diunggah
+        if ($this->upload->do_upload('foto')) {
+            $upload_data = $this->upload->data();
+            $foto = $upload_data['file_name'];
+
+            // Menyiapkan data untuk disimpan ke dalam database
+            $data = [
+                'nama_siswa' => $this->input->post('nama_siswa'),
+                'nisn' => $this->input->post('nisn'),
+                'gender' => $this->input->post('gender'),
+                'ttl' => $this->input->post('ttl'),
+                'nilai_a' => $this->input->post('nilai_a'),
+                'nama_ayah' => $this->input->post('nama_ayah'),
+                'nama_ibu' => $this->input->post('nama_ibu'),
+                'alamat' => $this->input->post('alamat'),
+                'foto' => $foto, // Menyimpan nama file foto ke dalam database
+            ];
+
+            // Menambahkan data ke dalam tabel 'user'
+            $this->m_model->tambah_data('user', $data);
+
+            // Redirect ke halaman tambah_siswa
+            redirect(base_url('admin/tambah_siswa'));
+        } else {
+            // Jika upload foto gagal, tampilkan pesan error
+            $error = array('error' => $this->upload->display_errors());
+            print_r($error);
+        }
     }
+
 
     public function tambah_ekstra()
     {

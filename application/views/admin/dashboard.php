@@ -34,36 +34,37 @@
 
 <body>
   <?php $this->load->view('sidebar'); ?>
-  <div class="h-full mr-25 mt-14 mb-10 md:ml-14">
-    <!-- Statistics Cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 m-5 text-white">
-      <div class="bg-indigo-600 p-5 m-2 flex justify-between items-center shadow ">
-        <div>
-          <h3 class="font-bold">Jumlah siswa</h3>
-          <p class="text-white"><?php echo $user; ?></p>
+  <main class="contain-all max-h-screen overflow-y-auto">
+    <div class="h-full mr-25 mt-14 mb-10 md:ml-14">
+      <!-- Statistics Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 m-5 text-white">
+        <div class="bg-indigo-600 p-5 m-2 flex justify-between items-center shadow ">
+          <div>
+            <h3 class="font-bold">Jumlah siswa</h3>
+            <p class="text-white"><?php echo $user; ?></p>
+          </div>
+          <i class="fa-solid fa-users p-4 bg-dark-200 rounded-md" style="font-size: 24px;"></i>
         </div>
-        <i class="fa-solid fa-users p-4 bg-dark-200 rounded-md" style="font-size: 24px;"></i>
-      </div>
-      <div class="bg-indigo-600 p-5 m-2 flex justify-between items-center shadow">
-        <div>
-          <h3 class="font-bold">Jumlah Guru</h3>
-          <p class="text-white"><?php echo $guru; ?></p>
+        <div class="bg-indigo-600 p-5 m-2 flex justify-between items-center shadow">
+          <div>
+            <h3 class="font-bold">Jumlah Guru</h3>
+            <p class="text-white"><?php echo $guru; ?></p>
+          </div>
+          <i class="fa-solid fa-user-tie p-4 bg-dark-200 rounded-md w-10" style="font-size: 24px;"></i>
         </div>
-        <i class="fa-solid fa-user-tie p-4 bg-dark-200 rounded-md w-10" style="font-size: 24px;"></i>
-      </div>
-      <div class="bg-indigo-600 p-5 m-2 flex justify-between items-center shadow">
-        <div>
-          <h3 class="font-bold">Mapel</h3>
-          <p class="text-white"><?php echo $akademik; ?></p>
+        <div class="bg-indigo-600 p-5 m-2 flex justify-between items-center shadow">
+          <div>
+            <h3 class="font-bold">Mapel</h3>
+            <p class="text-white"><?php echo $akademik; ?></p>
+          </div>
+          <i class="fa-solid fa-calendar-check p-4 bg-dark-200 rounded-md w-10" style="font-size: 24px;"></i>
         </div>
-        <i class="fa-solid fa-calendar-check p-4 bg-dark-200 rounded-md w-10" style="font-size: 24px;"></i>
       </div>
-    </div>
-    <!-- ./Statistics Cards -->
+      <!-- ./Statistics Cards -->
 
-    <!-- <div class="grid grid-cols-1 lg:grid-cols-2 p-4 gap-4"> -->
-    <!-- Social Traffic -->
-    <!-- <div class="relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words bg-gray-50 dark:bg-gray-800 w-full shadow-lg rounded">
+      <!-- <div class="grid grid-cols-1 lg:grid-cols-2 p-4 gap-4"> -->
+      <!-- Social Traffic -->
+      <!-- <div class="relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words bg-gray-50 dark:bg-gray-800 w-full shadow-lg rounded">
       <div class="rounded-t mb-0 px-0 border-0">
         <div class="flex flex-wrap items-center px-4 py-2">
           <div class="relative w-full max-w-full flex-grow flex-1">
@@ -130,70 +131,71 @@
         </div>
       </div>
     </div> -->
-    <!-- ./Social Traffic -->
-    <!-- </div> -->
+      <!-- ./Social Traffic -->
+      <!-- </div> -->
 
-    <!-- tabel -->
-    <div class="w-45 mt-10 px-8 overflow-x-auto">
-      <div class="w-full rounded-lg shadow-xs">
-        <div class="overflow-x-hidden">
-          <table class="min-w-full table-auto text-sm text-left text-gray-800 dark:text-gray-700">
-            <thead>
-              <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-600 bg-indigo-600 h-50">
-                <th class="px-4 py-5">No</th>
-                <th class="px-4 py-5">Ekstrakurikuler</th>
-                <th class="px-4 py-5">Nama Pembimbing</th>
-                <th class="px-4 py-5">Jam pelaksanaan</th>
-              </tr>
-            </thead>
-            <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-              <?php $no = 0;
-              foreach ($ekstra as $row) : $no++ ?>
-                <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
-                  <td class="px-4 py-5"><?php echo $no ?></td>
-                  <td class="px-4 py-5"><?php echo $row->nama_ekstra ?></td>
-                  <td class="px-4 py-5"><?php echo $row->pembimbing ?></td>
-                  <td class="px-4 py-5"><?php echo $row->waktu ?></td>
+      <!-- tabel -->
+      <div class="w-45 mt-10 px-8 overflow-x-auto">
+        <div class="w-full rounded-lg shadow-xs">
+          <div class="overflow-x-hidden">
+            <table class="min-w-full table-auto text-sm text-left text-gray-800 dark:text-gray-700">
+              <thead>
+                <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-600 bg-indigo-600 h-50">
+                  <th class="px-4 py-5">No</th>
+                  <th class="px-4 py-5">Ekstrakurikuler</th>
+                  <th class="px-4 py-5">Nama Pembimbing</th>
+                  <th class="px-4 py-5">Jam pelaksanaan</th>
                 </tr>
-              <?php endforeach ?>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <!-- Contact Form -->
-    <div class="mt-8 mx-7">
-      <div class="grid grid-cols-1 md:grid-cols-2">
-        <div class="p-6 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
-          <h1 class="text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight">Informasi lebih lanjut</h1>
-          <p class="text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">Silahkan hubungi orang yang bersangkutan</p>
-
-          <div class="flex items-center mt-8 text-gray-600 dark:text-gray-400">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            <div class="ml-4 text-md tracking-wide font-semibold w-40">Lokasi anda</div>
-          </div>
-
-          <div class="flex items-center mt-4 text-gray-600 dark:text-gray-400">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-            </svg>
-            <div class="ml-4 text-md tracking-wide font-semibold w-40">+6251 3456 7890</div>
-          </div>
-
-          <div class="flex items-center mt-4 text-gray-600 dark:text-gray-400">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            <div class="ml-4 text-md tracking-wide font-semibold w-40">sekolah@gmail.com</div>
+              </thead>
+              <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                <?php $no = 0;
+                foreach ($ekstra as $row) : $no++ ?>
+                  <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
+                    <td class="px-4 py-5"><?php echo $no ?></td>
+                    <td class="px-4 py-5"><?php echo $row->nama_ekstra ?></td>
+                    <td class="px-4 py-5"><?php echo $row->pembimbing ?></td>
+                    <td class="px-4 py-5"><?php echo $row->waktu ?></td>
+                  </tr>
+                <?php endforeach ?>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
+      <!-- Contact Form -->
+      <div class="mt-8 mx-7">
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <div class="p-6 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
+            <h1 class="text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight">Informasi lebih lanjut</h1>
+            <p class="text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">Silahkan hubungi orang yang bersangkutan</p>
+
+            <div class="flex items-center mt-8 text-gray-600 dark:text-gray-400">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <div class="ml-4 text-md tracking-wide font-semibold w-40">Lokasi anda</div>
+            </div>
+
+            <div class="flex items-center mt-4 text-gray-600 dark:text-gray-400">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              <div class="ml-4 text-md tracking-wide font-semibold w-40">+6251 3456 7890</div>
+            </div>
+
+            <div class="flex items-center mt-4 text-gray-600 dark:text-gray-400">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <div class="ml-4 text-md tracking-wide font-semibold w-40">sekolah@gmail.com</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Contact Form -->
     </div>
-    <!-- /Contact Form -->
-  </div>
+  </main>
   <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>

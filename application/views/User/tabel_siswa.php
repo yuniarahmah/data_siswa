@@ -88,46 +88,56 @@
 
 <body>
     <?php $this->load->view('sidebaru'); ?>
-    <div class="md:px-64 py-8 px-5">
-        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 rounded-lg mb-5">Tabel data siswa</h1>
-    </div>
-    <div class="w-45 mb-10 pl-10 pr-10">
-        <div class="w-full overflow-hidden rounded-lg shadow-xs" style="overflow-x: auto;">
-            <div class="w-full overflow-x-auto">
-                <table id="example_pelanggan" class="w-full text-sm text-left text-gray-800 dark:text-gray-700">
-                    <thead>
-                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
-                            <th class="px-10 py-4">No</th>
-                            <th class="px-10 py-4">Nama Siswa</th>
-                            <th class="px-10 py-4">Nama Ibu</th>
-                            <th class="px-10 py-4">Nama Ayah</th>
-                            <th class="px-10 py-4">Alamat</th>
-                            <th class="px-10 py-4">aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                        <?php $no = 0;
-                        foreach ($user as $row) : $no++ ?>
-                            <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
-                                <td class="px-10 py-3"><?php echo $no ?></td>
-                                <td onclick="navigateToPage('<?php echo base_url('user/data_lengkap/' . $row->id) ?>')" class="px-10 py-3"><?php echo $row->nama_siswa ?></td>
-                                <td class="px-10 py-3"><?php echo $row->nama_ibu ?></td>
-                                <td class="px-10 py-3"><?php echo $row->nama_ayah ?></td>
-                                <td class="px-10 py-3"><?php echo $row->alamat ?></td>
-                                <td class="px-6 py-3">
-                                    <a href="<?php echo base_url('user/edit_data/') . $row->id ?>" class="button-edit">
-                                        <span class="icon">
-                                            <i class="fas fa-edit"></i>
-                                        </span>
-                                    </a>
-                                </td>
+    <main class="contain-all max-h-screen overflow-y-auto">
+        <div class="md:px-64 py-8 px-5">
+            <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 rounded-lg mb-5">Tabel data siswa</h1>
+        </div>
+        <div class="w-45 mb-10 pl-10 pr-10">
+            <div class="w-full overflow-hidden rounded-lg shadow-xs" style="overflow-x: auto;">
+                <div class="w-full overflow-x-auto">
+                    <table id="example_pelanggan" class="w-full text-sm text-left text-gray-800 dark:text-gray-700">
+                        <thead>
+                            <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
+                                <th class="px-10 py-4">No</th>
+                                <th class="px-10 py-4">Foto</th>
+                                <th class="px-10 py-4">Nama Siswa</th>
+                                <th class="px-10 py-4">Nama Ibu</th>
+                                <th class="px-10 py-4">Nama Ayah</th>
+                                <th class="px-10 py-4">Alamat</th>
+                                <th class="px-10 py-4">aksi</th>
                             </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                            <?php $no = 0;
+                            foreach ($user as $row) : $no++ ?>
+                                <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
+                                    <td class="px-10 py-3"><?php echo $no ?></td>
+                                    <td onclick="navigateToPage('<?php echo base_url('user/data_lengkap/' . $row->id) ?>')" class="px-10 py-3">
+                                        <?php if (!empty($row->foto) && file_exists(base_url('user/tabel_siswa/' . $row->foto))) : ?>
+                                            <img src="<?php echo base_url('user/tabel_siswa/' . $row->foto); ?>" alt="Foto <?php echo $row->nama_siswa; ?>" class="w-8 h-8 object-cover object-center rounded-full">
+                                        <?php else : ?>
+                                            <img src="<?= base_url('image/p.png') ?>" alt="Default Foto" class="w-8 h-8 object-cover object-center rounded-full">
+                                        <?php endif; ?>
+                                    </td>
+                                    <td onclick="navigateToPage('<?php echo base_url('user/data_lengkap/' . $row->id) ?>')" class="px-10 py-3"><?php echo $row->nama_siswa ?></td>
+                                    <td class="px-10 py-3"><?php echo $row->nama_ibu ?></td>
+                                    <td class="px-10 py-3"><?php echo $row->nama_ayah ?></td>
+                                    <td class="px-10 py-3"><?php echo $row->alamat ?></td>
+                                    <td class="px-6 py-3">
+                                        <a href="<?php echo base_url('user/edit_data/') . $row->id ?>" class="button-edit">
+                                            <span class="icon">
+                                                <i class="fas fa-edit"></i>
+                                            </span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
     <!--Datatables -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
     <script>

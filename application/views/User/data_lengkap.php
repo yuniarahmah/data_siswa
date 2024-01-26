@@ -17,41 +17,29 @@
 
 <body>
     <?php $this->load->view('sidebaru'); ?>
-    <div class="w-30 mt-20 mb-10 pl-10 pt-10 pr-10">
-        <div class="w-full overflow-hidden rounded-lg shadow-xs">
-            <div class="w-full overflow-x-auto">
-                <table class="w-full">
-                    <thead>
-                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 bg-black">
-                            <th class="px-5 py-4">No</th>
-                            <th class="px-5 py-4">Nama Siswa</th>
-                            <th class="px-5 py-4">Nisn</th>
-                            <th class="px-5 py-4">gender</th>
-                            <th class="px-5 py-4">Nilai Akhir</th>
-                            <th class="px-5 py-4">Tempat/Tanggal Lahir</th>
-                            <th class="px-5 py-4">Nama Ibu</th>
-                            <th class="px-5 py-4">Nama Ayah</th>
-                            <th class="px-5 py-4">Alamat</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                        <?php $no = 0;
-                        foreach ($user as $users) : $no++ ?>
-                            <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
-                                <td class="px-5 py-3"><?php echo $no ?></td>
-                                <td class="px-5 py-3"><?php echo $users->nama_siswa ?></td>
-                                <td class="px-5 py-3"><?php echo $users->nisn ?></td>
-                                <td class="px-5 py-3"><?php echo $users->gender ?></td>
-                                <td class="px-5 py-3"><?php echo $users->nilai_a ?></td>
-                                <td class="px-5 py-3"><?php echo $users->ttl ?></td>
-                                <td class="px-5 py-3"><?php echo $users->nama_ibu ?></td>
-                                <td class="px-5 py-3"><?php echo $users->nama_ayah ?></td>
-                                <td class="px-5 py-3"><?php echo $users->alamat ?></td>
-                            </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
-            </div>
+    <div class="w-full mt-20 mb-10 px-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <?php foreach ($user as $users) : ?>
+                <div class="bg-white overflow-hidden rounded-lg shadow-xs w-full md-screen">
+                    <?php if (empty($users->foto)) : ?>
+                        <!-- Gunakan foto default jika tidak ada foto -->
+                        <img class="w-full h-48 object-cover object-center px-4" src="<?= base_url('image/p.png') ?>" alt="Foto Default">
+                    <?php else : ?>
+                        <!-- Gunakan foto dari data jika tersedia -->
+                        <img class="w-full h-48 object-cover object-center px-4" src="<?php echo $users->foto ?>" alt="Foto <?php echo $users->nama_siswa ?>">
+                    <?php endif; ?>
+                    <div class="p-4">
+                        <h4 class="text-lg font-semibold text-center mb-5"><?php echo $users->nama_siswa ?></h4>
+                        <p class="text-sm text-gray-600 mb-4">NISN: <?php echo $users->nisn ?></p>
+                        <p class="text-sm text-gray-600 mb-4">Gender: <?php echo $users->gender ?></p>
+                        <p class="text-sm text-gray-600 mb-4">Nilai Akhir: <?php echo $users->nilai_a ?></p>
+                        <p class="text-sm text-gray-600 mb-4">TTL: <?php echo $users->ttl ?></p>
+                        <p class="text-sm text-gray-600 mb-4">Nama Ibu: <?php echo $users->nama_ibu ?></p>
+                        <p class="text-sm text-gray-600 mb-4">Nama Ayah: <?php echo $users->nama_ayah ?></p>
+                        <p class="text-sm text-gray-600 mb-4">Alamat: <?php echo $users->alamat ?></p>
+                    </div>
+                </div>
+            <?php endforeach ?>
         </div>
     </div>
 

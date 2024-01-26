@@ -221,12 +221,18 @@
     <?php $this->load->view('sidebaru'); ?>
     <main class="contain-all max-h-screen overflow-y-auto">
         <div class="w-25 mb-10 dark:bg-gray-500">
-            <div class="card mb-20 px-20 ">
-                <h3 class="text-center text-2xl font-bold mb-4 dark:text-white">Edit Data Guru</h3>
-
+            <div class="card mb-20 px-5 ">
+                <h3 class="text-center text-2xl font-bold mb-4 dark:text-white">Edit Data Siswa</h3>
                 <?php foreach ($user as $row) : ?>
                     <form action="<?php echo base_url('user/aksi_edit_data/' . $row->id); ?>" method="post" id="survey-form" class="survey-form w-full">
                         <div class="flex flex-wrap">
+                            <div class="w-full px-1">
+                                <label for="foto" class="block font-bold text-gray-800">Foto</label>
+                                <?php if (!empty($row->foto)) : ?>
+                                    <img src="<?php echo base_url('user/tabel_siswa/' . $row->foto); ?>" alt="Foto <?php echo $row->nama_siswa; ?>" class="w-32 h-32 object-cover object-center mb-2">
+                                <?php endif; ?>
+                                <input type="file" name="foto" id="foto" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                            </div>
                             <div class="w-full px-1">
                                 <label for="nama_siswa" class="block font-bold text-gray-800">Nama Siswa</label>
                                 <input autocomplete="off" value="<?= $row->nama_siswa ?>" type="text" name="nama_siswa" id="nama_siswa" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
@@ -249,7 +255,7 @@
                             </div>
                             <div class="w-full px-1">
                                 <label for="ttl" class="block font-bold text-gray-800">Tempat/tanggal lahir</label>
-                                <input autocomplete="off" value="<?= $row->ttl ?>" type="date" name="ttl" id="ttl" class="w-full min-h-8 border-b-2 border-gray-300 text-gray-800">
+                                <input autocomplete="off" value="<?= $row->ttl ?>" type="text" name="ttl" id="ttl" class="w-full min-h-8 border-b-2 border-gray-300 text-gray-800">
                             </div>
                             <div class="w-full px-1">
                                 <label for="nama_ayah" class="block font-bold text-gray-800">Nama Ayah</label>

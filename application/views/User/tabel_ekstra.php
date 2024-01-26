@@ -88,36 +88,38 @@
 
 <body>
     <?php $this->load->view('sidebaru'); ?>
-    <div class="md:px-64 py-8 px-5">
-        <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 rounded-lg mb-5">Tabel data Ekstrakurikuler</h1>
-    </div>
-    <div class="w-45 mb-10 pl-10 pr-10">
-        <div class="w-full overflow-hidden rounded-lg shadow-xs" style="overflow-x: auto;">
-            <div class="w-full overflow-x-auto">
-                <table id="example_pelanggan" class="w-full text-sm text-left text-gray-800 dark:text-gray-700">
-                    <thead>
-                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
-                            <th class="px-4 py-5">No</th>
-                            <th class="px-4 py-5">Ekstrakurikuler</th>
-                            <th class="px-4 py-5">Nama Pembimbing</th>
-                            <th class="px-4 py-5">Jam pelaksanaan</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                        <?php $no = 0;
-                        foreach ($ekstra as $row) : $no++ ?>
-                            <tr class="cursor-pointer dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
-                                <td class="px-4 py-5"><?php echo $no ?></td>
-                                <td class="px-4 py-5"><?php echo $row->nama_ekstra ?></td>
-                                <td class="px-4 py-5"><?php echo $row->pembimbing ?></td>
-                                <td class="px-4 py-5"><?php echo $row->waktu ?></td>
+    <main class="contain-all max-h-screen overflow-y-auto">
+        <div class="md:px-64 py-8 px-5">
+            <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 rounded-lg mb-5">Tabel data Ekstrakurikuler</h1>
+        </div>
+        <div class="w-45 mb-10 pl-10 pr-10">
+            <div class="w-full overflow-hidden rounded-lg shadow-xs" style="overflow-x: auto;">
+                <div class="w-full overflow-x-auto">
+                    <table id="example_pelanggan" class="w-full text-sm text-left text-gray-800 dark:text-gray-700">
+                        <thead>
+                            <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
+                                <th class="px-4 py-5">No</th>
+                                <th class="px-4 py-5">Ekstrakurikuler</th>
+                                <th class="px-4 py-5">Nama Pembimbing</th>
+                                <th class="px-4 py-5">Jam pelaksanaan</th>
                             </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                            <?php $no = 0;
+                            foreach ($ekstra as $row) : $no++ ?>
+                                <tr class="cursor-pointer dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
+                                    <td class="px-4 py-5"><?php echo $no ?></td>
+                                    <td class="px-4 py-5"><?php echo $row->nama_ekstra ?></td>
+                                    <td class="px-4 py-5"><?php echo $row->pembimbing ?></td>
+                                    <td class="px-4 py-5"><?php echo $row->waktu ?></td>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
     <!--Datatables -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>

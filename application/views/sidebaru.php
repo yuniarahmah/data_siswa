@@ -68,7 +68,7 @@
         top: 0;
         left: 0;
         height: 100%;
-        width: 250px;
+        width: 18rem;
         padding: 10px 14px;
         background: var(--sidebar-color);
         transition: var(--tran-05);

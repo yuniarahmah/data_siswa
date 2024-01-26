@@ -13,40 +13,45 @@
     overflow-x: hidden;
   }
 
-  @media only screen and (max-width: 800px) {
+  /* Gaya umum untuk teks */
+  .text-lg {
+    font-size: 1.125rem;
+    /* Atur ukuran font untuk ukuran default atau mobile */
+  }
 
-    /* Teks aslinya akan tampil secara normal di perangkat dengan lebar lebih besar dari 600px */
+  /* Media query untuk tablet (ukuran layar lebih besar dari 600px) */
+  @media (min-width: 200px) {
     .text-lg {
-      font-size: 10px;
+      font-size: 1.25rem;
+      /* Sesuaikan ukuran font untuk tablet */
     }
+  }
 
-    /* Ketika lebar perangkat kurang dari atau sama dengan 600px, teks akan menjadi sampingan */
-    @media (max-width: 600px) {
-      .text-lg {
-        font-size: 10px;
-        /* Atur ukuran teks yang lebih kecil untuk perangkat berukuran kecil */
-        display: block;
-        /* Menetapkan tampilan blok untuk melewatkan baris baru */
-      }
+  /* Media query untuk desktop (ukuran layar lebih besar dari 1024px) */
+  @media (min-width: 824px) {
+    .text-lg {
+      font-size: 1.5rem;
+      /* Sesuaikan ukuran font untuk desktop */
     }
   }
 </style>
 
 <body>
   <?php $this->load->view('sidebaru'); ?>
-  <div class="h-full mr-25 mt-14 mb-10 md:ml-14">
+  <main class="contain-all max-h-screen overflow-y-auto px-5">
     <!-- Task Summaries -->
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 p-4 gap-6 text-black dark:text-white">
-      <div class="md:col-span-2 xl:col-span-3">
-        <h3 class="text-lg font-bold text-indigo-300" style="font-size: 3rem;">Informasi Sekolah</h3>
-      </div>
+    <div class="md:col-span-2 xl:col-span-3 flex flex-col md:flex-row px-5 md:px-5 py-5 md:py-5 gap-4">
+      <h3 class="text-lg font-bold text-indigo-300 md:px-0 md:py-0" style="font-size: 3rem;">Informasi</h3>
+      <h3 class="text-lg font-bold text-indigo-300 md:px-0 md:py-0" style="font-size: 3rem;">Sekolah</h3>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 p-5 gap-6 text-black dark:text-white">
       <div class="md:col-span-2 xl:col-span-1">
-        <div class="rounded bg-gray-200 dark:bg-gray-800 p-6 overflow-x-auto">
+        <div class="rounded bg-indigo-200 dark:bg-gray-800 p-6 overflow-x-auto">
           <div class="flex justify-center py-1 text-black dark:text-white mb-5">
             <h3 class="text-sm font-semibold">Guru</h3>
           </div>
           <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-            <thead class="bg-gray-100 dark:bg-gray-700">
+            <thead class="bg-indigo-100 dark:bg-gray-700">
               <tr>
                 <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                   Nama Guru Yang mengajar
@@ -67,12 +72,12 @@
         </div>
       </div>
       <div class="md:col-span-2 xl:col-span-1">
-        <div class="rounded bg-gray-200 dark:bg-gray-800 p-6">
+        <div class="rounded bg-indigo-200 dark:bg-gray-800 p-6">
           <div class="flex justify-center py-1 text-black dark:text-white mb-5">
             <h3 class="text-sm font-semibold">Mata Pelajaran</h3>
           </div>
           <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-            <thead class="bg-gray-100 dark:bg-gray-700">
+            <thead class="bg-indigo-100 dark:bg-gray-700">
               <tr>
                 <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                   Nama Mata Pelajaran yang akan dipelajari
@@ -93,12 +98,12 @@
         </div>
       </div>
       <div class="md:col-span-2 xl:col-span-1">
-        <div class="rounded bg-gray-200 dark:bg-gray-800 p-6">
+        <div class="rounded bg-indigo-200 dark:bg-gray-800 p-6">
           <div class="flex justify-center py-1 text-black dark:text-white mb-5">
             <h3 class="text-sm font-semibold">Ekstrakurikuler</h3>
           </div>
           <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-            <thead class="bg-gray-100 dark:bg-gray-700">
+            <thead class="bg-indigo-100 dark:bg-gray-700">
               <tr>
                 <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                   Nama Ekstrakurikuler
@@ -122,7 +127,7 @@
     <!-- ./Task Summaries -->
 
     <!-- Table -->
-    <div class="w-full mx-full px-10 text-center">
+    <div class="w-full mx-full px-5 text-center">
       <div class="w-full rounded-lg overflow-x-auto" style="overflow-x: auto;">
         <div class="w-full overflow-x-auto overflow-y-auto sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
           <table class="w-full overflow-x-auto table-auto text-sm text-left text-gray-800 dark:text-gray-700">
@@ -192,7 +197,7 @@
     <!-- ./Table -->
 
     <!-- Contact Form -->
-    <div class="mt-8 mx-7">
+    <div class="mt-8 mx-5">
       <div class="grid grid-cols-1 md:grid-cols-2">
         <div class="p-6 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
           <h1 class="text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight">Informasi lebih lanjut</h1>
@@ -223,7 +228,7 @@
       </div>
     </div>
     <!-- ./Contact Form -->
-  </div>
+  </main>
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
   <script>
     const setup = () => {

@@ -221,11 +221,15 @@
     <div class="w-25 mb-10 dark:bg-gray-800">
         <div class="card px-5 py-5">
             <h3 class="text-center text-2xl font-bold mb-4 dark:text-white">Tambah Siswa</h3>
-            <form action="<?php echo base_url('admin/aksi_tambah_siswa') ?>" method="post" id="survey-form" class="survey-form w-full">
+            <form action="<?php echo base_url('admin/aksi_tambah_siswa') ?>" method="post" id="survey-form" class="survey-form w-full" enctype="multipart/form-data">
                 <div class="flex flex-wrap">
                     <div class="w-full px-1">
                         <label for="nama_siswa" class="block font-bold text-gray-800">Nama Siswa</label>
-                        <input required autocomplete="off" type="text" name="nama_siswa" id="nama_siswa" placeholder="ketik nama siswa" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                        <input autocomplete="off" type="text" name="nama_siswa" id="nama_siswa" placeholder="ketik nama siswa" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                    </div>
+                    <div class="w-full px-1">
+                        <label for="foto" class="block font-bold text-gray-800">Foto</label>
+                        <input required type="file" name="foto" id="foto" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                     </div>
                     <div class="w-full px-1">
                         <label for="nisn" class="block font-bold text-gray-800">NISN</label>
@@ -257,7 +261,7 @@
                     </div>
                     <div class="w-full px-1">
                         <label for="alamat" class="block font-bold text-gray-800">Alamat</label>
-                        <input required autocomplete="off" type="text" name="alamat" id="alamat" placeholder="ketik  alamat" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
+                        <input autocomplete="off" type="text" name="alamat" id="alamat" placeholder="ketik  alamat" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                     </div>
                 </div>
                 <div class="text-center mt-1">
