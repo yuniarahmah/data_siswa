@@ -24,11 +24,15 @@ class User extends CI_Controller
         $this->load->view('user/dashboard_u', $data);
     }
 
+    // In your controller
     public function tabel_siswa()
     {
-        $data['user'] = $this->m_model->get_data('user')->result();
-        $this->load->view('user/tabel_siswa', $data);
+        // Assuming you fetch user data from the model
+        $data['user'] = $this->m_model->get_user_data(); // Replace with your actual model method
+
+        $this->load->view('User/tabel_siswa', $data);
     }
+
     public function tabel_guru()
     {
         $data['guru'] = $this->m_model->get_data('guru')->result();

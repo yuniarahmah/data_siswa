@@ -117,43 +117,40 @@
         <div class="md:px-64 py-8 px-5">
             <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 rounded-lg mb-5">Tabel data siswa</h1>
         </div>
-
-        <div class="w-full mx-full px-10 text-center">
-            <div class="w-full rounded-lg overflow-x-auto" style="overflow-x: auto;">
-                <div class="w-full overflow-x-auto overflow-y-auto sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
-                    <table class="w-full overflow-x-auto table-auto text-sm text-left text-gray-800 dark:text-gray-700">
-                        <thead>
-                            <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
-                                <th class="px-10 sm:px-6 py-5">No</th>
-                                <th class="px-10 sm:px-6 py-5">Nama Siswa</th>
-                                <th class="px-10 sm:px-6 py-5">Nama Ibu</th>
-                                <th class="px-10 sm:px-6 py-5">Nama Ayah</th>
-                                <th class="px-10 sm:px-6 py-5">Alamat</th>
-                                <th class="px-10 sm:px-10 py-5">Aksi</th>
+        <div class="w-full sm:w-2/1 mx-auto mt-4 px-5 overflow-x-auto overflow-y-scroll">
+            <div class="table-container">
+                <table class="min-w-full table-auto text-sm text-left text-gray-800 dark:text-gray-700">
+                    <thead>
+                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
+                            <th class="px-10 sm:px-6 py-5">No</th>
+                            <th class="px-10 sm:px-6 py-5">Nama Siswa</th>
+                            <th class="px-10 sm:px-6 py-5">Nama Ibu</th>
+                            <th class="px-10 sm:px-6 py-5">Nama Ayah</th>
+                            <th class="px-10 sm:px-6 py-5">Alamat</th>
+                            <th class="px-10 sm:px-10 py-5">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                        <?php
+                        $no = 0;
+                        foreach ($user as $row) : $no++ ?>
+                            <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
+                                <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $no ?></td>
+                                <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $row->nama_siswa ?></td>
+                                <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $row->nama_ibu ?></td>
+                                <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $row->nama_ayah ?></td>
+                                <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $row->alamat ?></td>
+                                <td class="px-1 py-4 flex space-x-1 ml-7">
+                                    <button onclick="hapus(<?php echo $row->id ?>)" class="button-delete">
+                                        <span class="icon">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </span>
+                                    </button>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                            <?php
-                            $no = 0;
-                            foreach ($user as $row) : $no++ ?>
-                                <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
-                                    <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $no ?></td>
-                                    <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $row->nama_siswa ?></td>
-                                    <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $row->nama_ibu ?></td>
-                                    <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $row->nama_ayah ?></td>
-                                    <td class="px-10 sm:px-6 py-8 sm:py-4"><?php echo $row->alamat ?></td>
-                                    <td class="px-1 py-4 flex space-x-1 ml-7">
-                                        <button onclick="hapus(<?php echo $row->id ?>)" class="button-delete">
-                                            <span class="icon">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </span>
-                                        </button>
-                                    </td>
-                                </tr>
-                            <?php endforeach ?>
-                        </tbody>
-                    </table>
-                </div>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
             </div>
         </div>
         <!-- tabel siswa -->
@@ -163,8 +160,8 @@
             <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 mb-5 rounded-lg">Tabel data Guru</h1>
         </div>
 
-        <div class="w-full sm:w-2/1 mx-auto mt-4 px-20 text-center">
-            <div class="w-full overflow-x-auto">
+        <div class="w-full sm:w-2/1 mx-auto mt-4 px-5 overflow-x-auto overflow-y-scroll">
+            <div class="table-container">
                 <table class="min-w-full table-auto text-sm text-left text-gray-800 dark:text-gray-700">
                     <thead>
                         <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
@@ -211,9 +208,9 @@
             <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 mb-10 rounded-lg">Tabel data Mapel</h1>
         </div>
 
-        <div class="w-full sm:w-2/1 mx-auto mt-4 px-20 text-center">
-            <div class="w-full overflow-x-auto overflow-y-auto sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
-                <table class="text-sm text-left text-gray-800 dark:text-gray-700 heading w-full">
+        <div class="w-full sm:w-2/1 mx-auto mt-4 px-5 overflow-x-auto overflow-y-scroll">
+            <div class="table-container">
+                <table class="min-w-full table-auto text-sm text-left text-gray-800 dark:text-gray-700">
                     <thead>
                         <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
                             <th class="px-9 py-4">No</th>
@@ -254,9 +251,9 @@
             <h1 id="title" class="main-heading text-white dark:bg-gray-800 bg-indigo-600 b-20 mb-10 rounded-lg">Tabel data Ekstrakurikuler</h1>
         </div>
 
-        <div class="w-full sm:w-2/1 mx-auto mt-4 px-20 text-center">
-            <div class="w-full overflow-x-auto overflow-y-auto sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
-                <table class="text-sm text-left text-gray-800 dark:text-gray-700 heading w-full">
+        <div class="w-full sm:w-2/1 mx-auto mt-4 px-5 overflow-x-auto overflow-y-scroll">
+            <div class="table-container">
+                <table class="min-w-full table-auto text-sm text-left text-gray-800 dark:text-gray-700">
                     <thead>
                         <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600">
                             <th class="px-4 py-2 sm:px-10 sm:py-4">No</th>
@@ -301,43 +298,6 @@
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const maxRowsToShow = 5; // Jumlah maksimum baris yang akan ditampilkan
-                const rows = document.querySelectorAll("tbody tr");
-
-                if (rows.length > maxRowsToShow) {
-                    // Sembunyikan baris yang kelebihan
-                    rows.forEach(function(row, index) {
-                        if (index >= maxRowsToShow) {
-                            row.style.display = "none";
-                        }
-                    });
-
-                    // Tambahkan tombol "Selengkapnya"
-                    const viewAllLink = document.createElement('a');
-                    viewAllLink.href = 'tabel_siswa'; // Atur atribut href sesuai dengan URL yang diinginkan
-                    viewAllLink.textContent = 'Selengkapnya';
-                    viewAllLink.addEventListener('click', function() {
-                        // Tampilkan semua baris ketika tombol "Selengkapnya" diklik
-                        rows.forEach(function(row) {
-                            row.style.display = "";
-                        });
-
-                        // Arahkan pengguna ke halaman yang ditentukan
-                        window.location.href = viewAllLink.href;
-                    });
-
-                    const viewAllCell = document.createElement('td');
-                    viewAllCell.colSpan = 6; // Sesuaikan colspan berdasarkan jumlah kolom dalam tabel
-                    viewAllCell.appendChild(viewAllLink);
-
-                    const viewAllRow = document.createElement('tr');
-                    viewAllRow.appendChild(viewAllCell);
-
-                    document.querySelector('tbody').appendChild(viewAllRow);
-                }
-            });
-
             document.addEventListener("DOMContentLoaded", function() {
                 const searchInput = document.getElementById("search");
                 const rows = document.querySelectorAll("tbody tr");

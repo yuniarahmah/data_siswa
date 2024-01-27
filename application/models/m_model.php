@@ -110,8 +110,33 @@ class M_model extends CI_Model
         return "Default Value";
     }
 
-    public function registera($data)
+    public function cek_data_exists($table, $where)
     {
-        $this->db->insert('admin', $data); // Sesuaikan dengan nama tabel yang digunakan di database
+        $this->db->where($where);
+        $query = $this->db->get($table);
+
+        return $query->num_rows() > 0;
+    }
+
+    public function get_user_data()
+    {
+        // Replace 'users' with your actual database table name
+        $query = $this->db->get('user');
+
+        // Assuming you want to return the result as an object
+        return $query->result();
+    }
+
+    public function getUserById($userId)
+    {
+        // Replace 'users' with your actual table name
+        $this->db->where('id', $userId);
+        $query = $this->db->get('user');
+
+        if ($query->num_rows() > 0) {
+            return $query->row();
+        }
+
+        return null; // Return null if user is not found
     }
 }

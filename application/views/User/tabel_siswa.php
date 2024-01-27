@@ -99,7 +99,7 @@
                         <thead>
                             <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-white dark:bg-gray-800 bg-indigo-600 h-50">
                                 <th class="px-10 py-4">No</th>
-                                <th class="px-10 py-4">Foto</th>
+                                <!-- <th class="px-10 py-4">Foto</th> -->
                                 <th class="px-10 py-4">Nama Siswa</th>
                                 <th class="px-10 py-4">Nama Ibu</th>
                                 <th class="px-10 py-4">Nama Ayah</th>
@@ -112,13 +112,13 @@
                             foreach ($user as $row) : $no++ ?>
                                 <tr class="cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400 ml-2%">
                                     <td class="px-10 py-3"><?php echo $no ?></td>
-                                    <td onclick="navigateToPage('<?php echo base_url('user/data_lengkap/' . $row->id) ?>')" class="px-10 py-3">
-                                        <?php if (!empty($row->foto) && file_exists(base_url('user/tabel_siswa/' . $row->foto))) : ?>
-                                            <img src="<?php echo base_url('user/tabel_siswa/' . $row->foto); ?>" alt="Foto <?php echo $row->nama_siswa; ?>" class="w-8 h-8 object-cover object-center rounded-full">
+                                    <!-- <td onclick="navigateToPage('<?php echo site_url('user/data_lengkap/' . $row->id) ?>')" class="px-10 py-3">
+                                        <?php if (!empty($row->image)) : ?>
+                                            <img src="<?php echo base_url('user/tabel_siswa/' . $row->image); ?>" class="w-8 h-8 object-cover object-center rounded-full">
                                         <?php else : ?>
-                                            <img src="<?= base_url('image/p.png') ?>" alt="Default Foto" class="w-8 h-8 object-cover object-center rounded-full">
+                                            <img src="<?= base_url('image/p.png') ?>" alt="Default image" class="w-8 h-8 object-cover object-center rounded-full">
                                         <?php endif; ?>
-                                    </td>
+                                    </td> -->
                                     <td onclick="navigateToPage('<?php echo base_url('user/data_lengkap/' . $row->id) ?>')" class="px-10 py-3"><?php echo $row->nama_siswa ?></td>
                                     <td class="px-10 py-3"><?php echo $row->nama_ibu ?></td>
                                     <td class="px-10 py-3"><?php echo $row->nama_ayah ?></td>

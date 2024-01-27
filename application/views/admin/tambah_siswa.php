@@ -227,10 +227,10 @@
                         <label for="nama_siswa" class="block font-bold text-gray-800">Nama Siswa</label>
                         <input autocomplete="off" type="text" name="nama_siswa" id="nama_siswa" placeholder="ketik nama siswa" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
                     </div>
-                    <div class="w-full px-1">
+                    <!-- <div class="w-full px-1">
                         <label for="foto" class="block font-bold text-gray-800">Foto</label>
                         <input required type="file" name="foto" id="foto" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
-                    </div>
+                    </div> -->
                     <div class="w-full px-1">
                         <label for="nisn" class="block font-bold text-gray-800">NISN</label>
                         <input autocomplete="off" type="text" name="nisn" id="nisn" placeholder="ketik nisn" class="w-full min-h-8 p-4 border-b-2 border-gray-300 text-gray-800">
@@ -280,6 +280,24 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
+        $.ajax({
+            url: 'tabel_data_lengkap',
+            type: 'POST',
+            data: formData, // data yang dikirimkan, jika ada
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    alert(response.message); // atau tindakan lain yang diperlukan
+                    window.location.href = response.redirect; // redirect ke halaman tujuan
+                } else {
+                    alert(response.message); // tampilkan pesan kesalahan jika ada
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText); // log pesan error jika terjadi kesalahan
+            }
+        });
+
         const body = document.querySelector('body'),
             sidebar = body.querySelector('nav'),
             toggle = body.querySelector(".toggle"),

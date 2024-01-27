@@ -21,13 +21,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             <?php foreach ($user as $users) : ?>
                 <div class="bg-white overflow-hidden rounded-lg shadow-xs w-full md-screen">
-                    <?php if (empty($users->foto)) : ?>
-                        <!-- Gunakan foto default jika tidak ada foto -->
-                        <img class="w-full h-48 object-cover object-center px-4" src="<?= base_url('image/p.png') ?>" alt="Foto Default">
-                    <?php else : ?>
-                        <!-- Gunakan foto dari data jika tersedia -->
-                        <img class="w-full h-48 object-cover object-center px-4" src="<?php echo $users->foto ?>" alt="Foto <?php echo $users->nama_siswa ?>">
-                    <?php endif; ?>
+                   
                     <div class="p-4">
                         <h4 class="text-lg font-semibold text-center mb-5"><?php echo $users->nama_siswa ?></h4>
                         <p class="text-sm text-gray-600 mb-4">NISN: <?php echo $users->nisn ?></p>

@@ -30,46 +30,86 @@ class Admin extends CI_Controller
         $data['user'] = $this->m_model->get_data('user', 'id')->result();
         $this->load->view('admin/tambah_siswa', $data);
     }
+
     public function aksi_tambah_siswa()
     {
-        // Mengatur konfigurasi upload
-        $config['upload_path']   = './path/to/your/upload/folder/';
-        $config['allowed_types'] = 'gif|jpg|jpeg|png';
-        $config['max_size']      = 2048; // Ukuran file maksimum dalam KB
-        $config['file_name']     = 'foto_' . uniqid(); // Nama file unik, sesuaikan dengan kebutuhan
+        $nama_siswa = $this->input->post('nama_siswa');
+        $nisn = $this->input->post('nisn');
+        $gender = $this->input->post('gender');
+        $ttl = $this->input->post('ttl');
+        $nilai_a = $this->input->post('nilai_a');
+        $nama_ayah = $this->input->post('nama_ayah');
+        $nama_ibu = $this->input->post('nama_ibu');
+        $alamat = $this->input->post('alamat');
+        $image = $_FILES['foto']['name'];
 
-        $this->load->library('upload', $config);
+        $errors = [];
 
-        // Memeriksa apakah ada file foto yang diunggah
-        if ($this->upload->do_upload('foto')) {
-            $upload_data = $this->upload->data();
-            $foto = $upload_data['file_name'];
-
-            // Menyiapkan data untuk disimpan ke dalam database
-            $data = [
-                'nama_siswa' => $this->input->post('nama_siswa'),
-                'nisn' => $this->input->post('nisn'),
-                'gender' => $this->input->post('gender'),
-                'ttl' => $this->input->post('ttl'),
-                'nilai_a' => $this->input->post('nilai_a'),
-                'nama_ayah' => $this->input->post('nama_ayah'),
-                'nama_ibu' => $this->input->post('nama_ibu'),
-                'alamat' => $this->input->post('alamat'),
-                'foto' => $foto, // Menyimpan nama file foto ke dalam database
-            ];
-
-            // Menambahkan data ke dalam tabel 'user'
-            $this->m_model->tambah_data('user', $data);
-
-            // Redirect ke halaman tambah_siswa
-            redirect(base_url('admin/tambah_siswa'));
-        } else {
-            // Jika upload foto gagal, tampilkan pesan error
-            $error = array('error' => $this->upload->display_errors());
-            print_r($error);
+        // Validasi nama ruangan tidak boleh sama
+        $nisn_exists = $this->m_model->cek_data_exists('user', ['nisn' => $nisn]);
+        if ($nisn_exists) {
+            $errors[] = 'Nisn tidak boleh sama silahkan dipastikan lagi.';
         }
-    }
 
+        // Validasi foto
+        $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif'];
+        $file_info = pathinfo($image);
+        $extension = isset($file_info['extension']) ? strtolower($file_info['extension']) : null;
+
+        if (empty($image) || !in_array($extension, $allowed_extensions)) {
+            $errors[] = 'Foto harus diunggah dengan format JPG, JPEG, PNG, atau GIF.';
+        }
+
+        if (count($errors) > 0) {
+            $response = [
+                'status' => 'error',
+                'message' => implode(' ', $errors),
+            ];
+        } else {
+            $image_temp = $_FILES['foto']['tmp_name'];
+            $kode = round(microtime(true) * 100);
+            $file_name = $kode . '_' . $image;
+            $upload_path = './image/' . $file_name;
+
+            if (move_uploaded_file($image_temp, $upload_path)) {
+                $data = [
+                    'image' => $file_name,
+                    'nama_siswa' => $nama_siswa,
+                    'nisn' => $nisn,
+                    'gender' => $gender,
+                    'ttl' => $ttl,
+                    'nilai_a' => $nilai_a,
+                    'nama_ayah' => $nama_ayah,
+                    'nama_ibu' => $nama_ibu,
+                    'alamat' => $alamat,
+                ];
+
+                $inserted = $this->m_model->tambah_data('user', $data);
+
+                if ($inserted) {
+                    $response = [
+                        'status' => 'success',
+                        'message' => 'Data berhasil ditambahkan.',
+                        'redirect' => base_url('admin/tabel_data_lengkap'),
+                    ];
+                } else {
+                    $response = [
+                        'status' => 'error',
+                        'message' => 'Gagal menambahkan data. Silakan coba lagi.',
+                    ];
+                    unlink($upload_path);
+                }
+            } else {
+                $response = [
+                    'status' => 'error',
+                    'message' => 'Gagal mengunggah foto. Silakan coba lagi.',
+                ];
+            }
+        }
+
+        // Menggunakan echo json_encode untuk response AJAX
+        echo json_encode($response);
+    }
 
     public function tambah_ekstra()
     {
